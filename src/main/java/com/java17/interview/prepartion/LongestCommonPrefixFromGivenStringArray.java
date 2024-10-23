@@ -33,6 +33,11 @@ public class LongestCommonPrefixFromGivenStringArray {
         listOfInt.stream().sorted().collect(Collectors.toList());
 
         List<Integer> list = Arrays.asList(10, 23, -4, 0, 18, 10, 10);
+
+
+        Integer firstRepeatedInteger = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream().filter(f -> f.getValue() > 1L).map(m -> m.getKey()).findFirst().get();
+        System.out.println(firstRepeatedInteger);
+
         List<Integer> sortedList = list.stream().sorted().collect(Collectors.toList());
         System.out.println(sortedList);
 

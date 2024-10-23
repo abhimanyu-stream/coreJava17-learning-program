@@ -89,17 +89,11 @@ public class FunctionalInterfaceExample {
 
         //System.out.println("optionalofnull "+ optionalofnull);
         Optional<String> stringOptional1 = Optional.ofNullable("");
-        if(stringOptional1.isPresent()){
-            System.out.println(stringOptional1.get());
-        }
+        stringOptional1.ifPresent(System.out :: println);
         Optional<Object> optionalnull = Optional.ofNullable(null);// it do not raises null pointer exception[it prints  empty box/space on console]
-        if(optionalnull.isPresent()){
-            System.out.println(optionalnull.get());
-        }
+        optionalnull.ifPresent(System.out :: println);
         Optional<String> hum = Optional.ofNullable("hum");
-        if(hum.isPresent()){
-            System.out.println(hum.get());
-        }
+        hum.ifPresent(System.out :: println);
 
     }
 }

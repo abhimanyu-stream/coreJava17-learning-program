@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 
+import org.apache.logging.log4j.util.PropertySource;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.*;
@@ -38,6 +39,18 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
 
 
 
+
+        // Sort Employee by Date of Joining
+        Comparator<EmployeeOfMicrosoft> dojComparator = new Comparator<>() {
+            @Override
+            public int compare(EmployeeOfMicrosoft o1, EmployeeOfMicrosoft o2) {
+                return o2.getYearOfJoining()-o1.getYearOfJoining();
+            }
+        };
+        List<EmployeeOfMicrosoft> sortedByDOJEmployeeList = employeeOfMicrosoftList.stream().sorted(dojComparator).toList();
+        System.out.println(sortedByDOJEmployeeList);
+
+
         // How many employees are there in the organization Department wise ?
         // For queries such as above where you need to group the input elements, use the Collectors.groupingBy() method.
         // In this query, we use Collectors.groupingBy() method which takes two arguments.
@@ -72,7 +85,7 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
         // Get the details of highest paid employee in the organization?
 
 
-        EmployeeOfMicrosoft higestSalaryPaidEmployee = employeeOfMicrosoftList.stream().collect(Collectors.maxBy(Comparator.comparingDouble(EmployeeOfMicrosoft::getSalary))).get();
+        EmployeeOfMicrosoft higestSalaryPaidEmployee = employeeOfMicrosoftList.stream().max(Comparator.comparingDouble(EmployeeOfMicrosoft :: getSalary)).get();
 
 
         System.out.println(higestSalaryPaidEmployee);

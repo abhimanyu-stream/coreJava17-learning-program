@@ -32,6 +32,10 @@ public class SortListObjectUsingComparator {
 		System.out.println(listOfEmployee.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList()));
 		
 
+		//using stream api
+		listOfEmployee.stream().sorted(new AgeComparator()).collect(Collectors.toList());
+		//static problem
+		//listOfEmployee.stream().sorted(AgeComparator::compare).collect(Collectors.toList());
 	}
 	 
 	
@@ -40,7 +44,7 @@ public class SortListObjectUsingComparator {
 }
 class AgeComparator implements Comparator<Employee>{
 
-	@Override
+
 	public int compare(Employee o1, Employee o2) {
 		
 		if(o1.getAge() > o2.getAge())
