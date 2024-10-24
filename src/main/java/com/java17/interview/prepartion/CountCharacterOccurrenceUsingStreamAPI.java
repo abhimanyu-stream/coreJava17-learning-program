@@ -19,10 +19,12 @@ public class CountCharacterOccurrenceUsingStreamAPI {
 
         String str = "HelloworldJavaAAAApplication worlds";
         System.out.println(Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
-        List<String> listOfChar = Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet().stream().filter(f->f.getValue() >= 1L).map(m->m.getKey()).collect(Collectors.toList());
 
-        System.out.println(listOfChar);
+
+        List<String> listOfRepeatedChar = Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream().filter(f->f.getValue() > 1L).map(m->m.getKey()).collect(Collectors.toList());
+
+        System.out.println(listOfRepeatedChar);
 
     }
 

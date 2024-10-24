@@ -9,15 +9,16 @@ public class CountCharacterFrequencyHashMap {
 		
 		String str = "JavaSpringHibernateJPASAOPRESTAWS";
 		
-		char[] charArray = str.toCharArray();
-		Map<Character, Integer> hashmap = new HashMap<>();
-		for(int i = 0; i < charArray.length; i++) {
+		//char[] charArray = str.toCharArray();
+		String[] split = str.split("");
+		Map<String, Integer> hashmap = new HashMap<>();
+		for(int i = 0; i < str.length(); i++) {
 			
-			if(hashmap.get(charArray[i]) != null) {
-				int count = hashmap.get(charArray[i]);
-				hashmap.put(charArray[i], count + 1);
+			if(hashmap.containsKey(split[i])) {
+				int count = hashmap.get(split[i]);
+				hashmap.put(split[i], count + 1);
 			}else {
-				hashmap.put(charArray[i], 1);
+				hashmap.put(split[i], 1);
 			}
 		}
 		System.out.println(hashmap);

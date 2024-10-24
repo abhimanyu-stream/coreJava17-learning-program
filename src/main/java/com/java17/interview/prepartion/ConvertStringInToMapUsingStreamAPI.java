@@ -12,24 +12,26 @@ public class ConvertStringInToMapUsingStreamAPI extends  Error{
 
         String str = "Abhimanyuaaabbb";
         // count of char
-        char[] charArray = str.toCharArray();
-
-        Map<Character, Integer> hashMap = new HashMap<>();
+        //char[] charArray = str.toCharArray();
+        String[] split = str.split("");
+        Map<String, Integer> hashMap = new HashMap<>();
 
 
         for(int i = 0; i < str.length(); i++){
 
-            if(hashMap.containsKey(charArray[i])){
-                int count = hashMap.get(charArray[i]);
-                hashMap.put(charArray[i], count + 1);
+            if(hashMap.containsKey(split[i])){
+                int count = hashMap.get(split[i]);
+                hashMap.put(split[i], count + 1);
 
             }else{
-                hashMap.put(charArray[i], 1);
+                hashMap.put(split[i], 1);
             }
         }
         System.out.println(hashMap);
-        System.out.println(Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(),Collectors.counting())));
-
+        System.out.println(Arrays.stream(split).collect(Collectors.groupingBy(Function.identity(),Collectors.counting())));
+        System.out.println("------------ String str = \"Abhimanyuaaabbb\"------------output as ---------a4A1b4u1h1y1i1m1n1------------------------------------------------------");
+        Arrays.stream(split).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet().stream().map(e->new StringBuffer().append(e.getKey()).append(e.getValue())).forEach(System.out::print);
 
 
     }

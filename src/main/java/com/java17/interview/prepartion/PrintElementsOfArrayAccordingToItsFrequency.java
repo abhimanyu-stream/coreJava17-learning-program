@@ -2,7 +2,6 @@ package  com.java17.interview.prepartion;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class PrintElementsOfArrayAccordingToItsFrequency {
 
@@ -20,8 +19,8 @@ class PrintElementsOfArrayAccordingToItsFrequency {
 
     public static void sortBasedOnFrequencyAndValue(List<Integer> list, Integer[] arr) {
         int n = arr.length;
-        final Map<Integer, Integer> mapCount = new HashMap();
-        final Map<Integer, Integer> mapIndex = new HashMap();
+        final Map<Integer, Integer> mapCount = new HashMap<>();
+        final Map<Integer, Integer> mapIndex = new HashMap<>();
 
         for (int i = 0; i < n; i++) {
             if (mapCount.containsKey(arr[i])) {

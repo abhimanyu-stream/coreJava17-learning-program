@@ -1,5 +1,6 @@
 package com.java17.interview.prepartion;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class CustomImmutableClass {
@@ -20,7 +21,8 @@ public class CustomImmutableClass {
 		phoneNumbers.add("456789");
 		Map<String, String> metadata = new HashMap<>();
 		metadata.put("hobby", "Watching Movies");
-		Date dateOfBirth = new Date(9 / 2024);
+		Date dateOfBirth = new Date("01/01/2020");
+		LocalDate dateOfBith = LocalDate.of(2020,01,02);
 		Employee e = new Employee("Mindranda", 23, address1, phoneNumbers, metadata, dateOfBirth);
 
 		// trying to Employee Object modifications, but not able to do so.Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.
@@ -33,22 +35,27 @@ public class CustomImmutableClass {
 		e.getAddress().setCity("c3");
 		e.getAddress().setStreet("s3");
 
-		e.getPhoneNumbers().add("1234");
+		e.getPhoneNumbers().add("1");
+
 		e.getMetadata().put("skill", "Java");
 		e.getMetadata().put("designation", "HR");
 
+
 		System.out.println(e.getEmpName());
 		System.out.println(e.getAge());
+
 		System.out.println(e.getAddress());
 		System.out.println(e.getPhoneNumbers());
 		System.out.println(e.getMetadata());
+		System.out.println(e.getDateOfBirth());
+
 		System.out.println(e);
 
 
 	}
 
 	static final class Employee{
-
+		//here class Employee is final, its fields are  final and also only getters are present, clone of Address and Date in getters and new Object for List, Map or Collection or Map type
 		private final String name;
 		private final int age;
 		private final Address address;// mutable clone typecasted
@@ -130,6 +137,8 @@ public class CustomImmutableClass {
 	}
 
 	static final class Address implements Cloneable {
+
+		//here class Address is final but its fields are not final and also setter are present, clone is present due to Cloneable
 
 		private String street;
 		private String city;

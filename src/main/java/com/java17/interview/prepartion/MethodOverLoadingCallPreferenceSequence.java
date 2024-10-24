@@ -10,7 +10,7 @@ public class MethodOverLoadingCallPreferenceSequence {
 
     public static void main(String[] args) {
         SpringApplication.run(MethodOverLoadingCallPreferenceSequence.class,args);
-        callInternalMethod(null);//"Inside String"
+        //callInternalMethod(null);//"Inside String"
         callInternalMethod(0);//"Inside Object"
 
     }
@@ -20,7 +20,7 @@ public class MethodOverLoadingCallPreferenceSequence {
 
     }
 
-    public static void callInternalMethod(Object A) {
+    public static void callInternalMethod(Integer A) {
 
         System.out.println("Inside Object");
 
