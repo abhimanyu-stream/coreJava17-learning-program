@@ -10,22 +10,20 @@ import static java.lang.Boolean.TRUE;
 @SpringBootApplication
 public class FindGivenNumberIsPrimeOrNot {
     public static void main(String[] args) {
-        SpringApplication.run(FindGivenNumberIsPrimeOrNot.class,args);
-
-        int x = 31;
-        int remainder;
-        boolean prime = TRUE;
-        for(int i = 2; i < x/2; i++){
-
-            remainder = x%i;
-            if(remainder == 0)
-                prime = FALSE;
-                break;
+        SpringApplication.run(FindGivenNumberIsPrimeOrNot.class, args);
 
 
+        int inputNumber = 17;
+        int counts = 0;
+        // loop through 1 to input number, do % input number  from 1 to that number , if count == 2 then input number is prime.
+        for (int ii = 1; ii <= inputNumber; ii++) {
+            if (inputNumber % ii == 0) {
+                counts++;
+            }
         }
-        if(prime)
-            System.out.println(prime);
-
+        if (counts == 2) {
+            System.out.println(inputNumber + "is prime");
+        }
     }
+
 }

@@ -23,14 +23,14 @@ public class FindMostRepeatedValueInArrayUsingStreamAPI {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {5, 13, 4, 21, 13, 27, 2, 59, 59, 59, 34};
+        Integer[] arr = {5, 13, 4, 21, 13, 27, 2, 59, 59, 59,59, 34,34,34,34,34,34,34};
 
        int x = Arrays.stream(arr).collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet()
                 .stream().filter(f ->f.getValue() > 1L)
                 .map(m->m.getKey()).findFirst().get();
        System.out.println("findFirst : " + x);
 
-        List<Integer> mostFrequentWithLimit = findMostFrequentWithLimit(arr, 2); // Get the top 2 most frequent elements
+        List<Integer> mostFrequentWithLimit = findMostFrequentWithLimit(arr, 3); // Get the top 2 most frequent elements
         System.out.println("mostFrequentWithLimit "+ mostFrequentWithLimit); // Output: [59, 13]
     }
 }

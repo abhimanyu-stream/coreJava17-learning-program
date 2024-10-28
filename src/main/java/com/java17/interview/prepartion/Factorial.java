@@ -7,16 +7,16 @@ public class Factorial {
 	public static void main(String[] args) {
 		
 		System.out.println("enter digit");
-		
-		Scanner scan = new Scanner(System.in);
-		int count = scan.nextInt();
-		int factorialsum = 1;
-		for(int i= 1; i <= count; i++) {
-			
-			
-			factorialsum = factorialsum * i;
+
+
+		Scanner scanner = new Scanner(System.in);
+		int factorialOf = scanner.nextInt();
+		int sum = 1;//as Factorial of 0! is 1 and no factorial for -ve number
+		for(int i = 1; i <= factorialOf; i++){
+			sum =sum * i;
+
 		}
-		System.out.println(factorialsum);//5->120
+		System.out.println("Factorial of "+factorialOf+ " is "+sum);
 
 	}
 
