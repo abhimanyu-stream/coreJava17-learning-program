@@ -22,7 +22,13 @@ public class FindSecondLargestNumberInArray {
        for(int i :intArray){
            listOfInt.add(i);
        }
-       //Find Second Largest in the List
+
+        int largest = Arrays.stream(intArray).max().getAsInt();
+        System.out.println("largest"+largest);
+
+
+
+        //Find Second Largest in the List
       Integer result =  listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
       System.out.println(result);
 

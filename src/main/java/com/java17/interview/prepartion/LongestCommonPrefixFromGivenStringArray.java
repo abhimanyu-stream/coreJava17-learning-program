@@ -42,10 +42,20 @@ public class LongestCommonPrefixFromGivenStringArray {
         System.out.println(sortedList);
 
         String  str = "Welcome to java world";
-        Character firstnonreapeatedchar = str.chars()
-                .mapToObj(i-> Character.toLowerCase(Character.valueOf((char)i)))
-                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new , Collectors.counting()))
-.entrySet().stream().filter(f->f.getValue() == 1L).map(m->m.getKey()).findFirst().get();
+
+
+        Optional<Character> found = Optional.empty();
+        for (Map.Entry<Character, Long> f : str.chars()
+                .mapToObj(i -> Character.toLowerCase(Character.valueOf((char) i)))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap :: new, Collectors.counting()))
+                .entrySet()) {
+            if (f.getValue() == 1L) {
+                Character key = f.getKey();
+                found = Optional.of(key);
+                break;
+            }
+        }
+        Character firstnonreapeatedchar = found.get();
 
         System.out.println("firstnonreapeatedchar  :" + firstnonreapeatedchar);
 

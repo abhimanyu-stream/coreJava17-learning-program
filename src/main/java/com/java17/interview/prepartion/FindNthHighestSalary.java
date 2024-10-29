@@ -18,9 +18,16 @@ public class FindNthHighestSalary {
         map.put("Esa", 45000);
 
 
-        Map.Entry<Integer, List<String>> integerListEntry = map.entrySet().stream().collect(Collectors.groupingBy(Map.Entry :: getValue, Collectors.mapping(Map.Entry :: getKey, Collectors.toList())))
-                .entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).collect(Collectors.toList()).get(3 - 1);//3rd highest salary[ 3 - 1 ] or get(2)
+        Map.Entry<Integer, List<String>> integerListEntry = map.entrySet().stream()
+                .collect(Collectors.groupingBy(Map.Entry :: getValue, Collectors.mapping(Map.Entry :: getKey, Collectors.toList())))
+                .entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).toList().get(3 - 1);//3rd highest salary[ 3 - 1 ] or get(2)
         System.out.println("integerListEntry " + integerListEntry);
+
+        //Comparator.comparingDouble(Woker :: getSalary)
+        //Collections.reverseOrder(Map.Entry.comparingByKey())
+
+
+        List<String> s = new LinkedList<>();
 
 
 
@@ -60,9 +67,8 @@ public class FindNthHighestSalary {
                 .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())
                 )).entrySet()
                 .stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
-                .collect(
-                        Collectors.toList()
-                ).get(nth - 1);
+                .toList()
+                .get(nth - 1);
     }
 
     

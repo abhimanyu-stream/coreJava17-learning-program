@@ -31,8 +31,13 @@ public class EmployeeManagementSystem {
 
 
        // listOfEmployee.stream().sorted(Comparator.comparing(Employeee::getSalary);
-        Optional<Employeee> emplyoeeo = listOfEmployee.stream().sorted(Comparator.comparing(Employeee::getSalary).reversed()).skip(1).findFirst();
-        System.out.println(emplyoeeo.get());
+        Employeee emplyoeeo = listOfEmployee.stream().max(Comparator.comparing(Employeee::getSalary)).get();
+        System.out.println(emplyoeeo);
+
+
+        Employeee employeee = listOfEmployee.stream().sorted((o1, o2) -> Integer.parseInt(o2.getSalary()) - Integer.parseInt(o1.getSalary())).findFirst().get();
+        System.out.println(employeee);
+
 
     }
 

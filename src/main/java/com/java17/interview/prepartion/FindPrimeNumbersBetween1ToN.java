@@ -22,21 +22,11 @@ public class FindPrimeNumbersBetween1ToN {
                 System.out.print(j + " "+"is prime ");
         }
 
-        for(int j = 2; j <= n; j++){
-            int counts = 0;
-            for(int ii = 1; ii <= j ; ii++){
-                if(j % ii == 0){
-                    counts++;
-                }
-            }
-            if(counts == 2){
-                System.out.println(j +"is prime");
-            }
-        }
+
 
       int jj= 17;
             int counts = 0;
-            // loop through 1 to input number, do % input number  from 1 to that number , if count == 2 then input number is prime.
+            // loop through 1 to for(int ii = 1; ii <= jj ; ii++) input number, do % input number  from 1 to that number(keep on incrementing) , if count == 2 then input number is prime.
             for(int ii = 1; ii <= jj ; ii++){
                 if(jj % ii == 0){
                     counts++;

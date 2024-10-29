@@ -37,7 +37,10 @@ public class ListMapAndPeek {
 
         // Print modified student objects
 
-        System.out.println(modifiedStudents);
+        System.out.println("modifiedStudents "+modifiedStudents);
+
+
+
         modifiedStudents.forEach(student ->
                 System.out.println("Name: " + student.getName() +
                         ", Marks: " + student.getMarks() +

@@ -16,7 +16,7 @@ public class isPalindromeCheck {
         }
         return true;
     }
-    public static boolean isPalindromeReversingApproch(String str) {
+    public static boolean isPalindromeReversingByStringBuilderApproch(String str) {
         String reversed = new StringBuilder(str).reverse().toString();
         return str.equals(reversed);
     }
@@ -29,8 +29,11 @@ public class isPalindromeCheck {
         System.out.println("Is '" + input + "' a palindrome? " + result);
 
         String input2 = "racecar";// true
-        boolean result2 = isPalindromeReversingApproch(input2);
+        boolean result2 = isPalindromeReversingByStringBuilderApproch(input2);
         System.out.println("Is '" + input2 + "' a palindrome? " + result2);
+
+
+        System.out.println(4 % 2 == 0 ? Boolean.TRUE : Boolean.FALSE);
     }
 
 }

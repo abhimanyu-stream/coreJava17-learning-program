@@ -86,9 +86,24 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
 
 
         EmployeeOfMicrosoft higestSalaryPaidEmployee = employeeOfMicrosoftList.stream().max(Comparator.comparingDouble(EmployeeOfMicrosoft :: getSalary)).get();
-
-
+        // Integer result =  listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
         System.out.println(higestSalaryPaidEmployee);
+
+
+
+
+        boolean seen = false;
+        EmployeeOfMicrosoft best = null;
+        Comparator<EmployeeOfMicrosoft> comparator = Comparator.comparingDouble(EmployeeOfMicrosoft :: getSalary);
+        for (EmployeeOfMicrosoft ofMicrosoft : employeeOfMicrosoftList) {
+            if (! seen || comparator.compare(ofMicrosoft, best) > 0) {
+                seen = true;
+                best = ofMicrosoft;
+            }
+        }
+        EmployeeOfMicrosoft higestSalaryPaidEmployeee = (seen ? Optional.of(best) : Optional.<EmployeeOfMicrosoft>empty()).get();
+        System.out.println(higestSalaryPaidEmployeee);
+
 
 
         // Get the names of all employees who have joined after 2015?

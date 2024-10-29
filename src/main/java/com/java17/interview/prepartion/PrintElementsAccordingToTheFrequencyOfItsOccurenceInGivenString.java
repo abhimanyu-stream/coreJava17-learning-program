@@ -72,7 +72,7 @@ public class PrintElementsAccordingToTheFrequencyOfItsOccurenceInGivenString {
                     }
                 });
 
-        System.out.println(output.reverse()); // Print the final output
+        System.out.println("output.reverse() "+output.reverse()); // Print the final output
     }
 
 

@@ -77,6 +77,8 @@ public class FunctionAndConsumerAndPredicate {
         Optional<List<String>> empty = Optional.empty();
         //empty.get().add("hum"); // it raises Exception java.util.NoSuchElementException : No value present
 
+        //Note:-- after creating empty you have re-assign with valued Otional Object, then you can use/ call get() over empty
+
         Optional<String> stringOptional = Optional.of("hum");
         //Optional<Object> optionalofnull = Optional.of(null);// it raises null pointer exception[box[null] Exception in thread "main" java.lang.NullPointerException[ it mean we can not pass null as argument in of method of Optional]
 

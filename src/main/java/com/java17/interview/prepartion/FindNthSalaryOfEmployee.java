@@ -31,6 +31,18 @@ public class FindNthSalaryOfEmployee {
 
         System.out.println(woker);
 
+        Comparator<Woker> wokerComparator = new Comparator<Woker>() {
+            @Override
+            public int compare(Woker o1, Woker o2) {
+                return (int) (o2.getSalary()-o1.getSalary());
+            }
+        };
+
+
+        Woker wokerbyComparator = listOfWorker.stream().sorted(wokerComparator).limit(2).skip(1).findFirst().get();
+        System.out.println(wokerbyComparator);
+
+
     }
 }
 
