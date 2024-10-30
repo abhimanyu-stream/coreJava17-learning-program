@@ -37,7 +37,7 @@ public class ValidParenthesesCheck {
         Stack<Character> stack = new Stack<>();
 
         for(Character c:str.toCharArray()){
-
+            //open-closed
             if(c == '(' || c == '{' || c == '['){
 
                 stack.push(c);
@@ -49,7 +49,7 @@ public class ValidParenthesesCheck {
                 // pop
                 Character top = stack.pop();
 
-
+                // then  c-closed && !top-open
                 if(c == ')' && top != '('){
                     return false;
                 }
