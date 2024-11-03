@@ -22,6 +22,7 @@ public class PrintElementsAccordingToTheFrequencyOfItsOccurenceInGivenString {
         Map<Character, Integer> hashMap = new HashMap<>();
          int ifCount = 0;
 
+
         for(int i = 0; i < charArray.length; i++){
             if(hashMap.containsKey(charArray[i])){
                 ifCount = hashMap.get(charArray[i]);
