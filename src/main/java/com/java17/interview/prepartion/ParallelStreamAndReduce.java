@@ -3,6 +3,7 @@ package com.java17.interview.prepartion;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -79,16 +80,19 @@ public class ParallelStreamAndReduce {
 
         // Creating a list of integers
         List<Integer> list = Arrays.asList(-9, -18, 0, 25, 4);
-
-        System.out.print("The maximum value is : ");
-
         // Using stream.max() to get maximum
-        // element according to provided Comparator
-        // and storing in variable var
-        //  Integer var = list.stream().max(Integer::compare).get();
-        Integer var = list.stream().max(Comparator.comparing(i -> Integer.parseInt(i.toString()))).get();
+        Integer var3 = list.stream().max(Integer::compare).get();
+        Integer var = list.stream().max(Comparator.comparing(i -> i)).get();
+        Integer var2 = list.stream().max(Comparator.comparing(Function.identity())).get();
 
-        System.out.print(var);
+        System.out.println("find max using Collections.max()"+ Collections.max(list));
+
+        System.out.println("var " +var);
+        System.out.println("var2 " +var2);
+        System.out.println("var3 " +var3);
+
+
+
 
         // Creating a list of Strings
         List<String> listOfString = Arrays.asList("G",  "z", "Z");

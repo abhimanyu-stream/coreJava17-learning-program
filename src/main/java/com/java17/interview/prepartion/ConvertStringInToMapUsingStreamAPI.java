@@ -27,9 +27,13 @@ public class ConvertStringInToMapUsingStreamAPI extends  Error{
                 hashMap.put(split[i], 1);
             }
         }
-        System.out.println(hashMap);
-        System.out.println(Arrays.stream(split).collect(Collectors.groupingBy(Function.identity(),Collectors.counting())));
-        System.out.println("------------ String str = \"Abhimanyuaaabbb\"------------output as ---------a4A1b4u1h1y1i1m1n1------------------------------------------------------");
+        System.out.println("hashMap " +hashMap);
+
+
+        System.out.println(Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(),Collectors.counting())));
+
+
+        // below is without for loop implementation
         Arrays.stream(split).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
                 .entrySet().stream().map(e->new StringBuffer().append(e.getKey()).append(e.getValue())).forEach(System.out::print);
 

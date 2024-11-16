@@ -14,7 +14,8 @@ public class DeepCopyVsShallowCopy {
         Person deepCopyPerson = new Person(originalPerson.name, deepCopyAddress);
 
         // Modify the city in the original address
-        originalAddress.city = "Los Angeles";
+        originalAddress.city = "Los Angeles";//it will make change
+        shallowCopyPerson.address.city="California";//it will also make change
 
         // Displaying values
         System.out.println("Shallow Copy - Address: " + shallowCopyPerson.address.city); // Output: Los Angeles
@@ -45,9 +46,12 @@ class Person {
  * Shallow Copy:
  *
  * Shallow copy creates a new object and then copies the contents of the original object to the new object. However, if the original object contains references to other objects, only the references are copied, not the objects themselves.
- * In a shallow copy, the copied object shares the same references to objects as the original object. Changes made to the copied object’s references will affect the original object, and vice versa.
+ * In a shallow copy, the copied object shares the same references to objects as the original object.
+ * Therefore, Changes made to the copied object’s references will affect the original object, and vice versa.[ both are dependent still]
  * Shallow copying is typically faster and requires less memory compared to deep copying.
  * Example scenario: Shallow copying is appropriate when the objects being copied do not contain nested objects or when sharing data between objects is acceptable.
+ *
+ *
  * Deep Copy:
  *
  * Deep copy creates a new object and then recursively copies the contents of the original object and all its nested objects. This ensures that a complete, independent copy of the original object and its nested objects is created.
@@ -57,5 +61,5 @@ class Person {
  *
  *
  * In this example, modifying the city in the original address affects the shallow copy (since it shares the same reference), but it doesn’t affect the deep copy (since it has its own independent copy of the address).
- *
+ * <p>
  * */

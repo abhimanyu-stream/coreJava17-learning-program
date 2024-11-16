@@ -7,8 +7,8 @@ public class UnderstandFunctionalInterfaceAndLamdaFunctionUsage {
 		
 		FindSquareRoot f = (n) -> { return Math.sqrt(n);};
 		System.out.println(f.findsqrt(23));
-		FindSquareRoot f2 = (n)->{return  Math.sqrt(n);};
-		f2.findsqrt(4);
+
+		System.out.println(f.findsqrt(4));
 		System.out.println(FindSquareRoot.helloMessage());
 		System.out.println(new Labour().defaultMethod());
 

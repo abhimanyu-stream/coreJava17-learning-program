@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class LargestElementUsingStreamAPI {
@@ -8,13 +9,7 @@ public class LargestElementUsingStreamAPI {
 
     public static void main(String[] args) {
 
-        List<Integer> intList = Arrays.asList(5, 77, 8, 3, 1);
-        int largest = intList.stream().max((a, b) -> a.compareTo(b)).get();
-        int largestt = intList.stream().max((a, b) -> a - b).get();
-        System.out.println(largest);
-        System.out.println(largestt);
-        int smallest = intList.stream().max((a, b) -> b - a).get();
-        System.out.println(smallest);
+
 
 
 
@@ -39,6 +34,7 @@ public class LargestElementUsingStreamAPI {
         // Swap bytes from both ends
         for (int start = 0, end = byteArray.length - 1; start < end; start++, end--) {
             // bubble concept
+
             byte temp = byteArray[start];
             byteArray[start] = byteArray[end];
             byteArray[end] = temp;
@@ -46,5 +42,14 @@ public class LargestElementUsingStreamAPI {
 
         // Convert the byte array back to a string
         return new String(byteArray);
+
+
+        /*List<Integer> intList = Arrays.asList(5, 77, 8, 3, 1);
+        int largest = intList.stream().max(Integer :: compareTo).get();
+        int largestt = intList.stream().max(Comparator.comparingInt(a -> a)).get();
+        System.out.println(largest);
+        System.out.println(largestt);
+        int smallest = intList.stream().max((a, b) -> b - a).get();
+        System.out.println(smallest);*/
     }
 }

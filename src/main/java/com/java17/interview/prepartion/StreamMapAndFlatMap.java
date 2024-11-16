@@ -30,7 +30,7 @@ public class StreamMapAndFlatMap {
                 Arrays.asList("java"),
                 Arrays.asList("ejb")
         );
-        List<String> listStringresult  = listofListString.stream().flatMap(list-> list.stream()).toList();
+        List<String> listStringresult  = listofListString.stream().flatMap(list-> list.stream()).map(m->m.toUpperCase()).toList();
         System.out.println(listStringresult);
 
 

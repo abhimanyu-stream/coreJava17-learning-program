@@ -16,8 +16,13 @@ public class FindSecondLargestAndSmallestNumberFromArrayUsingStreamAPI {
 		
 		System.out.println(scondLargest);
 		int scondSmallest  = Arrays.stream(intArray).boxed().sorted(Comparator.naturalOrder()).limit(2).skip(1).findFirst().get();
-	
 		System.out.println(scondSmallest);
+
+		final Integer highestSal = Arrays.stream(intArray).boxed().sorted((o1, o2) -> (int) (o2 - o1)).findFirst().get();
+		System.out.println(highestSal);
+
+		final Integer SeconsHighestSal = Arrays.stream(intArray).boxed().sorted((o1, o2) -> (int) (o2 - o1)).limit(2).skip(1).findFirst().get();
+		System.out.println(SeconsHighestSal);
 
 
 	}

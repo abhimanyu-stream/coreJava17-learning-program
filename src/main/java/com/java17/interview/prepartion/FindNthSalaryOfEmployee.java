@@ -25,11 +25,11 @@ public class FindNthSalaryOfEmployee {
         listOfWorker.add(w6);
         Map<Double, List<Woker>> collect = listOfWorker.stream().sorted(Comparator.comparingDouble(Woker :: getSalary).reversed())
                 .collect(Collectors.groupingBy(m->m.getSalary(), Collectors.mapping(m -> m, Collectors.toList())));
-        System.out.println(collect);
+        //System.out.println(collect);
 
-        Woker woker = listOfWorker.stream().sorted(Comparator.comparingDouble(Woker :: getSalary).reversed()).limit(2).skip(1).findFirst().get();
+        //Woker woker = listOfWorker.stream().sorted(Comparator.comparingDouble(Woker :: getSalary).reversed()).limit(2).skip(1).findFirst().get();
 
-        System.out.println(woker);
+       // System.out.println(woker);
 
         Comparator<Woker> wokerComparator = new Comparator<Woker>() {
             @Override
@@ -39,9 +39,11 @@ public class FindNthSalaryOfEmployee {
         };
 
 
-        Woker wokerbyComparator = listOfWorker.stream().sorted(wokerComparator).limit(2).skip(1).findFirst().get();
-        System.out.println(wokerbyComparator);
+       // Woker wokerbyComparator = listOfWorker.stream().sorted(wokerComparator).limit(2).skip(1).findFirst().get();
+       // System.out.println(wokerbyComparator);
 
+        final Woker worker1 = listOfWorker.stream().sorted((o1, o2) -> (int) (o2.getSalary() - o1.getSalary())).findFirst().get();
+        System.out.println(worker1);
 
     }
 }

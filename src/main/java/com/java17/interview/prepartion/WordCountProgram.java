@@ -10,7 +10,7 @@ public class WordCountProgram {
     public static void main(String[] args) {
 
 
-        String strings = "Springboot Java Oracle Zero XML Web Mysql ";
+        String strings = "A Springboot Java Oracle Zero XML Web Mysql ";
 
         long count = Arrays.stream(strings.split(" ")).count();
         System.out.println(count);
@@ -21,6 +21,9 @@ public class WordCountProgram {
         }
         list.sort(Collections.reverseOrder());
         System.out.println("list "+list);
+
+        list.sort((a,b)->b.length()-a.length());
+        System.out.println(list);
     }
 
 

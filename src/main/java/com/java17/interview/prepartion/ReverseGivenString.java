@@ -11,21 +11,19 @@ public class ReverseGivenString {
         // element are placed via index outing from 0
         String s = "ejb";
         char[] inputString = s.toCharArray();
-        System.out.println(inputString);
+        //System.out.println(inputString);
         char[] reversedString = new char[s.length()];
-        int x = s.length() - 1;//last element of String s
+        //int x = s.length() - 1;//last element of String s
 
-        //System.out.println("x length " +  x);
-        //System.out.println("s length " +  s.length());
-        for (int i = 0; i < s.length(); i++) {// s.length() [ for length start count from 1]
-            //System.out.println("inputString[x] " +  inputString[x]);
+        for (int i = 0; i < inputString.length; i++) {// s.length() [ for length start count from 1]
+
             //reversedString[i] = inputString[x];// as Array works from 0 onwards index so 0, 1, 2 all indexes are accessed [ for index start count from 0]
             reversedString[i] = inputString[s.length() - 1 - i];
 
             //x--;
         }
         System.out.println("reversedString "+new String(reversedString));
-        System.out.println("s "+s);
+
 
 
 

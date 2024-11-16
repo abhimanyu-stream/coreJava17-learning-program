@@ -7,14 +7,17 @@ public class CompletableFutureExceptionHandlingUsage {
 
     public static void main(String[] args) {
         // Example user ID (negative ID will simulate an error scenario)
-        int userId = -1;
+        //int userId = -1;
+
+        // For Success scenario
+        int userId = 1;
 
         // Step 1: Start an asynchronous task to fetch user details
         CompletableFuture<String> userDetailsFuture = CompletableFuture.supplyAsync(() -> {
             if (userId < 0) {
                 throw new IllegalArgumentException("User ID cannot be negative");
             }
-            return "User" + userId;
+            return "User--" + userId;
         });
 
         // Step 2: Handle exception using `exceptionally`
@@ -33,7 +36,7 @@ public class CompletableFutureExceptionHandlingUsage {
         });
 
         // Step 4: Inspect the result or exception using `whenComplete`
-        userDetailsFuture.whenComplete((result, ex) -> {
+        CompletableFuture<String> future = userDetailsFuture.whenComplete((result, ex) -> {
             if (ex != null) {
                 System.out.println("whenComplete: An error occurred - " + ex.getMessage());
             } else {
@@ -45,6 +48,7 @@ public class CompletableFutureExceptionHandlingUsage {
             // Print the outcomes
             System.out.println("Result with exceptionally: " + handledExceptionally.get());
             System.out.println("Result with handle: " + handledWithHandle.get());
+            System.out.println(future.get());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

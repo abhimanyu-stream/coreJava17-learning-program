@@ -24,8 +24,8 @@ public class SortByDOJComparator {
                 return o2.getDateofEnforcement().getDayOfMonth()- o1.getDateofEnforcement().getDayOfMonth();
             }
         };
-        List<Tank> sortedDayOfMonthForTank = tankList.stream().sorted(dateComparator).toList();
-        System.out.println(sortedDayOfMonthForTank);//[Tank(dateofEnforcement=2024-05-16, tankName=ArjunTank), Tank(dateofEnforcement=2024-02-02, tankName=ArjunTank)]
+        List<Tank> sortedTankList = tankList.stream().sorted(dateComparator).toList();
+        System.out.println(sortedTankList);//[Tank(dateofEnforcement=2024-05-16, tankName=ArjunTank), Tank(dateofEnforcement=2024-02-02, tankName=ArjunTank)]
 
         //sorted((o1, o2) -> o2.getTankName().length()-o1.getTankName().length()) its ascending order
         List<Tank> sortedByNameLength = tankList.stream().sorted((o1, o2) -> o2.getTankName().length()-o1.getTankName().length()).toList();
