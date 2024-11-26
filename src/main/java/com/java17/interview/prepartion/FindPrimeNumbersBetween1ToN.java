@@ -10,6 +10,9 @@ public class FindPrimeNumbersBetween1ToN {
         System.out.print("Enter n value: ");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+
+        findAllPrime(n);
+
         System.out.println("Prime numbers between 1 to " + n + " are:");
         for (int j = 2; j <= n; j++) {
             count = 0;
@@ -37,5 +40,30 @@ public class FindPrimeNumbersBetween1ToN {
             }
         }
 
+
+
+    private static void findAllPrime(int input){
+
+        for(int k = 2; k <= input; k++){
+            int coount = 0;
+            for(int l = 1; l <= k ;l++){
+                if(k % l == 0){
+                    coount++;
+                }
+            }
+            if(coount == 2){
+                System.out.println(k +" is prime");
+            }else{
+                System.out.println(k + "is not prime");
+            }
+        }
+
+    }
+
+
 }
+
+
+
+
 

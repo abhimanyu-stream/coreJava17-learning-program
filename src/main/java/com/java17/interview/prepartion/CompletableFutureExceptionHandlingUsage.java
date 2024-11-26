@@ -10,7 +10,7 @@ public class CompletableFutureExceptionHandlingUsage {
         //int userId = -1;
 
         // For Success scenario
-        int userId = 1;
+        int userId = -1;
 
         // Step 1: Start an asynchronous task to fetch user details
         CompletableFuture<String> userDetailsFuture = CompletableFuture.supplyAsync(() -> {

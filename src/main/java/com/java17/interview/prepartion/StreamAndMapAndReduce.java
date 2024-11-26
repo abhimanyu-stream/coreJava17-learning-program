@@ -14,7 +14,9 @@ public class StreamAndMapAndReduce {
         System.out.println(sumValueWithInitialValueZero);
         Integer sumValueWithInitialValueTen = listOfInt.stream().reduce(10, Integer::sum)+1;// 10 + 15 + 1 = 26, 10 is initial value
         System.out.println(sumValueWithInitialValueTen);
-        Integer minValue = listOfInt.stream().reduce(0, Integer::min);
+        Integer maxValue = listOfInt.stream().reduce(0, Integer::max);//5
+        Integer minValue = listOfInt.stream().reduce(0, Integer::min);//0
+        System.out.println(maxValue);
         System.out.println(minValue);
 
     }

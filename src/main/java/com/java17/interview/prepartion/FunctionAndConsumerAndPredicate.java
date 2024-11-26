@@ -17,17 +17,19 @@ public class FunctionAndConsumerAndPredicate {
         //public interface Predicate<T> {
         //boolean test(T t);
         //}
-        Predicate<Integer> predicateEvenCheck = x-> x % 2 == 0;
+        Predicate<Integer> predicateEvenCheck = x-> x % 2 == 0;// check for even element
         List<Integer> list = Arrays.asList(1,2,3,4,5,6);
         for(Integer i: list){
-            System.out.println(i + "-" +predicateEvenCheck.test(i));
+            System.out.println(i + "-isEven" +predicateEvenCheck.test(i));
         }
 
         Predicate<String> predicateStartsWithA = x->x.toLowerCase().charAt(0) == 'a';
         System.out.println("startsWithA " + predicateStartsWithA.test("abhimanyu"));
-        Studentz s = new Studentz("Animal");
+        StudentKVS s = new StudentKVS("Animal");
         System.out.println("startsWithA " + predicateStartsWithA.test(s.getName()));
         System.out.println("startsWithA " + predicateStartsWithA.negate().test(s.getName()));
+
+
 
 
         //public interface Consumer<T> {
@@ -50,7 +52,8 @@ public class FunctionAndConsumerAndPredicate {
         //R apply(T t);
         //}
 
-        Function<String, Integer> functionGetLength = x-> x.length();
+        //Function<String, Integer> here String is input and Integer is output
+        Function<String, Integer> functionGetLength = String::length;
         System.out.println("function "+functionGetLength.apply("sun"));
 
         Function<String, String> functionSubString = x-> x.substring(0,3);// three letter String[including count)
@@ -65,11 +68,11 @@ public class FunctionAndConsumerAndPredicate {
 
         Predicate<Integer> integerPredicate = x -> x % 2 == 0;
         Function<Integer, Integer> integerFunction = x->x * x;
-        Consumer<Integer> integerConsumer=x->System.out.println(x);
+        Consumer<Integer> integerConsumer= System.out::println;//or x->System.out.println(x);
         Supplier<Integer> integerSupplier=()->100;
 
         if(integerPredicate.test(integerSupplier.get())){
-            integerConsumer.accept(integerFunction.apply(integerSupplier.get()));
+            integerConsumer.accept(integerFunction.apply(integerSupplier.get()));// 1. Supplier-->2. Function-->3. Consumer
         }
 
 
@@ -91,28 +94,38 @@ public class FunctionAndConsumerAndPredicate {
         hum.ifPresent(System.out :: println);
 
 
-        List<Studentz> studentzs = Arrays.asList(new Studentz("Dog"),new Studentz("Tree"), new Studentz("Moutain"));
-        Function<List<Studentz>, StudentRespose> resposeFunction = studentzs1 -> {
 
-            StudentRespose respose = new StudentRespose();
-            respose.setName(new ArrayList<String>(studentzs1.stream().map(m->m.getName()).toList()));
-            return respose;
+        // very important util Function List to DTO
+        List<StudentKVS> studentKVSList = Arrays.asList(new StudentKVS("Dog"),new StudentKVS("Tree"), new StudentKVS("Moutain"));
+        //Function
+        Function<List<StudentKVS>, StudentResponse> resposeFunction = studentkvs -> {
+
+            StudentResponse response = new StudentResponse();
+            response.setName(new ArrayList<String>(studentkvs.stream().map(m->m.getName()).toList()));
+            //OR
+            //setFirstField
+            //setSecondField
+            //...so on
+
+
+            //Or BeanUtil.copyProperties(sources, dtoRef);
+            return response;
         };
-        System.out.println("resposeFunction " +resposeFunction.apply(studentzs));
+        System.out.println("responseFunction " +resposeFunction.apply(studentKVSList));
 
 
     }
 
 
 }
-class StudentRespose{
+class StudentResponse{
 
     private List<String> name;
 
-    public StudentRespose(List<String> name) {
+    public StudentResponse(List<String> name) {
         this.name = name;
     }
-    public StudentRespose(){}
+    public StudentResponse(){}
 
     public List<String> getName() {
         return name;
@@ -122,10 +135,10 @@ class StudentRespose{
         this.name = name;
     }
 }
-class Studentz{
+class StudentKVS{
     private String name;
 
-    public Studentz(String name) {
+    public StudentKVS(String name) {
         this.name=name;
     }
 

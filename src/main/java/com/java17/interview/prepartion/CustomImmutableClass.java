@@ -22,7 +22,7 @@ public class CustomImmutableClass {
 		Map<String, String> metadata = new HashMap<>();
 		metadata.put("hobby", "Watching Movies");
 		Date dateOfBirth = new Date("01/01/2020");
-		LocalDate dateOfBith = LocalDate.of(2020,01,02);
+		// dateOfBith = LocalDate.of(2020,01,02);
 		Employee e = new Employee("Mindranda", 23, address1, phoneNumbers, metadata, dateOfBirth);
 
 		// trying to Employee Object modifications, but not able to do so.Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.

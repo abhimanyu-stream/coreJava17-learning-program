@@ -7,10 +7,10 @@ public class DeepCopyVsShallowCopy {
         Person originalPerson = new Person("John", originalAddress);
 
         // Shallow copy
-        Person shallowCopyPerson = new Person(originalPerson.name, originalPerson.address);
+        Person shallowCopyPerson = new Person(originalPerson.name, originalPerson.address);// storing only reference of has-a-relationship
 
         // Deep copy
-        Address deepCopyAddress = new Address(originalPerson.address.city);
+        Address deepCopyAddress = new Address(originalPerson.address.city);// creates a new Object from actual value
         Person deepCopyPerson = new Person(originalPerson.name, deepCopyAddress);
 
         // Modify the city in the original address
@@ -20,6 +20,12 @@ public class DeepCopyVsShallowCopy {
         // Displaying values
         System.out.println("Shallow Copy - Address: " + shallowCopyPerson.address.city); // Output: Los Angeles
         System.out.println("Deep Copy - Address: " + deepCopyPerson.address.city); // Output: New York
+
+
+        //we can even modify deepClonedObject too.
+        deepCopyPerson.name="debezium";
+        deepCopyPerson.address.city="kafka";
+        System.out.println("Deep Copy - Modified: " + deepCopyPerson);
     }
 }
 class Address {
@@ -27,6 +33,13 @@ class Address {
 
     public Address(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "city='" + city + '\'' +
+                '}';
     }
 }
 
@@ -37,6 +50,14 @@ class Person {
     public Person(String name, Address address) {
         this.name = name;
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", address=" + address +
+                '}';
     }
 }
 /**

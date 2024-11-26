@@ -37,7 +37,7 @@ public class FindSecondLargestNumberInArray {
 
       // Convert int array to ArrayList<Integer>
 
-      List<Integer> intList = new ArrayList<>(Arrays.asList(inntegerArray));
+      List<Integer> intList = Arrays.asList(inntegerArray);
       int y = intList.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
       System.out.println(y);
 

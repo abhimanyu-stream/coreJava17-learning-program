@@ -23,6 +23,13 @@ public class FindNthHighestSalary {
                 .entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).toList().get(3 - 1);//3rd highest salary[ 3 - 1 ] or get(2)
         System.out.println("integerListEntry " + integerListEntry);
 
+
+        Map.Entry<Integer, List<String>> integerListEntry1 = map.entrySet().stream()
+                .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
+                .entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).toList().stream().skip(2).findFirst().get();
+        System.out.println("integerListEntry1 " + integerListEntry1);
+
+
         //Comparator.comparingDouble(Woker :: getSalary)
         //Collections.reverseOrder(Map.Entry.comparingByKey())
 
