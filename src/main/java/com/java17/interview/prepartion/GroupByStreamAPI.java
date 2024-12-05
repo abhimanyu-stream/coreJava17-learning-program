@@ -18,7 +18,7 @@ public class GroupByStreamAPI {
 
 
         Map<Character, Long> firstCharCounting = names.stream().collect(Collectors.groupingBy(n->n.charAt(0), Collectors.counting()));
-        System.out.println(firstCharCounting);
+        System.out.println("firstCharCounting " + firstCharCounting);
         Map<String, Long> nameCounting = names.stream().collect(Collectors.groupingBy(n->n, Collectors.counting()));
         System.out.println(nameCounting);
 
