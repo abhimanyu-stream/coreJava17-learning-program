@@ -29,8 +29,8 @@ public class UseFilterFindGreaterThan30ToUpperCase {
         listOfOffice.add(officeJharkhand);
 
 
-        listOfOffice.stream().filter(office -> office.getAge() > 30).collect(Collectors.toList()).stream().map(Office-> Office.getLocation().toUpperCase()).forEach(System.out::println);
-        List<String> office =  listOfOffice.stream().filter( f-> f.getAge() > 30).collect(Collectors.toList()).stream().map(m->m.getLocation().toUpperCase()).collect(Collectors.toList());
+        listOfOffice.stream().filter(office -> office.getAge() > 30).toList().stream().map(Office-> Office.getLocation().toUpperCase()).forEach(System.out::println);
+        List<String> office =  listOfOffice.stream().filter( f-> f.getAge() > 30).toList().stream().map(m->m.getLocation().toUpperCase()).collect(Collectors.toList());
         System.out.println(office);
         Map<String, Integer> officeMap = listOfOffice.stream().filter(f-> f.getAge() > 30).collect(Collectors.toMap(Office::getLocation, Office::getAge));
         System.out.println(officeMap);

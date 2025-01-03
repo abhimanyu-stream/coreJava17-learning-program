@@ -6,8 +6,9 @@ public class ReverseGivenInt {
         int number = 7843;
         int reversedNumber = reverseDigits(number);
         int reversedNumber2 = reverseDigits2(number);
-        System.out.println(reversedNumber2);
-        System.out.println(reversedNumber);
+        System.out.println("reversedNumber "+reversedNumber);
+        System.out.println("reversedNumber2 "+reversedNumber2);
+
     }
 
     private static int reverseDigits2(int number) {
@@ -27,7 +28,7 @@ public class ReverseGivenInt {
 
         while (number != 0) {
             int digit = number % 10;
-            reversedNumber = reversedNumber * 10 + digit;
+            reversedNumber =  reversedNumber * 10 + digit;
             number /= 10;
         }
 

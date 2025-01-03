@@ -30,6 +30,10 @@ public class FindMostRepeatedValueInArrayUsingStreamAPI {
                 .map(m->m.getKey()).findFirst().get();
        System.out.println("findFirst : " + x);
 
+        Arrays.stream(arr).collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet()
+                .stream().filter(f -> f.getValue() > 1L)
+                .map(m -> m.getKey()).toList();
+
         List<Integer> mostFrequentWithLimit = findMostFrequentWithLimit(arr, 3); // Get the top 2 most frequent elements
         System.out.println("mostFrequentWithLimit "+ mostFrequentWithLimit); // Output: [59, 13]
     }

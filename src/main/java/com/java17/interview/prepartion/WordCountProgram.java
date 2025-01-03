@@ -19,10 +19,17 @@ public class WordCountProgram {
         for (String s : strings.split(" ")) {
             list.add(s);
         }
-        list.sort(Collections.reverseOrder());
+
         System.out.println("list "+list);
 
-        list.sort((a,b)->b.length()-a.length());
+
+
+        list.sort(Collections.reverseOrder());// sorted
+        System.out.println("list "+list);
+
+
+
+        list.sort((a,b)->b.length()-a.length());// by length sorting
         System.out.println(list);
     }
 

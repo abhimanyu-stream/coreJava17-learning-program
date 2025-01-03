@@ -1,9 +1,8 @@
 package com.java17.interview.prepartion;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class TwoSumEqualTOTargetInSortedArrayAndMaxMinStreamAPI {
@@ -12,6 +11,36 @@ public class TwoSumEqualTOTargetInSortedArrayAndMaxMinStreamAPI {
 
         int[] nums = {9, 9, 7, 8, 3, 9, 0};
         int target = 16;
+
+     /*   List<int[]> collect = Arrays.stream(nums).boxed().flatMap(a -> Arrays.stream(nums).filter(b -> a + b == target && a>=b).mapToObj(b -> new int[]{a, b})).toList();
+        System.out.println("collect  " );
+        collect.stream().forEach(a->System.out.println(a[0] +"," +a[1]));
+        System.out.println("collect  end" );*/
+
+
+        System.out.println("collect");
+        List<int[]> collect = Arrays.stream(nums)
+                .boxed()
+                .flatMap(a -> Arrays.stream(nums)
+                        .filter(b -> a + b == target) // Sum condition
+                        .mapToObj(b -> new int[]{a, b})) // Create pairs
+                .toList();
+
+
+        // Use IntStream to get indices, and then filter based on index equality
+        List<int[]> no_collect = IntStream.range(0, nums.length)
+                .boxed()
+                .flatMap(i -> IntStream.range(i + 1, nums.length)  // Ensure i != j to avoid duplicates and same index pairings
+                        .filter(j -> nums[i] + nums[j] == target)  // Check sum condition
+                        .mapToObj(j -> new int[]{nums[i], nums[j]})) // Create pair from nums[i] and nums[j]
+                .collect(Collectors.toList());
+
+        // Print the results
+        System.out.println("no_collect");
+        no_collect.forEach(pair -> System.out.println(Arrays.toString(pair)));
+
+        // Print the results
+        collect.forEach(pair -> System.out.println(Arrays.toString(pair)));
 
         int[] result = twoSumUsingHashTable(nums, target);
 

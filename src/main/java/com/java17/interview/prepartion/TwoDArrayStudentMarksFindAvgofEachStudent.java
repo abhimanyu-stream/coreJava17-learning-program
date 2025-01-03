@@ -1,5 +1,7 @@
 package com.java17.interview.prepartion;
 
+import java.util.Arrays;
+
 public class TwoDArrayStudentMarksFindAvgofEachStudent {
 
 	public static void main(String[] args) {
@@ -36,6 +38,20 @@ public class TwoDArrayStudentMarksFindAvgofEachStudent {
 			
 			System.out.println(studentName + "  " + avg);
 		}
+
+
+
+		// Using Streams to calculate average for each student
+		Arrays.stream(studentMarks)
+				.forEach(student -> {
+					String studentName = student[0];
+					double avgg = Arrays.stream(student, 1, student.length)  // Skip the name and parse marks
+							.mapToInt(Integer::parseInt)   // Convert marks to integers
+							.average()                     // Calculate average
+							.orElse(0.0);                  // In case of no marks, default to 0.0
+
+					System.out.println(studentName + "  " + avgg);
+				});
 
 	}
 

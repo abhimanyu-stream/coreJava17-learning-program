@@ -62,7 +62,7 @@ public class ParallelStreamAndReduce {
 
         // Finding sum of all elements
         int sumResult = arrayOfInt.stream().reduce(0,
-                (element1, element2) -> element1 + element2);
+                (element1, element2) -> element1 + element2);// reduce(0, Integer::sum)
 
         // Displaying sum of all elements
         System.out.println("The sum of all elements is " + sumResult);

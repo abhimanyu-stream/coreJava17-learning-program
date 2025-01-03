@@ -1,51 +1,55 @@
 package com.java17.interview.prepartion;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FindSecondLargestNumberInArray {
 
     public static void main(String[] args) {
 
 
-        int[] intArray = {5,2,10,9,8,3};
-        Integer[] inntegerArray = {5,2,10,9,8,3};
-        int secondLargest = findSecondLargest(intArray);
-       System.out.println(secondLargest);
+        int[] intArray = {5, 2, 10, 9, 8, 3};
 
 
 
-       List<Integer> listOfInt = new ArrayList<>();
-       for(int i :intArray){
-           listOfInt.add(i);
-       }
+        //int secondLargest = findSecondLargest(intArray);
+        //System.out.println(secondLargest);
+
+
 
         int largest = Arrays.stream(intArray).max().getAsInt();
-        System.out.println("largest"+largest);
+        System.out.println("largest  " + largest);
+        int minValue = Arrays.stream(intArray).sorted().findFirst().getAsInt();
+        System.out.println("minValue " + minValue);
 
 
 
+
+
+
+
+        List<Integer> listOfInt = new ArrayList<>();
+        for (int i : intArray) {
+            listOfInt.add(i);
+        }
         //Find Second Largest in the List
-      Integer result =  listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-      System.out.println(result);
+        Integer secondMax = listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+        System.out.println("secondMax "+secondMax);
 
-      int x = Arrays.stream(intArray).sorted().skip(1).findFirst().getAsInt();
-      System.out.println(x);
 
-      // Convert int array to ArrayList<Integer>
-
-      List<Integer> intList = Arrays.asList(inntegerArray);
-      int y = intList.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-      System.out.println(y);
-
+        // Convert int array to ArrayList<Integer>
+        Integer[] inntegerArray = {5, 2, 10, 9, 8, 3};
+        List<Integer> intList = Arrays.asList(inntegerArray);
+        int secondMin = intList.stream().sorted(Comparator.naturalOrder()).skip(1).findFirst().get();
+        System.out.println("secondMin "+secondMin);
 
 
 
 
     }
+
     static int findSecondLargest(int[] intArray) {
         int largest = intArray[0];
         int secondLargest = -1;

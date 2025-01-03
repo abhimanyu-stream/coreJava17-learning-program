@@ -25,7 +25,7 @@ public class FibonacciSeries {
 			n2 = n3;
 			
 			
-		}
+		}/// n + 2 outputs
 
 	}
 

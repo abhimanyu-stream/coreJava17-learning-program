@@ -37,12 +37,15 @@ public class ImplementsRunnableInterface {
 		t.start();//Main Thead is doing this
 		Thread t2 = new Thread(r);//Main Thead is doing this
 		t.join();// Main thread waits for task t to complete[//Main Thead is doing this]
+		System.out.println("*********task has been completed by thread t********"+ t.getName());
 
 		t2.setName("worker-2");//Main Thead is doing this
 		//t.notifyAll();//Exception in thread "main" java.lang.IllegalMonitorStateException: current thread is not owner
 		//Main Thead is doing this
 		t2.start(); // Starts task t2 after task t finishes[//Main Thead is doing this]
 		t2.join();// Main thread waits for task t2 to complete[//Main Thead is doing this]
+
+		System.out.println("*********task has been completed by thread t2********"+ t2.getName());
 		log.info("some");//Main Thead is doing this
 		//t2.notifyAll();//Exception in thread "main" java.lang.IllegalMonitorStateException: current thread is not owner
 		//Main Thead is doing this
@@ -78,7 +81,7 @@ public class ImplementsRunnableInterface {
 
 		//wait()/notify(): Used for inter-thread communication, particularly in producer-consumer scenarios.
 
-		System.out.println("Main Thread End");
+
 		Object o = new Object();
 		// 11 Methods	Description
 		//public final Class getClass()	Retrieves the Class object associated with the instance.
@@ -93,10 +96,9 @@ public class ImplementsRunnableInterface {
 		//public final void wait() throws InterruptedException	Prompts the current thread to wait until another thread invokes the notify() or notifyAll() method for this object.
 		//protected void finalize() throws Throwable	Executes when the garbage collector identifies no more references to the object, signaling its readiness for collection.
 
-		SharedResource resource = new SharedResource();
-		new Producer(resource).start();
-		new Consumer(resource).start();
 
+
+		System.out.println("Main Thread End");
 	}
 
 }
@@ -104,68 +106,8 @@ public class ImplementsRunnableInterface {
 /**
  * 3. wait()
  * Description: Causes the current thread to wait until another thread invokes notify() or notifyAll() on the same object. It releases the lock on the object immediately.
- * Example: A producer-consumer scenario.
+ *
  * **/
-class SharedResource {
-	private int data;
-	private boolean available = false;
-
-	public synchronized int consume() throws InterruptedException {
-		while (!available) {
-			wait(); // Wait until data is available
-		}
-		available = false;
-		notify(); // Notify producer
-		return data;
-	}
-
-	public synchronized void produce(int value) throws InterruptedException {
-		while (available) {
-			wait(); // Wait until data is consumed
-		}
-		data = value;
-		available = true;
-		notify(); // Notify consumer
-	}
-}
-
-class Producer extends Thread {
-	SharedResource resource;
-
-	Producer(SharedResource resource) {
-		this.resource = resource;
-	}
-
-	public void run() {
-		for (int i = 0; i < 5; i++) {
-			try {
-				resource.produce(i);
-				System.out.println("Produced: " + i);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-}
-
-class Consumer extends Thread {
-	SharedResource resource;
-
-	Consumer(SharedResource resource) {
-		this.resource = resource;
-	}
-
-	public void run() {
-		for (int i = 0; i < 5; i++) {
-			try {
-				int value = resource.consume();
-				System.out.println("Consumed: " + value);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-}
 
 // https://www.youtube.com/watch?v=4aYvLz4E1Ts&t=4s
 //🟢 Description:

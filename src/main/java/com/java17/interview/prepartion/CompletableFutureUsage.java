@@ -29,6 +29,7 @@ public class CompletableFutureUsage {
 
         // Wait for all tasks to complete
         combinedFuture.get();
+
     }
 
     // Helper method to simulate a delay

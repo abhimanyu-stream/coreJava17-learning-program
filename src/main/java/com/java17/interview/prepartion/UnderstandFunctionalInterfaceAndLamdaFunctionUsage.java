@@ -40,8 +40,13 @@ class Labour implements  FindSquareRoot{
 		return 0;
 	}
 
+	//@Override
+	//public String defaultMethod() {
+		//return FindSquareRoot.super.defaultMethod();
+	//}
+
 	@Override
 	public String defaultMethod() {
-		return FindSquareRoot.super.defaultMethod();
+		return "Labour defaultMethod()";
 	}
 }

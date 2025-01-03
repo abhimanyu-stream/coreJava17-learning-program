@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LongestCommonSubstring {
 
+    //1. LongestCommonSubstring
+    //2. LongestPrefix
+
 
 
 
@@ -74,13 +77,20 @@ public class LongestCommonSubstring {
         String y = "ticktock";
 
         String longestCommonSubstring = findLCS(x, y);
-
         System.out.println("The longest common substring is " + longestCommonSubstring);
 
 
 
-        String[] newArray = {"Amazon", "Amazone", "AmazonIn"};
 
+
+
+
+
+
+
+
+        System.out.println("--------------------------LongestCommonPrefix or StringLiteral----------------------------------------");
+        String[] newArray = {"Amazon", "Amazone", "AmazonIn"};
 
         String result = getLargestCommonStringLiterals(newArray);
         System.out.println(" result :" + result);

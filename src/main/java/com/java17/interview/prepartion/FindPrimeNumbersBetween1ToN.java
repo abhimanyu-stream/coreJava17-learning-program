@@ -27,6 +27,8 @@ public class FindPrimeNumbersBetween1ToN {
 
 
 
+
+
       int jj= 17;
             int counts = 0;
             // loop through 1 to for(int ii = 1; ii <= jj ; ii++) input number, do % input number  from 1 to that number(keep on incrementing) , if count == 2 then input number is prime.

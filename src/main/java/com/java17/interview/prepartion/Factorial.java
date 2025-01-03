@@ -13,8 +13,7 @@ public class Factorial {
 		int factorialOf = scanner.nextInt();
 		int sum = 1;//as Factorial of 0! is 1 and no factorial for -ve number
 		for(int i = 1; i <= factorialOf; i++){
-			sum =sum * i;
-
+			sum =sum * i;//
 		}
 		System.out.println("Factorial of "+factorialOf+ " is "+sum);
 

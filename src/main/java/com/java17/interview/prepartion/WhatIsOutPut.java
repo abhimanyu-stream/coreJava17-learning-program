@@ -9,6 +9,7 @@ public class WhatIsOutPut {
         // finally block will be skipped if System.exit(0); is executed in try{}
         try{
             System.exit(0);
+
         }catch (Exception e){
 
         }finally {

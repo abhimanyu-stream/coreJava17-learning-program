@@ -1,5 +1,6 @@
 package com.java17.interview.prepartion;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MaxSumOfConsecutiveElements {
@@ -31,6 +32,10 @@ public class MaxSumOfConsecutiveElements {
             }
         }*/
         int[] arr2 = { 2, 3, 4 ,5};
+
+        int sumOfAllElements = Arrays.stream(arr2).reduce(Integer::sum).getAsInt();
+        System.out.println("sumOfAllElements "+sumOfAllElements);
+
         int maxSum = 0;
         int currentSum = 0;
         for(int i = 0; i < arr2.length; i++){
@@ -42,6 +47,7 @@ public class MaxSumOfConsecutiveElements {
 
             }
             if(currentSum < 0 ){
+                //reset for any -ve input to zero
                 currentSum = 0;
             }
 

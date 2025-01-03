@@ -15,26 +15,49 @@ import java.util.stream.Collectors;
 public class SortByDOJComparator {
 
     public static void main(String[] args) {
-        List<Tank> tankList = Arrays.asList(new Tank(LocalDate.of(2024,02,02),"ArjunTank"),
-                new Tank(LocalDate.of(2024,05,16),"Bhim"));
-        Comparator<Tank> dateComparator = new Comparator<>() {
-            @Override
-            public int compare(Tank o1, Tank o2) {
-                //descending order
-                return o2.getDateofEnforcement().getDayOfMonth()- o1.getDateofEnforcement().getDayOfMonth();
-            }
+        List<Tank> tankList = Arrays.asList(
+                new Tank(LocalDate.of(2024, 2, 2), "ArjunTank"),
+                new Tank(LocalDate.of(2024, 5, 16), "a"),
+                new Tank(LocalDate.of(2024, 11, 20), "B2-stealth-USA")
+        );
+
+
+
+
+        //*******************************************************
+        // approach - 1
+        Comparator<Tank> dateComparatorByMonth = (o1, o2) -> {
+            //descending order
+            return o2.getDateofEnforcement().getDayOfMonth()- o1.getDateofEnforcement().getDayOfMonth();
         };
-        List<Tank> sortedTankList = tankList.stream().sorted(dateComparator).toList();
-        System.out.println(sortedTankList);//[Tank(dateofEnforcement=2024-05-16, tankName=ArjunTank), Tank(dateofEnforcement=2024-02-02, tankName=ArjunTank)]
 
-        //sorted((o1, o2) -> o2.getTankName().length()-o1.getTankName().length()) its ascending order
-        List<Tank> sortedByNameLength = tankList.stream().sorted((o1, o2) -> o2.getTankName().length()-o1.getTankName().length()).toList();
+        List<Tank> sortedTankListByMonthOfDate = tankList.stream().sorted(dateComparatorByMonth).toList();
+        System.out.println("sortedTankListByMonthOfDate  " + sortedTankListByMonthOfDate);
 
-        System.out.println(sortedByNameLength);
-        System.out.println(Integer.valueOf('A'));
-        System.out.println(Integer.valueOf('B'));
-        System.out.println(Integer.valueOf('a'));
-        System.out.println(Integer.valueOf('b'));
+
+        // approach - 2
+
+        List<Tank> sortedByNameLength2 = tankList.stream().sorted((o1, o2) -> o2.getTankName().length() - o1.getTankName().length()).toList();// larger-length first
+        System.out.println("sortedByNameLength2 "+sortedByNameLength2);
+        //*******************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Unicode value examples
+        System.out.println("Unicode value of 'A': " + (int) 'A');
+        System.out.println("Unicode value of 'B': " + (int) 'B');
+        System.out.println("Unicode value of 'a': " + (int) 'a');
+        System.out.println("Unicode value of 'b': " + (int) 'b');
     }
 
 }

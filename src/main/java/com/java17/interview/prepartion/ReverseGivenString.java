@@ -9,7 +9,8 @@ public class ReverseGivenString {
 // char by char approach
         //length count start from 1
         // element are placed via index outing from 0
-        String s = "ejb";
+        //String s = "ejb";
+        String s = "racecar";
         char[] charArray = s.toCharArray();
         //System.out.println(inputString);
         char[] reversedcharArray = new char[s.length()];
@@ -23,6 +24,9 @@ public class ReverseGivenString {
             //x--;
         }
         System.out.println("reversedString "+new String(reversedcharArray));
+        if(new String(reversedcharArray).equals(s)){
+            System.out.println("palindrome");
+        }
 
 
 
