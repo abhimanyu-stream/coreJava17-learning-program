@@ -15,7 +15,7 @@ public class MergeTwoGivenArrayAfterSortingInNewArray {
 
 
         sortByBubble(arr1);
-        for(int i = 0; i <arr1.length ; i++){
+        for(int i = 0; i <arr1.length; i++){
             System.out.println(arr1[i]);
         }
         System.out.println("------------------------");
@@ -25,7 +25,7 @@ public class MergeTwoGivenArrayAfterSortingInNewArray {
         }
         System.out.println("------------------------");
         mergeTwoArray(arr1, arr2, mergedArray);
-        for(int i = 0; i < mergedArray.length - 1 ; i++){
+        for(int i = 0; i < mergedArray.length; i++){
             System.out.println(mergedArray[i]);
         }
         System.out.println("------------------------");
@@ -61,7 +61,7 @@ public class MergeTwoGivenArrayAfterSortingInNewArray {
 
     private static void sortByBubble(int[] arr) {
 
-        for(int i = 0; i < arr.length; i++){
+        for(int i = 0; i < arr.length - 1; i++){
             for(int j = 0; j< arr.length - i - 1; j++){
 
                 if(arr[j] > arr[j + 1]){

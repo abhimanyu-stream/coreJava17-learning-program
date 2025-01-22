@@ -18,12 +18,12 @@ public class FindMissingNumberInArray {
         // Generate a complete range of numbers from min to max
         List<Integer> completeRange = IntStream.rangeClosed(min, max)
                 .boxed()
-                .collect(Collectors.toList());
+                .toList();
         System.out.println("completeRange numbers: " + completeRange);
         // Find the missing numbers
         List<Integer> missingNumbers = completeRange.stream()
                 .filter(num -> !list.contains(num))
-                .collect(Collectors.toList());
+                .toList();
 
         System.out.println("Missing numbers: " + missingNumbers);
 

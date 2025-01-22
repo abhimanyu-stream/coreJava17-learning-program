@@ -9,7 +9,7 @@ public class ConcurrentHashMapFailSafe {
     public static void main(String args[]){
 
 
-        Map<Integer,String> concurrentHashMap=new ConcurrentHashMap<Integer,String>();
+        Map<Integer,String> concurrentHashMap=new ConcurrentHashMap<>();
 
         concurrentHashMap.put(11, "ankit");
         concurrentHashMap.put(21, "javaMadeSoEasy");

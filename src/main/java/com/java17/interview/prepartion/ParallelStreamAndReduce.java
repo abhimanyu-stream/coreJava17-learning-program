@@ -16,8 +16,8 @@ public class ParallelStreamAndReduce {
 
 
 
-        List<Integer> listOfNumbers = Arrays.asList(1, 2, 3, 4, 20);
-        int sum = listOfNumbers.parallelStream().reduce(0, Integer::sum) + 5;
+        List<Integer> listOfNumbers = Arrays.asList(6, 7, 8, 9, 25);
+        int sum = listOfNumbers.parallelStream().reduce(2, Integer::sum) + 5;//[2+6, 7+ 2, 8+2, 9+2, 25+2] + 5 = 65+5= 70
         System.out.println(sum);// [1 + 2 + 3 + 4 + 20] + 5 = 35
 
 

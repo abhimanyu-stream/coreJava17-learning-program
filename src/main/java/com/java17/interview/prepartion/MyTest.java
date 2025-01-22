@@ -1,8 +1,10 @@
 package com.java17.interview.prepartion;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class MyTest {
@@ -79,6 +81,20 @@ public class MyTest {
         double doubleAvarage = list.stream().mapToInt(Integer::intValue).average().getAsDouble();
 
 
+        // Creating a list of integers
+        List<Integer> lists = Arrays.asList(-9, -18, 0, 25, 4);
+        // Using stream.max() to get maximum
+        Integer var3 = lists.stream().max(Integer::compare).get();
+        Integer var = lists.stream().max(Comparator.comparing(i -> i)).get();
+        Integer var2 = lists.stream().max(Comparator.comparing(Function.identity())).get();
+
+        System.out.println("find max using Collections.max()"+ Collections.max(lists));
+
+        System.out.println("var " +var);
+        System.out.println("var2 " +var2);
+        System.out.println("var3 " +var3);
+
+
 
         // using stream and max min
 
@@ -109,6 +125,21 @@ public class MyTest {
         int a[]={10,20,15,90,11,44,100,43, 10, 15};
         List<String> startWith1 = Arrays.stream(a).mapToObj(String::valueOf).filter(f->f.startsWith(String.valueOf(1))).toList();
         System.out.println("startWith1 "+startWith1);
+
+
+        int[] aIntArray= {1,2,3,4,5,6,7,8};
+
+        int sumOfAIntArray = Arrays.stream(aIntArray).filter(f -> f % 2 == 0).sum();
+        System.out.println(sumOfAIntArray);
+        Arrays.stream(aIntArray).boxed().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
+
+        List<Integer> integerList = Arrays.asList(1,2,3,4,5);
+
+
+        Integer secondLargest = integerList.stream().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
+        //Integer secondLargest = integerList.stream().max(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
+        System.out.println(secondLargest);
+
 
 
 
@@ -151,17 +182,6 @@ public class MyTest {
         long count = Arrays.stream(strings.split(" ")).count();
         System.out.println(count);
 
-        int[] aIntArray= {1,2,3,4,5,6,7,8};
-
-        int sumOfAIntArray = Arrays.stream(aIntArray).filter(f -> f % 2 == 0).sum();
-        System.out.println(sumOfAIntArray);
-
-        List<Integer> integerList = Arrays.asList(1,2,3,4,5);
-
-
-        Integer secondLargest = integerList.stream().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
-        //Integer secondLargest = integerList.stream().max(Comparator.reverseOrder()).limit(2).skip(1).findFirst().get();
-        System.out.println(secondLargest);
 
 
 

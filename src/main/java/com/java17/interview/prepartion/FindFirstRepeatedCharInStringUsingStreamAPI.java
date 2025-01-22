@@ -61,6 +61,11 @@ public class FindFirstRepeatedCharInStringUsingStreamAPI {
                 .entrySet().stream()
                 .filter(entry-> entry.getValue() > 1L)
                 .map(m->new StringBuffer().append(m.getKey()).append(m.getValue())).forEachOrdered(System.out::print);
+        Arrays.stream(str.split(""))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry-> entry.getValue() > 1L)
+                .map(m->new StringBuffer().append(m.getKey()).append(m.getValue())).toList();
 
 
 

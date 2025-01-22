@@ -1,6 +1,6 @@
 package com.java17.interview.prepartion;
 
-public class FindMinimumClostestPair {
+public class FindMinimumClosestPair {
     public static void main(String[] args) {
         int[] arr1 = {1, 4, 5, 7};
         int[] arr2 = {10, 20, 30, 40};

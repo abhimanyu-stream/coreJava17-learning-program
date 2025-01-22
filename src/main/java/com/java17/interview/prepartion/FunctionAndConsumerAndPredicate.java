@@ -87,7 +87,7 @@ public class FunctionAndConsumerAndPredicate {
 
         //System.out.println("optionalofnull "+ optionalofnull);
         Optional<String> stringOptional1 = Optional.ofNullable("");
-        stringOptional1.ifPresent(System.out :: println);
+        stringOptional1.ifPresent(value -> System.out.print("Optional.ofNullable(\"\");" + value));
         Optional<Object> optionalnull = Optional.ofNullable(null);// it do not raises null pointer exception[it prints  empty box/space on console]
         optionalnull.ifPresent(System.out :: println);
         Optional<String> hum = Optional.ofNullable("hum");

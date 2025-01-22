@@ -22,7 +22,10 @@ public class SortEmployeeByFieldUsingStreamAPI {
         System.out.println("By Salary :"+ listOfEY);
         listOfEY = listOfEY.stream().sorted((o1, o2)-> (int)(o2.getSalary() - o1.getSalary())).collect(Collectors.toList());// By Salary decreasing
         System.out.println("By Salary :"+ listOfEY);
-
+        EYmployee eYmployeeWithLeastSalary = listOfEY.stream().sorted(Comparator.comparingDouble(EYmployee::getSalary)).toList().stream().findFirst().get();
+        System.out.println("eYmployeeWithLeastSalary"+eYmployeeWithLeastSalary);
+        EYmployee eYmployeeWithSecondSalary = listOfEY.stream().sorted(Comparator.comparingDouble(EYmployee::getSalary)).toList().stream().limit(2).skip(1).findFirst().get();
+        System.out.println("eYmployeeWithSecondSalary"+eYmployeeWithSecondSalary);
     }
 }
 

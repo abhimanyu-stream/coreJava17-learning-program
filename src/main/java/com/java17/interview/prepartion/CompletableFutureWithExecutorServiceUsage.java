@@ -11,6 +11,12 @@ public class CompletableFutureWithExecutorServiceUsage {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         // Step 1: Create a custom ExecutorService
     ExecutorService executorService = Executors.newFixedThreadPool(2);
+        //Executors.newFixedThreadPool()
+        //Executors.newCachedThreadPool()
+        //Executors.newScheduledThreadPool()
+        //Executors.newSingleThreadExecutor()
+        //Executors.newSingleThreadScheduledExecutor()
+        //Executors.newWorkStealingPool()
 
     try {
         // Step 2: Fetch product details asynchronously with ExecutorService

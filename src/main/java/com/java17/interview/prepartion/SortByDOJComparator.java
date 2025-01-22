@@ -1,15 +1,14 @@
-package com.java17.interview.prepartion;
+package com.java17.interview.preparation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.buf.Ascii;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class SortByDOJComparator {
@@ -21,37 +20,28 @@ public class SortByDOJComparator {
                 new Tank(LocalDate.of(2024, 11, 20), "B2-stealth-USA")
         );
 
-
-
-
         //*******************************************************
-        // approach - 1
-        Comparator<Tank> dateComparatorByMonth = (o1, o2) -> {
-            //descending order
-            return o2.getDateofEnforcement().getDayOfMonth()- o1.getDateofEnforcement().getDayOfMonth();
-        };
-
-        List<Tank> sortedTankListByMonthOfDate = tankList.stream().sorted(dateComparatorByMonth).toList();
+        // Approach - 1: Sort by date of enforcement day in descending order
+        List<Tank> sortedTankListByMonthOfDate = tankList.stream()
+                .sorted((o1, o2) -> o2.getDateofEnforcement().getDayOfMonth() - o1.getDateofEnforcement().getDayOfMonth())
+                .toList();
         System.out.println("sortedTankListByMonthOfDate  " + sortedTankListByMonthOfDate);
 
+        // Approach - 2: Sort by tank name length in descending order
+        List<Tank> sortedByNameLength2 = tankList.stream()
+                .sorted((o1, o2) -> o2.getTankName().length() - o1.getTankName().length())
+                .toList();
+        System.out.println("sortedByNameLength2 " + sortedByNameLength2);
 
-        // approach - 2
-
-        List<Tank> sortedByNameLength2 = tankList.stream().sorted((o1, o2) -> o2.getTankName().length() - o1.getTankName().length()).toList();// larger-length first
-        System.out.println("sortedByNameLength2 "+sortedByNameLength2);
         //*******************************************************
+        // Approach - 3: Using BiFunction for sorting by name length
+        BiFunction<Tank, Tank, Integer> compareByNameLength = (tank1, tank2) ->
+                Integer.compare(tank2.getTankName().length(), tank1.getTankName().length());
 
-
-
-
-
-
-
-
-
-
-
-
+        List<Tank> sortedByBiFunction = tankList.stream()
+                .sorted(compareByNameLength::apply)//compareByNameLength.apply(o1,o2)
+                .toList();
+        System.out.println("sortedByBiFunction " + sortedByBiFunction);
 
         // Unicode value examples
         System.out.println("Unicode value of 'A': " + (int) 'A');
@@ -66,8 +56,7 @@ public class SortByDOJComparator {
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-class  Tank{
-
+class Tank {
     private LocalDate dateofEnforcement;
     private String tankName;
 }

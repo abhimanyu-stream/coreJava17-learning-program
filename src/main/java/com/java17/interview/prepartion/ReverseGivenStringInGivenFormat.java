@@ -8,11 +8,11 @@ public class ReverseGivenStringInGivenFormat {
         //Output: "developer java a am I"
 
         String input ="I am a java developer";
-        String output = reverseSentence(input);
+        String output = reverseAsMirror(input);
         System.out.println(output);
     }
 
-    public static String reverseSentence(String input) {
+    public static String reverseAsMirror(String input) {
         // Split the input sentence by spaces
         String[] words = input.split(" ");
 

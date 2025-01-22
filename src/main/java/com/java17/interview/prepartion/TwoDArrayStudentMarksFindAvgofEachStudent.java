@@ -22,23 +22,38 @@ public class TwoDArrayStudentMarksFindAvgofEachStudent {
 		
 		int count=0, sum = 0;
 		double avg;
-		for(int i = 0; i < studentMarks.length; i++) {
-			String studentName = studentMarks[i][0];
-			for(int j = 1; j < studentMarks[i].length; j++) {
-				
+		for(int i = 0; i < studentMarks.length; i++) { // studentMarks.length is all row count
+			String studentName = studentMarks[i][0]; //  at each i, the column studentMarks[i][0] retrieved
+			for(int j = 1; j < studentMarks[i].length; j++) { // at i = 0 ; studentMarks[i].length is column count
+
 				sum += Integer.parseInt(studentMarks[i][j]);
-				
+
 				count++;
-				
-				
-				
+
+
+
 			}
-			
-			avg = sum/count;
-			
+
+			avg = (double) sum /count;
+
 			System.out.println(studentName + "  " + avg);
 		}
+		// enhanced for loop
+		for (String[] studentMark : studentMarks) { // studentMarks.length is all row count
+			String studentName = studentMark[0]; //  at each i, the column studentMarks[i][0] retrieved
+			for (int j = 1; j < studentMark.length; j++) { // at i = 0 ; studentMarks[i].length is column count
 
+				sum += Integer.parseInt(studentMark[j]);
+
+				count++;
+
+
+			}
+
+			avg = (double) sum / count;
+
+			System.out.println(studentName + "  " + avg);
+		}
 
 
 		// Using Streams to calculate average for each student
@@ -51,6 +66,17 @@ public class TwoDArrayStudentMarksFindAvgofEachStudent {
 							.orElse(0.0);                  // In case of no marks, default to 0.0
 
 					System.out.println(studentName + "  " + avgg);
+				});
+
+
+		Arrays.stream(studentMarks)
+				.forEach(student->{
+					String name = student[0];
+					double v = Arrays.stream(student, 1, student.length)
+							.mapToInt(Integer::parseInt)
+							.average()
+							.orElse(0.0);
+					System.out.println(name +" "+v);
 				});
 
 	}

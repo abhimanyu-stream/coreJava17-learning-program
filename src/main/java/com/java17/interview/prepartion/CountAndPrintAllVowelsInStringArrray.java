@@ -16,7 +16,7 @@ public class CountAndPrintAllVowelsInStringArrray {
 
 
                 s -> {
-                    List<Character> collect = s.chars().mapToObj(i -> (char) i).filter(f -> "aeiouAEIOU".contains(String.valueOf(f))).collect(Collectors.toList());
+                    List<Character> collect = s.chars().mapToObj(i -> (char) i).filter(f -> "aeiouAEIOU".contains(String.valueOf(f))).toList();
                     System.out.println(s +"  contains "+collect);
                 }
         );

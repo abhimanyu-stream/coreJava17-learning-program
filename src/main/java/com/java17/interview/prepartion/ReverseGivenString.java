@@ -23,7 +23,7 @@ public class ReverseGivenString {
 
             //x--;
         }
-        System.out.println("reversedString "+new String(reversedcharArray));
+        System.out.println("reversedString "+new String(reversedcharArray));// char[] to String
         if(new String(reversedcharArray).equals(s)){
             System.out.println("palindrome");
         }
