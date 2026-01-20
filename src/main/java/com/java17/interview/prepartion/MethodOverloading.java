@@ -35,3 +35,11 @@ class MathOperations {
     }
 
 }
+/**
+ * OPPs
+ *
+ * Abstraction
+ * Inheritance
+ * Polymorphism
+ * Encapsulation
+ */

@@ -31,10 +31,11 @@ public class PrintAccordingToTheFrequencyOfItsOccurenceInGivenString {
 
                         }
                 );
-        System.out.println(builder);
+        System.out.println(new String(builder));
 
 
     }
 
 
 }
+//value.intValue() from Long to Int

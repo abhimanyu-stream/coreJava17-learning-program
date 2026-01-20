@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class StackUsingArray {
 
+
     public static void main(String[] args) {
 
         Stackk stack = new Stackk(5);

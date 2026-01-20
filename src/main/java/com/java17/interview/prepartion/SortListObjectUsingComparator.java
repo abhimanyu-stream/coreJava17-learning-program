@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class SortListObjectUsingComparator {
@@ -30,7 +29,8 @@ public class SortListObjectUsingComparator {
 		System.out.println(listOfEmployee);
 		
 		System.out.println(listOfEmployee.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList()));
-		
+
+		listOfEmployee.stream().sorted(Comparator.comparingInt(Employee::getAge)).toList();
 
 		//using stream api
 		listOfEmployee.stream().sorted(new AgeComparator()).collect(Collectors.toList());
@@ -87,3 +87,4 @@ class Employee{
 	}
 	
 }
+// sorted(Comparator.comparing(Employee::getAge).reversed())

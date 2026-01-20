@@ -13,15 +13,31 @@ public class ComparatorMethodForAscedingDecendingOrder {
         // Example for Numbers
         List<Integer> numbers = Arrays.asList(5, 3, 8, 1, 2);
         Collections.sort(numbers); // Ascending by default
+        numbers.sort(Comparator.reverseOrder());
         System.out.println("Ascending Numbers: " + numbers);
 
-        Collections.sort(numbers, Comparator.reverseOrder());
+        numbers.stream().sorted(Comparator.reverseOrder()).toList();
+        numbers.stream().sorted(Comparator.naturalOrder()).toList();
         numbers.sort(Comparator.reverseOrder());
+
         System.out.println("Descending Numbers: " + numbers);
 
         // Example for Strings
         List<String> strings = Arrays.asList("apple", "orange", "banana", "grape");
-        Collections.sort(strings); // Ascending by default
+        //Collections.sort(strings); // Ascending by default
+
+        // Java 8 sort using lambda
+        //strings.sort(String::compareTo);
+
+        // Or more concise using method reference
+        // strings.sort(String::compareTo);
+        //List<String> list = strings.stream().sorted(Comparator.reverseOrder()).toList();// main collections object remain unchanged
+
+        ///System.out.println(list);
+        //strings.sort(Comparator.reverseOrder()); //Inplace sorting or Comparator.reverseOrder()
+        strings.sort(Comparator.reverseOrder());//Inplace sorting or Comparator.reverseOrder()
+        System.out.println(strings);
+
         System.out.println("Ascending Strings: " + strings);
 
         Collections.sort(strings, Comparator.reverseOrder());

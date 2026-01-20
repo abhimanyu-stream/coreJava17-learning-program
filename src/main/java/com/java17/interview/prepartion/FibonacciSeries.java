@@ -17,7 +17,7 @@ public class FibonacciSeries {
 		
 		System.out.println(n1);
 		System.out.println(n2);
-		for(int i =0; i < count; i++) {
+		for(int i =0; i < count; i++) {// count + 2 output should come
 			n3 = n1+ n2;
 			System.out.println(n3);
 			

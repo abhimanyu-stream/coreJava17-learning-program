@@ -1,4 +1,4 @@
-package com.java17.interview.preparation;
+package com.java17.interview.prepartion;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
 
 public class SortByDOJComparator {
 
@@ -25,7 +24,14 @@ public class SortByDOJComparator {
         List<Tank> sortedTankListByMonthOfDate = tankList.stream()
                 .sorted((o1, o2) -> o2.getDateofEnforcement().getDayOfMonth() - o1.getDateofEnforcement().getDayOfMonth())
                 .toList();
+
+
+
+
+        //listOfEmployee.stream().sorted(Comparator.comparingInt(Employee::getAge)).toList();
         System.out.println("sortedTankListByMonthOfDate  " + sortedTankListByMonthOfDate);
+        ///tankList.stream().sorted(Comparator.comparingInt(Tank::getDateofEnforcement).reversed()).toList();//reason: Incompatible types: LocalDate is not convertible to int
+
 
         // Approach - 2: Sort by tank name length in descending order
         List<Tank> sortedByNameLength2 = tankList.stream()

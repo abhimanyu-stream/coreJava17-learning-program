@@ -26,9 +26,26 @@ public class FirstHalfLowerSecondHalfUpperAndMaxByAndMaxAndReduce {
                 .max(Comparator.comparingInt(String::length))
                 .get();
 
+
         System.out.println("Longest string: " + longest2);
+        List<Integer> numbers = Arrays.asList(10, 25, 3, 67, 42);
+
+        int min = numbers.stream()
+                .min(Comparator.naturalOrder())
+                .orElse(Integer.MIN_VALUE);
+
+        System.out.println(min);  // 67
+        Integer integer = numbers.stream()
+                .max(Comparator.naturalOrder()).get();
+
+        int maxx = numbers.stream()
+                .max(Comparator.reverseOrder()).get(); // gives maximum element
 
 
+        numbers.stream().max(Comparator.reverseOrder()).get();
+
+
+        System.out.println(maxx); // 67
 
 
         //List<String> strings = Arrays.asList("cat", "rabbit", "horse", "goat", "rooster", "ooooooooooooooo");

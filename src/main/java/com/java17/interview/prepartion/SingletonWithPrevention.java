@@ -8,12 +8,12 @@ public class SingletonWithPrevention implements Serializable, Cloneable {
 
     private static SingletonWithPrevention singletonWithPrevention;
 
-    public SingletonWithPrevention(){
+    private SingletonWithPrevention(){
         if(singletonWithPrevention != null){
             throw new IllegalStateException("Instance already created !");
         }
     }
-    public static SingletonWithPrevention getInstance(){
+    public static SingletonWithPrevention getInstance(){// Factory method
 
         if(singletonWithPrevention == null){
             synchronized (SingletonWithPrevention.class){
@@ -31,6 +31,7 @@ public class SingletonWithPrevention implements Serializable, Cloneable {
        throw new CloneNotSupportedException("Cloning not supported");
 
     }
+    @Serial
     protected Object readResolve(){
         return getInstance();
     }

@@ -8,7 +8,7 @@ public class WhatIsOutPut {
         System.out.println("Interview" + 10 + 20);
         // finally block will be skipped if System.exit(0); is executed in try{}
         try{
-            System.exit(0);
+            //System.exit(0);
 
         }catch (Exception e){
 

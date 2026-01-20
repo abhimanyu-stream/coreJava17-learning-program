@@ -21,9 +21,9 @@ public class CustomImmutableClass {
 		phoneNumbers.add("456789");
 		Map<String, String> metadata = new HashMap<>();
 		metadata.put("hobby", "Watching Movies");
-		Date dateOfBirth = new Date("01/01/2020");
+		LocalDate dateOfBirth = LocalDate.now();
 		// dateOfBith = LocalDate.of(2020,01,02);
-		Employee e = new Employee("Mindranda", 23, address1, phoneNumbers, metadata, dateOfBirth);
+		Employee e = new Employee("Miranda", 23, address1, phoneNumbers, metadata, dateOfBirth);
 
 		// trying to Employee Object modifications, but not able to do so.Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.
 
@@ -35,10 +35,10 @@ public class CustomImmutableClass {
 		e.getAddress().setCity("c3");
 		e.getAddress().setStreet("s3");
 
-		e.getPhoneNumbers().add("1");
+		e.getPhoneNumbers().add("1");//Write-only object
 
-		e.getMetadata().put("skill", "Java");
-		e.getMetadata().put("designation", "HR");
+		e.getMetadata().put("skill", "Java");//Write-only object
+		e.getMetadata().put("designation", "HR");//Write-only object
 
 
 		System.out.println(e.getEmpName());
@@ -59,14 +59,14 @@ public class CustomImmutableClass {
 		private final String name;
 		private final int age;
 		private final Address address;// mutable clone typecasted
-		private final Date dateOfBirth;// mutable clone typecasted
+		private final LocalDate dateOfBirth;// mutable clone typecasted
 		private final List<String> phoneNumbers;// Collection type new class type ()
 		private final Map<String, String> metadata;// Collection type new class type ()
 
 
 
 
-		public Employee(String name, int age, Address address, List<String> phoneNumbers, Map<String, String> metadata, Date dateOfBirth){
+		public Employee(String name, int age, Address address, List<String> phoneNumbers, Map<String, String> metadata, LocalDate dateOfBirth){
 			this.name = name;
 			this.age = age;
 			this.address = address;
@@ -87,9 +87,11 @@ public class CustomImmutableClass {
 			return name;
 		}
 
-		public Date getDateOfBirth() {
+		public LocalDate getDateOfBirth() {
 			// clone of Date object
-			return (Date) dateOfBirth.clone();
+			//return (Date) dateOfBirth.clone(); Date class implements Cloneable and override clone method of Object class
+			// LocalDate is immutable, so it's safe to return directly. LocalDate do not implement Cloneable, its internally immutable so return directly
+			return dateOfBirth;
 		}
 
 
@@ -107,7 +109,7 @@ public class CustomImmutableClass {
 
 		public Map<String, String> getMetadata() {
 			// deep copy the map of metadata
-			return new java.util.HashMap<>(metadata);
+			return new HashMap<>(metadata);
 		}
 
 		@Override

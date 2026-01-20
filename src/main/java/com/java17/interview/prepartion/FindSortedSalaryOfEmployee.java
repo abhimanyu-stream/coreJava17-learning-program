@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class FindNthSalaryOfEmployee {
+public class FindSortedSalaryOfEmployee {
     public static void main(String[] args) {
 
         Woker w1 = new Woker("Oracle", 20.0);
@@ -25,7 +24,21 @@ public class FindNthSalaryOfEmployee {
         listOfWorker.add(w6);
         Map<Double, List<Woker>> collect = listOfWorker.stream().sorted(Comparator.comparingDouble(Woker :: getSalary).reversed())
                 .collect(Collectors.groupingBy(m->m.getSalary(), Collectors.mapping(m -> m, Collectors.toList())));
-        //System.out.println(collect);
+        System.out.println(collect);
+
+
+
+
+
+
+
+
+
+
+
+
+//{20.0=[Woker{name='Oracle', salary=20.0}], 700.0=[Woker{name='AOL', salary=700.0}], 89400.0=[Woker{name='Gamil', salary=89400.0}], 8000.0=[Woker{name='Red', salary=8000.0}, Woker{name='Yahoo', salary=8000.0}, Woker{name='Rediif', salary=8000.0}]}
+//Woker{name='Gamil', salary=89400.0}
 
         //Woker woker = listOfWorker.stream().sorted(Comparator.comparingDouble(Woker :: getSalary).reversed()).limit(2).skip(1).findFirst().get();
 
@@ -44,6 +57,8 @@ public class FindNthSalaryOfEmployee {
 
         final Woker worker1 = listOfWorker.stream().sorted((o1, o2) -> (int) (o2.getSalary() - o1.getSalary())).findFirst().get();
         System.out.println(worker1);
+
+        listOfWorker.stream().sorted((o1, o2) -> (int) (o2.getSalary() - o1.getSalary())).limit(2).skip(1).findAny();
 
     }
 }

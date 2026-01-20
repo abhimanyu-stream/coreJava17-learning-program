@@ -8,9 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.util.Collections.max;
-import static java.util.Collections.min;
-
 public class ParallelStreamAndReduce {
     public static void main(String[] args) {
 
@@ -25,6 +22,10 @@ public class ParallelStreamAndReduce {
         // creating a list of Strings
         List<String> words = Arrays.asList("GFG", "Geeks", "for",
                 "GeeksQuiz", "GeeksforGeeks");
+
+        String largestString  = words.stream().max(Comparator.comparingInt(String::length)).get();
+
+        System.out.println("largestString  " + largestString);
 
         // The lambda expression passed to
         // reduce() method takes two Strings

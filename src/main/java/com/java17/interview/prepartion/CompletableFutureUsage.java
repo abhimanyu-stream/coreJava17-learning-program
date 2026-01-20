@@ -11,13 +11,23 @@ public class CompletableFutureUsage {
         // Step 1: Fetch user information asynchronously
         CompletableFuture<String> userInfoFuture = CompletableFuture.supplyAsync(() -> {
             System.out.println("Fetching user info...");
+            //User user = userRepository.findById(request.userId);
+            //Executors.
             delay(1); // Simulate delay
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             return "User123"; // Example user ID
         });
 
         // Step 2: Fetch credit score asynchronously based on user ID
         CompletableFuture<Integer> creditScoreFuture = userInfoFuture.thenApplyAsync(userId -> {
             System.out.println("Fetching credit score for user: " + userId);
+
+           //int score = creditScoreRepository.findByCreditId(user.getCreditId());
+
             delay(2); // Simulate delay
             return 700; // Example credit score
         });
@@ -35,7 +45,7 @@ public class CompletableFutureUsage {
     // Helper method to simulate a delay
     private static void delay(int seconds) {
         try {
-            Thread.sleep(seconds * 1000);
+            Thread.sleep(seconds * 1000L);
         } catch (InterruptedException e) {
             throw new IllegalStateException(e);
         }

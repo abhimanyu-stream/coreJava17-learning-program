@@ -3,37 +3,41 @@ package com.java17.interview.prepartion;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-@SpringBootApplication
+
 public class ReverseStringWithoutUsingStringFunction {
 
     public static <Char> void main(String[] args) {
-        SpringApplication.run(ReverseStringWithoutUsingStringFunction.class, args);
+        //SpringApplication.run(ReverseStringWithoutUsingStringFunction.class, args);
 
 
         String  inputString = "JavaLearningCenter";
-        char[] charArray = inputString.toCharArray();
-        
-        for(int i = charArray.length - 1; i >= 0; i--){
-            System.out.print(charArray[i]);
-        }
-        System.out.println();
-        System.out.println("Using StringBuilder");
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(inputString);// As String is immutable and StringBuilder is mutable
-        stringBuilder = stringBuilder.reverse();     // used string builder to reverse
-        System.out.println(stringBuilder);
-
-        System.out.println();
-        System.out.println("Using Covert String into String[]");
-        Scanner scan = new Scanner(System.in);
-        String str = scan.nextLine();
 
 
+       String s = IntStream.range(0, inputString.length())
+                .mapToObj(i -> inputString.charAt(inputString.length() - 1 - i))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        System.out.println("collect rev    " + s);
 
 
+    }
+    // ✅ Stream-based implementation to return index pairs
+    private static List<int[]> twoSumUsingStream(int[] A, int target) {
 
+        List<int[]> result = new ArrayList<>();
+
+        IntStream.range(0, A.length)
+                .forEach(i -> IntStream.range(i + 1, A.length)
+                        .filter(j -> A[i] + A[j] == target)
+                        .forEach(j -> result.add(new int[]{i, j})));
+
+        return result;
 
     }
 }

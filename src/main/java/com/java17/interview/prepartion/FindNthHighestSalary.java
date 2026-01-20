@@ -6,19 +6,71 @@ import java.util.stream.Collectors;
 public class FindNthHighestSalary {
 
     public static void main(String[] args) {
+
+
+
+
+        //sorted(Collections.reverseOrder()) — When using Collections API
+        //Collections.sort(list, Collections.reverseOrder());
+
+
+        //sorted(Comparator.reverseOrder()) — When using Streams
+        //List<Integer> sortedList = list.stream()
+        //        .sorted(Comparator.reverseOrder())
+        //        .toList();
+
+
+
+
+        //Sorting Objects in Reverse Order (Custom Comparator)
+        //List<User> sortedUsers = users.stream()
+        //        .sorted(Comparator.comparing(User::getAge).reversed())
+        //        .toList();
+
+
+
+
+
+
         // Create a HashMap to store employee names and their corresponding salaries
         Map<String, Integer> map = new HashMap<>();
 
-        // Populate the HashMap with employee names and salaries
-        map.put("Abrar", 20000);
-        map.put("Chand", 35000);
-        map.put("Kalam", 45000);
-        map.put("Raheem", 35000);
-        map.put("Kiran", 50000);
-        map.put("Esa", 45000);
+        map.put("John", 20000);
+        map.put("David", 35000);
+        map.put("Michael", 45000);
+        map.put("Robert", 35000);
+        map.put("Kevin", 50000);
+        map.put("Daniel", 45000);
 
 
-        Map.Entry<Integer, List<String>> integerListEntry = map.entrySet().stream()
+
+        //Recommended Cleaner Version (Safe, Null-Proof & Readable)
+        Optional<Map.Entry<Integer, List<String>>> thirdHighest = map.entrySet().stream()
+                .collect(Collectors.groupingBy(Map.Entry::getValue,
+                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
+                .entrySet().stream()
+               // .sorted(Map.Entry.<Integer, List<String>>comparingByKey().reversed()) both line are equivalent
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+
+                .skip(2)
+                .findFirst();
+
+        thirdHighest.ifPresent(System.out::println);
+        //Why this is better?
+        //
+        //Uses comparingByKey().reversed() → more readable
+        //
+        //Uses Optional → avoids .get() crash
+        //
+        //No Collections.reverseOrder() needed
+
+
+
+
+
+
+
+        /*Map.Entry<Integer, List<String>> integerListEntry = map.entrySet().stream()
                 .collect(Collectors.groupingBy(Map.Entry :: getValue, Collectors.mapping(Map.Entry :: getKey, Collectors.toList())))
                 .entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).toList().get(3 - 1);//3rd highest salary[ 3 - 1 ] or get(2)
         System.out.println("integerListEntry " + integerListEntry);
@@ -27,63 +79,14 @@ public class FindNthHighestSalary {
         Map.Entry<Integer, List<String>> integerListEntry1 = map.entrySet().stream()
                 .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
                 .entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey())).toList().stream().skip(2).findFirst().get();
-        System.out.println("integerListEntry1 " + integerListEntry1);
+        System.out.println("integerListEntry1 " + integerListEntry1);*/
 
-        for(Map.Entry<String, Integer> m:map.entrySet()){
-
-        }
-        for(String m:integerListEntry1.getValue()){
-
-        }
 
 
         //Comparator.comparingDouble(Woker :: getSalary)
         //Collections.reverseOrder(Map.Entry.comparingByKey())
 
 
-        List<String> s = new LinkedList<>();
-
-
-
-
-
-        // Specify the desired value of n
-        int n = 3;// for 3rd highest salary
-        // Get the nth highest salary along with the corresponding employee names
-        Map.Entry<Integer, List<String>> res = getDynamicNthHighestSalary(map, n);
-        // Print the result
-        System.out.println("getDynamicNthHighestSalary "  +res);
     }
 
-    // Method to find the nth highest salary dynamically
-    public static Map.Entry<Integer, List<String>> getDynamicNthHighestSalary(Map<String, Integer> employeeSalaries, int nth) {
-        // Using Java Streams to process the map and find the nth highest salary
-
-        // 1. Group employee names by their corresponding salaries
-        /*return employeeSalaries.entrySet()
-                .stream()
-                .collect(Collectors.groupingBy(
-                        Map.Entry::getValue, // Group by salary
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList()) // Collect employee names as a list for each salary
-                ))
-                .entrySet()
-                .stream()
-                // 2. Sort the map entries by salary in descending order
-                .sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
-                // 3. Collect the sorted map entries into a List
-                .collect(Collectors.toList())
-                // 4. Get the nth element from the list (n - 1 as list index starts from 0)
-                .get(n - 1);*/
-
-
-        return employeeSalaries.entrySet()
-                .stream()
-                .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())
-                )).entrySet()
-                .stream().sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
-                .toList()
-                .get(nth - 1);
-    }
-
-    
 }

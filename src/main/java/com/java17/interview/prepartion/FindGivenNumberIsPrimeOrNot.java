@@ -1,16 +1,11 @@
 package com.java17.interview.prepartion;
 
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
-@SpringBootApplication
 public class FindGivenNumberIsPrimeOrNot {
     public static void main(String[] args) {
-        SpringApplication.run(FindGivenNumberIsPrimeOrNot.class, args);
+        //SpringApplication.run(FindGivenNumberIsPrimeOrNot.class, args);
 
 
         int inputNumber = 15;

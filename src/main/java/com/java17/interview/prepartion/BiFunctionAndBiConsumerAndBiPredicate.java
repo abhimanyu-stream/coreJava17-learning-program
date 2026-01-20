@@ -35,7 +35,9 @@ public class BiFunctionAndBiConsumerAndBiPredicate {
         };
         System.out.println(biPredicate.test(list1, list2));
 
+        //BooleanSupplier<> h = ()->true;
 
+        //BiSupplier no
     }
 
    /* @Override

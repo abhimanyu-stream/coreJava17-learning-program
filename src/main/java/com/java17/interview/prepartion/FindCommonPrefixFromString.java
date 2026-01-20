@@ -11,7 +11,7 @@ public class FindCommonPrefixFromString {
 
     private static String findMostCommonPrefix(String[] strArray) {
 
-        if(strArray.length == 0){
+        if(strArray.length == 0){// empty check for Array
             return "";
         }
 
@@ -25,4 +25,19 @@ public class FindCommonPrefixFromString {
         }
         return prefix;
     }
+
+    private static String findMostCommonPrefix2(String[] strArray) {
+        if (strArray.length == 0) return "";
+
+        String prefix = strArray[0];
+        for (int i = 1; i < strArray.length; i++) {
+            while (!strArray[i].startsWith(prefix)) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }
+        }
+        return prefix;
+    }
+
+
 }

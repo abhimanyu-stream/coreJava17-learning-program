@@ -2,7 +2,6 @@ package com.java17.interview.prepartion;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 public class LargestElementUsingStreamAPI {
 
@@ -14,6 +13,21 @@ public class LargestElementUsingStreamAPI {
 
 
         int[] arr = {10, 324, 45, 90, 9808};
+
+
+        int largest =
+                Arrays.stream(arr)
+                        .boxed()
+                        .max(Comparator.naturalOrder())
+                        .orElseThrow();
+
+        System.out.println(largest);
+
+
+
+
+
+
         int max = Arrays.stream(arr).max().getAsInt();
         System.out.println("Largest element in the array: " + max);
 

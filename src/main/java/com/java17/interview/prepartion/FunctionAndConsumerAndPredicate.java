@@ -3,7 +3,6 @@ package com.java17.interview.prepartion;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -25,6 +24,8 @@ public class FunctionAndConsumerAndPredicate {
 
         Predicate<String> predicateStartsWithA = x->x.toLowerCase().charAt(0) == 'a';
         System.out.println("startsWithA " + predicateStartsWithA.test("abhimanyu"));
+
+
         StudentKVS s = new StudentKVS("Animal");
         System.out.println("startsWithA " + predicateStartsWithA.test(s.getName()));
         System.out.println("startsWithA " + predicateStartsWithA.negate().test(s.getName()));
@@ -35,7 +36,7 @@ public class FunctionAndConsumerAndPredicate {
         //public interface Consumer<T> {
         //void accept(T t);
         //}
-        Consumer<Integer> consumer = x->System.out.println(x);
+        Consumer<Integer> consumer = x->System.out.println(x);// or  System.out::println;
         consumer.accept(1);
 
 
@@ -68,30 +69,14 @@ public class FunctionAndConsumerAndPredicate {
 
         Predicate<Integer> integerPredicate = x -> x % 2 == 0;
         Function<Integer, Integer> integerFunction = x->x * x;
-        Consumer<Integer> integerConsumer= System.out::println;//or x->System.out.println(x);
-        Supplier<Integer> integerSupplier=()->100;
+        Consumer<Integer> integerConsumer = System.out::println;//or x->System.out.println(x);
+        Supplier<Integer> integerSupplier = ()->100;
 
         if(integerPredicate.test(integerSupplier.get())){
             integerConsumer.accept(integerFunction.apply(integerSupplier.get()));// 1. Supplier-->2. Function-->3. Consumer
         }
 
 
-
-        Optional<List<String>> empty = Optional.empty();
-        //empty.get().add("hum"); // it raises Exception java.util.NoSuchElementException : No value present
-
-        //Note:-- after creating empty you have re-assign with valued Otional Object, then you can use/ call get() over empty
-
-        Optional<String> stringOptional = Optional.of("hum");
-        //Optional<Object> optionalofnull = Optional.of(null);// it raises null pointer exception[box[null] Exception in thread "main" java.lang.NullPointerException[ it mean we can not pass null as argument in of method of Optional]
-
-        //System.out.println("optionalofnull "+ optionalofnull);
-        Optional<String> stringOptional1 = Optional.ofNullable("");
-        stringOptional1.ifPresent(value -> System.out.print("Optional.ofNullable(\"\");" + value));
-        Optional<Object> optionalnull = Optional.ofNullable(null);// it do not raises null pointer exception[it prints  empty box/space on console]
-        optionalnull.ifPresent(System.out :: println);
-        Optional<String> hum = Optional.ofNullable("hum");
-        hum.ifPresent(System.out :: println);
 
 
 
@@ -101,7 +86,7 @@ public class FunctionAndConsumerAndPredicate {
         Function<List<StudentKVS>, StudentResponse> resposeFunction = studentkvs -> {
 
             StudentResponse response = new StudentResponse();
-            response.setName(new ArrayList<String>(studentkvs.stream().map(m->m.getName()).toList()));
+            response.setName(new ArrayList<String>(studentkvs.stream().map(StudentKVS::getName).toList()));
             //OR
             //setFirstField
             //setSecondField

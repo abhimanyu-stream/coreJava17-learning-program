@@ -2,6 +2,7 @@ package  com.java17.interview.prepartion;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class PrintElementsOfArrayAccordingToItsFrequency {
 
@@ -12,6 +13,26 @@ class PrintElementsOfArrayAccordingToItsFrequency {
 
         Integer[] arr = {10, 20, 10, 10, 20, 30, 30, 30, 30, 0};
         List<Integer> list = Arrays.asList(arr);
+
+        Map<Integer, Long> collect = list.stream().collect(Collectors.groupingBy(n -> n, Collectors.counting()));
+        StringBuilder builder = new StringBuilder();
+
+
+        collect.entrySet().stream().sorted((Map.Entry.comparingByKey())).forEach(
+
+
+                e->{
+
+                    int key = e.getKey();
+                    int value =e.getValue().intValue();
+
+                    for(int i = 0; i < value; i++){
+                        builder.append(key);
+                    }
+                }
+        );
+
+        System.out.println(" builder "+ builder);
         sortBasedOnFrequencyAndValue(list, arr);
 
 

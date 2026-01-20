@@ -1,12 +1,10 @@
 package com.java17.interview.prepartion;
 
 
-import org.apache.logging.log4j.util.PropertySource;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
@@ -17,6 +15,8 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
 
         List<EmployeeOfMicrosoft> employeeOfMicrosoftList = new ArrayList<>();
 
+        Arrays.asList("");
+
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(111, "Jiya Brein", 32, "Female", "HR", 2011, 25000.0));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(122, "Paul Niksui", 25, "Male", "Sales And Marketing", 2015, 13500.0));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(133, "Martin Theron", 29, "Male", "Infrastructure", 2012, 18000.0));
@@ -25,8 +25,8 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(166, "Iqbal Hussain", 43, "Male", "Security And Transport", 2016, 10500.0));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(177, "Manu Sharma", 35, "Male", "Account And Finance", 2010, 27000.0));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(188, "Wang Liu", 31, "Male", "Product Development", 2015, 34500.0));
-        employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(199, "Amelia Zoe", 24, "Female", "Sales And Marketing", 2016, 11500.0));
-        employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(200, "Jaden Dough", 38, "Male", "Security And Transport", 2015, 11000.5));
+        employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(199, "Amelia Zoe", 24, "Other", "Sales And Marketing", 2016, 11500.0));
+        employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(200, "Jaden Dough", 38, "Not Prefer to Say", "Security And Transport", 2015, 11000.5));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(211, "Jasna Kaur", 27, "Female", "Infrastructure", 2014, 15700.0));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(222, "Nitin Joshi", 25, "Male", "Product Development", 2016, 28200.0));
         employeeOfMicrosoftList.add(new EmployeeOfMicrosoft(233, "Jyothi Reddy", 27, "Female", "Account And Finance", 2013, 21300.0));
@@ -50,6 +50,8 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
         List<EmployeeOfMicrosoft> sortedByDOJEmployeeList = employeeOfMicrosoftList.stream().sorted(dojComparator).toList();
         System.out.println(sortedByDOJEmployeeList);
 
+        List<EmployeeOfMicrosoft> list = employeeOfMicrosoftList.stream().sorted(Comparator.comparingDouble(EmployeeOfMicrosoft::getSalary).reversed()).toList();
+
 
         // How many employees are there in the organization Department wise ?
         // For queries such as above where you need to group the input elements, use the Collectors.groupingBy() method.
@@ -58,12 +60,12 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
 
         Map<String, Long> noOfEmployeesDepartmentWiseInTheOrganization  = employeeOfMicrosoftList.stream().collect(Collectors.groupingBy(EmployeeOfMicrosoft::getDepartment, Collectors.counting()));
 
-        System.out.println(noOfEmployeesDepartmentWiseInTheOrganization);
+        System.out.println(" noOfEmployeesDepartmentWiseInTheOrganization "+noOfEmployeesDepartmentWiseInTheOrganization);
 
 
         // How many male and female employees are there in the organization?
         Map<String, Long>  noOfMaleFemaleInOrganization = employeeOfMicrosoftList.stream().collect(Collectors.groupingBy(EmployeeOfMicrosoft::getGender, Collectors.counting()));
-        System.out.println(noOfMaleFemaleInOrganization);
+        System.out.println("noOfMaleFemaleInOrganization"+ noOfMaleFemaleInOrganization);
 
 
         // Print the name of all departments in the organization?
@@ -89,7 +91,7 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
         // Integer result =  listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
         System.out.println(higestSalaryPaidEmployee);
 
-
+        employeeOfMicrosoftList.stream().max(Comparator.comparingDouble(EmployeeOfMicrosoft::getSalary)).get();
 
 
         boolean seen = false;
@@ -111,7 +113,7 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
         List<EmployeeOfMicrosoft> listOfEmployeeJoingDateGT2015 =employeeOfMicrosoftList.stream().filter(microsoft -> microsoft.getYearOfJoining() > 2015).collect(Collectors.toList());
 
         System.out.println(listOfEmployeeJoingDateGT2015);
-
+        ///employeeOfMicrosoftList.stream().filter(EmployeeOfMicrosoft::getYearOfJoining > 2015).collect(Collectors.toList());// error Method reference expression is not expected here
         // Count the number of employees in each department?
 
         Map<String, Long> numberOfEmployeeDepartmentWise = employeeOfMicrosoftList.stream().collect(Collectors.groupingBy(EmployeeOfMicrosoft::getDepartment, Collectors.counting()));
@@ -123,7 +125,7 @@ public class RealTimeQueriesUsingJava8FeaturesEmployeeManagementSystem {
        System.out.println(departmentWiseAverageSalary);
 
        //  Get the details of youngest male employee in the product development department?
-       EmployeeOfMicrosoft FemaleInProductDepartmentMinAge = employeeOfMicrosoftList.stream().filter(employeeOfMicrosoft -> employeeOfMicrosoft.getDepartment() == "Product Development" && employeeOfMicrosoft.getGender() == "Female").min(Comparator.comparingDouble(EmployeeOfMicrosoft::getAge)).get();
+       EmployeeOfMicrosoft FemaleInProductDepartmentMinAge = employeeOfMicrosoftList.stream().filter(employeeOfMicrosoft -> Objects.equals(employeeOfMicrosoft.getDepartment(), "Product Development") && Objects.equals(employeeOfMicrosoft.getGender(), "Female")).min(Comparator.comparingDouble(EmployeeOfMicrosoft::getAge)).get();
        System.out.println(FemaleInProductDepartmentMinAge);
 
         // What is the average salary of each department?

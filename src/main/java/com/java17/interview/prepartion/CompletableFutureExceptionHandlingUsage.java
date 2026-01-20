@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutionException;
 
 public class CompletableFutureExceptionHandlingUsage {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         // Example user ID (negative ID will simulate an error scenario)
         //int userId = -1;
 
@@ -17,17 +17,22 @@ public class CompletableFutureExceptionHandlingUsage {
             if (userId < 0) {
                 throw new IllegalArgumentException("User ID cannot be negative");
             }
+            System.out.println("Thread.currentThread().getName()"+Thread.currentThread().getName());
             return "User--" + userId;
         });
 
         // Step 2: Handle exception using `exceptionally`
         CompletableFuture<String> handledExceptionally = userDetailsFuture.exceptionally(ex -> {
-            System.out.println("Exception occurred: " + ex.getMessage());
+            if(ex!= null) {
+                System.out.println("Exception occurred: " + ex.getMessage());
+                System.out.println("Thread.currentThread().getName()" + Thread.currentThread().getName());
+            }
             return "Default User"; // Fallback value
         });
 
         // Step 3: Handle exception and result using `handle`
         CompletableFuture<String> handledWithHandle = userDetailsFuture.handle((result, ex) -> {
+            System.out.println("Thread.currentThread().getName()"+Thread.currentThread().getName());
             if (ex != null) {
                 System.out.println("Handling error with handle: " + ex.getMessage());
                 return "Handled User";
@@ -37,6 +42,7 @@ public class CompletableFutureExceptionHandlingUsage {
 
         // Step 4: Inspect the result or exception using `whenComplete`
         CompletableFuture<String> future = userDetailsFuture.whenComplete((result, ex) -> {
+            System.out.println("Thread.currentThread().getName()"+Thread.currentThread().getName());
             if (ex != null) {
                 System.out.println("whenComplete: An error occurred - " + ex.getMessage());
             } else {
@@ -44,11 +50,26 @@ public class CompletableFutureExceptionHandlingUsage {
             }
         });
 
+        CompletableFuture<String> safeFuture = userDetailsFuture
+                .whenComplete((result, ex) -> {
+                    if (ex != null) {
+                        System.out.println("whenComplete: An error occurred - " + ex.getMessage());
+                    } else {
+                        System.out.println("whenComplete: Successfully fetched - " + result);
+                    }
+                })
+                .exceptionally(ex -> "Recovered in safeFuture");
+
+        System.out.println("Safe future result: " + safeFuture.get());
+
         try {
             // Print the outcomes
             System.out.println("Result with exceptionally: " + handledExceptionally.get());
             System.out.println("Result with handle: " + handledWithHandle.get());
-            System.out.println(future.get());
+            //System.out.println(future.get());java.lang.IllegalArgumentException: User ID cannot be negative
+            //	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+            //	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2073)
+            //System.out.println(future.get());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }

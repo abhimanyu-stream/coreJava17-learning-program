@@ -29,7 +29,7 @@ interface FindSquareRoot{
 	}
 	default String defaultMethod(){
 		return "default";
-	}
+	}// its backward compatibility support
 
 
 }
@@ -37,7 +37,7 @@ class Labour implements  FindSquareRoot{
 
 	@Override
 	public double findsqrt(int n) {
-		return 0;
+		return Math.sqrt(n);
 	}
 
 	//@Override

@@ -33,7 +33,7 @@ public class TwoSumEqualTOTargetInSortedArrayAndMaxMinStreamAPI {
                 .flatMap(i -> IntStream.range(i + 1, nums.length)  // Ensure i != j to avoid duplicates and same index pairings
                         .filter(j -> nums[i] + nums[j] == target)  // Check sum condition
                         .mapToObj(j -> new int[]{nums[i], nums[j]})) // Create pair from nums[i] and nums[j]
-                .collect(Collectors.toList());
+                .toList();
 
         // Print the results
         System.out.println("no_collect");

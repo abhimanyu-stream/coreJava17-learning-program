@@ -21,6 +21,32 @@ public class FindDuplicatesElementsAndConvertStringToMapUsingStreamAPI {
         List<String> listChar = map.entrySet().stream().filter(f->f.getValue() >1L).map(Map.Entry :: getKey).toList();
         System.out.println("Duplicate elements in str "+listChar);
 
+// LinkedHashMap::new it preserves insertion order of incoming data
+        String str2 = "JavaJavaEE";
+        //System.out.println(Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
+        List<Character> c =  str2.chars()
+                .mapToObj( i->Character.toLowerCase((char) i))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new ,Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry->entry.getValue() > 1L)
+                .map(entry-> entry.getKey())//Map.Entry::getKey
+                .toList();
+
+
+        System.out.println(c);
+
+
+        String str3="collector";
+
+        //1.  convert into map
+        Map<String, Long> map3 = Arrays.stream(str3.split("")).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap ::new, Collectors.counting()));
+        System.out.println(map3);
+        List<String> listChar3 = map.entrySet().stream().filter(f->f.getValue() >1L).map(Map.Entry :: getKey).toList();
+        System.out.println("Duplicate elements in str "+listChar3);
+
+
+
+
 
         List<Integer> intList =  Arrays.asList(1,2,3,1,4,3,6);
         // Find duplicates

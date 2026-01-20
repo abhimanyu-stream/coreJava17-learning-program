@@ -45,9 +45,11 @@ public class RotateIntArrayNTimesEvenWhenNisLargerThanTheLengthOfTheArray {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
-        int n = 7; // Number of rotations
+        int n = 2; // Number of rotations //if n = 2 , Rotated Array: [4, 5, 1, 2, 3]
+        //if n = 7, output:- Rotated Array: [4, 5, 1, 2, 3]
 
         System.out.println("Original Array: " + Arrays.toString(arr));
+        Arrays.stream(arr).forEach(System.out::println);
 
         rotateArray(arr, n);
 

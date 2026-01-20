@@ -29,10 +29,10 @@ public class ValidParentheses {
                 stack.push(c);
             } else if (c == ')' || c == ']' || c == '}') {
                 if (stack.isEmpty()) {
-                    return false;
+                    return false;// because there is no opening bracket
                 }
                 char top = stack.pop();
-                if (c == ')' && top != '(') {
+                if (c == ')' && top != '(') { // to do a matching like ()  [ at first there should be (, then if a bracket comes during pop ) then there is success match]
                     return false;
                 }
                 if (c == ']' && top != '[') {
@@ -43,7 +43,7 @@ public class ValidParentheses {
                 }
             }
         }
-        return stack.isEmpty();
+        return stack.isEmpty();// true  when stack is empty
         /**
          * Final Check:
          * After processing all characters, if the stack is empty, it means all opening characters had matching closing characters, and the string is valid. The method returns true.

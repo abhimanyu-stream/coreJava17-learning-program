@@ -80,6 +80,7 @@ public class ConcurrentHashMapFailSafe {
             concurrentHashMap.put(4,"newEle3");
             concurrentHashMap.put(6,"newEle6");
             System.out.println("concurrentHashMap inside 3"+concurrentHashMap);
+            concurrentHashMap.remove(11);
             System.out.println(entryIterator.next());
         }
         System.out.println("concurrentHashMap 3"+concurrentHashMap);

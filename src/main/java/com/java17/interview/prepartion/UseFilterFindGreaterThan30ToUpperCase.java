@@ -37,6 +37,10 @@ public class UseFilterFindGreaterThan30ToUpperCase {
 
 
 
+        System.out.println("filter(offices -> offices.getAge() > 30).map(m->m.getLocation().toUpperCase())");
+        listOfOffice.stream().filter(offices -> offices.getAge() > 30).map(m->m.getLocation().toUpperCase()).forEach(System.out::println);
+
+
 
     }
 

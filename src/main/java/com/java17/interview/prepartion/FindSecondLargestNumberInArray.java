@@ -1,9 +1,7 @@
 package com.java17.interview.prepartion;
 
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class FindSecondLargestNumberInArray {
 
@@ -13,37 +11,17 @@ public class FindSecondLargestNumberInArray {
         int[] intArray = {5, 2, 10, 9, 8, 3};
 
 
+        int secondLargest =
+                Arrays.stream(intArray)
+                        .boxed()                // convert int → Integer
+                        .sorted(Comparator.reverseOrder())
+                        .skip(1)                // drop the largest
+                        .findFirst()
+                        .orElseThrow();
 
-        //int secondLargest = findSecondLargest(intArray);
-        //System.out.println(secondLargest);
-
-
-
-        int largest = Arrays.stream(intArray).max().getAsInt();
-        System.out.println("largest  " + largest);
-        int minValue = Arrays.stream(intArray).sorted().findFirst().getAsInt();
-        System.out.println("minValue " + minValue);
-
+        System.out.println(secondLargest);
 
 
-
-
-
-
-        List<Integer> listOfInt = new ArrayList<>();
-        for (int i : intArray) {
-            listOfInt.add(i);
-        }
-        //Find Second Largest in the List
-        Integer secondMax = listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
-        System.out.println("secondMax "+secondMax);
-
-
-        // Convert int array to ArrayList<Integer>
-        Integer[] inntegerArray = {5, 2, 10, 9, 8, 3};
-        List<Integer> intList = Arrays.asList(inntegerArray);
-        int secondMin = intList.stream().sorted(Comparator.naturalOrder()).skip(1).findFirst().get();
-        System.out.println("secondMin "+secondMin);
 
 
 
@@ -65,3 +43,10 @@ public class FindSecondLargestNumberInArray {
     }
 }
 
+//  List<Integer> integerList ->>> sorted(Comparator.reverseOrder())
+//   Map<String, Integer> map->> sorted(Collections.reverseOrder(Map.Entry.comparingByKey()))
+//  int[] intArray = {5, 2, 10, 9, 8, 3}; -->>   int largest = Arrays.stream(intArray).max().getAsInt();,     int min = Arrays.stream(intArray).min().getAsInt();,   int minValue = Arrays.stream(intArray).sorted().findFirst().getAsInt();// ascending order
+// Integer[] inntegerArray = {5, 2, 10, 9, 8, 3}; ->> List<Integer> intList = Arrays.asList(inntegerArray);
+// listOfInt.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+
+//intList.stream().sorted(Comparator.naturalOrder()).skip(1).findFirst().get();
