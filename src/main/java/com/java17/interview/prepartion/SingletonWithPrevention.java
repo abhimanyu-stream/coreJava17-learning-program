@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class SingletonWithPrevention implements Serializable, Cloneable {
 
 
-    private static SingletonWithPrevention singletonWithPrevention;
+    private static volatile  SingletonWithPrevention singletonWithPrevention;
 
     private SingletonWithPrevention(){
         if(singletonWithPrevention != null){

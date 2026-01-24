@@ -17,7 +17,8 @@ public class CountVowelsInEachObjectsInListUsingStreamAPI {
 
 
         String buffer = l1.stream()
-                .flatMap(s -> s.chars().mapToObj(c -> (char) c))
+                .flatMap(s -> s.chars()
+                        .mapToObj(c -> (char) c))
                 .filter(c -> "aeiouAEIOU".indexOf(c) != -1)
                 .map(String::valueOf)
                 .collect(Collectors.joining());

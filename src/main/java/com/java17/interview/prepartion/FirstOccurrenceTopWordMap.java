@@ -19,11 +19,27 @@ public class FirstOccurrenceTopWordMap {
         // ✅ Step 2 — find the entry with highest count; tie -> first in insertion order
         String topWord = freq.entrySet().stream()
                 //.max(Comparator.comparing(Map.Entry<String, Long>::getValue))
-                .max(Map.Entry.comparingByValue())
+                .max(Map.Entry.comparingByValue())// ok use of Comparator
                 .map(Map.Entry::getKey)
                 .orElse(null);
 
         System.out.println("Top word (first occurrence wins on tie): " + topWord);
+
+
+
+
+        String result = Arrays.stream(str2.toLowerCase().split("\\s+"))
+                .collect(Collectors.groupingBy(w -> w, Collectors.counting())) // Map<String, Long>
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())   // find entry with the highest frequency
+
+
+                .map(Map.Entry::getKey)              // get the word
+                .orElse(null);
+
+        System.out.println("Highest frequency word: " + result);
+
 
         /**
          * Output
