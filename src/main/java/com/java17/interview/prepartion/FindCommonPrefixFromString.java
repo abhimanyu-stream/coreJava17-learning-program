@@ -1,9 +1,15 @@
 package com.java17.interview.prepartion;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class FindCommonPrefixFromString {
     public static void main(String[] args) {
 
         String[] strArray = {"Docker","Double","DoublyLinkedList"};
+
+        Arrays.stream(strArray).sorted(Comparator.comparingInt(String::length)).toList();
+        Arrays.stream(strArray).max(Comparator.comparingInt(String::length)).get();
 
         String output = findMostCommonPrefix(strArray);
         System.out.println(output);

@@ -18,7 +18,7 @@ public class FirstHalfLowerSecondHalfUpperAndMaxByAndMaxAndReduce {
                 .orElse("");
 
         System.out.println("Longest string: " + longest1);
-
+        String longestString = Arrays.stream(strArray).max(Comparator.comparingInt(String::length)).get();
 
         List<String> strings = Arrays.asList("cat", "rabbit", "horse", "goat", "rooster", "ooooooooooooooo");
 
@@ -29,6 +29,9 @@ public class FirstHalfLowerSecondHalfUpperAndMaxByAndMaxAndReduce {
 
         System.out.println("Longest string: " + longest2);
         List<Integer> numbers = Arrays.asList(10, 25, 3, 67, 42);
+        Integer secodHighest = numbers.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+        Integer minumum = numbers.stream().min(Comparator.naturalOrder()).get();
+        Integer maximum = numbers.stream().max(Comparator.naturalOrder()).get();
 
         int min = numbers.stream()
                 .min(Comparator.naturalOrder())

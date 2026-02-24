@@ -32,6 +32,7 @@ public class ValidParentheses {
                     return false;// because there is no opening bracket
                 }
                 char top = stack.pop();
+                //closing brackets
                 if (c == ')' && top != '(') { // to do a matching like ()  [ at first there should be (, then if a bracket comes during pop ) then there is success match]
                     return false;
                 }

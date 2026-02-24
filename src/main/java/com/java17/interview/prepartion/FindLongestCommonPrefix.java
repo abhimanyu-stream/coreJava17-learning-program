@@ -1,10 +1,17 @@
 package com.java17.interview.prepartion;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class FindLongestCommonPrefix {
     public static void main(String[] args) {
-        String[] s = {"flower", "flow", "flight"};
+        String[] s = {"flower", "flow", "flight", "javaspringboothibernate"};
         String resuly = longestCommonPrefix(s);
         System.out.println(resuly);
+
+
+        String longestString = Arrays.stream(s).max(Comparator.comparingInt(String::length)).get();
+        System.out.println(longestString);
     }
 
     public static String longestCommonPrefix(String[] S) {

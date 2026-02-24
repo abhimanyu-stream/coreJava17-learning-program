@@ -10,7 +10,7 @@ public class DigitSum {
         scanner.close();
 
         //Enter a positive integer: 7982
-        int digit = 7982;
+        int digit = number;
 
 
         int sum = 0;

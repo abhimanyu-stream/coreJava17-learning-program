@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ public class StreamMapAndFlatMap {
         );
 
         List<Integer> flattenedList = listOfLists.stream()
-                .flatMap(list -> list.stream()) // Flattening step , From box1 box2 and box3 data collected in a single List Object , its job of flatMap
+                .flatMap(Collection::stream) // Flattening step , From box1 box2 and box3 data collected in a single List Object , its job of flatMap
                 .toList(); // Result: [1, 2, 3, 4, 5, 6, 7, 8]
 
         System.out.println("flattenedList : "+ flattenedList);
@@ -30,7 +31,7 @@ public class StreamMapAndFlatMap {
                 Arrays.asList("java"),
                 Arrays.asList("ejb")
         );
-        List<String> listStringresult  = listofListString.stream().flatMap(list-> list.stream()).map(m->m.toUpperCase()).toList();
+        List<String> listStringresult  = listofListString.stream().flatMap(Collection::stream).map(String::toUpperCase).toList();
         System.out.println(listStringresult);
 
 

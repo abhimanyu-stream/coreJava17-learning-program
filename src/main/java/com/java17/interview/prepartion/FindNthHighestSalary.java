@@ -52,7 +52,7 @@ public class FindNthHighestSalary {
                // .sorted(Map.Entry.<Integer, List<String>>comparingByKey().reversed()) both line are equivalent
                 .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
 
-                .skip(2)
+                .skip(3)
                 .findFirst();
 
         thirdHighest.ifPresent(System.out::println);
@@ -63,6 +63,80 @@ public class FindNthHighestSalary {
         //Uses Optional → avoids .get() crash
         //
         //No Collections.reverseOrder() needed
+
+        Map<String, Double> employeeSalaryMap = new HashMap<>();
+        employeeSalaryMap.put("Charlie", 5000.00);
+        employeeSalaryMap.put("Jenifer", 6000.00);
+        employeeSalaryMap.put("Cally", 6000.00);
+        employeeSalaryMap.put("Newton", 5000.00);
+        employeeSalaryMap.put("Madonna", 10000.00);
+
+      /*  Map<String, Integer> sortedMap =
+                employeeSalaryMap.entrySet()
+                        .stream()
+                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                        .collect(Collectors.toMap(
+                                Map.Entry::getKey,//Non-static method cannot be referenced from a static context
+                                Map.Entry::getValue,
+                                (e1, e2) -> e1,
+                                LinkedHashMap::new
+                        ));*/
+
+
+        /**
+         * employeeSalaryMap
+         *
+         */
+
+        // Step 1: Find 2nd highest salary value
+        double secondHighestSalary = employeeSalaryMap.values().stream()
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .skip(1)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No second highest salary found"));
+
+        // Step 2: Collect all employees having that salary
+        List<String> employeesWithSecondHighestSalary = employeeSalaryMap.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(secondHighestSalary))
+                .map(Map.Entry::getKey)
+                .toList();
+
+        System.out.println("Second Highest Salary = " + secondHighestSalary);
+        System.out.println("Employees with Second Highest Salary = " + employeesWithSecondHighestSalary);
+
+
+
+
+
+        // ✅ One-liner to find all employees having 2nd highest salary
+        List<String> secondhighestsalary =
+                employeeSalaryMap.entrySet().stream()
+                        .collect(Collectors.groupingBy(Map.Entry::getValue)) // Group by salary Map<Double, List<Map.Entry<String, Double>>>
+                        .entrySet().stream()
+                        .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())) //Set<Map.Entry<Double, List<Map.Entry<String, Double>>>>
+                        .skip(1) // skip highest salary group
+                        .findFirst() // get 2nd highest salary group
+                        .map(Map.Entry::getValue) // list of entries having that salary  List<Map.Entry<String, Double>
+                        .orElse(Collections.emptyList()) // fallback
+                        .stream()
+                        .map(Map.Entry::getKey)
+                        .toList();// List<String>
+
+        System.out.println("Employees with Second Highest Salary = " + secondhighestsalary);
+
+
+        Optional<Map.Entry<Double, List<String>>> first = employeeSalaryMap.entrySet().stream()
+                .collect(Collectors.groupingBy(Map.Entry::getValue,
+                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
+                .entrySet().stream()
+                // .sorted(Map.Entry.<Integer, List<String>>comparingByKey().reversed()) both line are equivalent
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+
+                .skip(1)
+                .findFirst();
+
+        first.ifPresent(System.out::println);
 
 
 
@@ -87,6 +161,9 @@ public class FindNthHighestSalary {
         //Collections.reverseOrder(Map.Entry.comparingByKey())
 
 
+
     }
+
+
 
 }

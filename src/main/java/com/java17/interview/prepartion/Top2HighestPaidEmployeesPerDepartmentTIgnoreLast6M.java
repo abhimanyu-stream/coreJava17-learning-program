@@ -49,7 +49,7 @@ public class Top2HighestPaidEmployeesPerDepartmentTIgnoreLast6M {
                                 Collectors.collectingAndThen(
                                         Collectors.toList(),
                                         list -> list.stream()
-                                                .sorted(Comparator.comparing(Empl::getSalary).reversed())
+                                                .sorted(Comparator.comparingDouble(Empl::getSalary).reversed())
                                                 .limit(2)
                                                 .map(Empl::getName)
                                                 .toList()

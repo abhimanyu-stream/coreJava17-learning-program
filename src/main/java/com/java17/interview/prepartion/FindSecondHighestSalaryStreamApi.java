@@ -15,6 +15,12 @@ public class FindSecondHighestSalaryStreamApi {
         employeeSalaryMap.put("Newton", 5000.00);
         employeeSalaryMap.put("Madonna", 10000.00);
 
+
+        /**
+         * employeeSalaryMap
+         *
+         */
+
         // Step 1: Find 2nd highest salary value
         double secondHighestSalary = employeeSalaryMap.values().stream()
                 .distinct()
@@ -51,6 +57,18 @@ public class FindSecondHighestSalaryStreamApi {
                         .toList();// List<String>
 
         System.out.println("Employees with Second Highest Salary = " + secondhighestsalary);
+
+/**
+ * Optional<Integer> secondHighest =
+ *                 employees.stream()
+ *                         .map(Employee::getSalary)
+ *                         .distinct()
+ *                         .sorted(Comparator.reverseOrder())
+ *                         .skip(1)
+ *                         .findFirst();
+ */
+
+
 
         /***
          *
