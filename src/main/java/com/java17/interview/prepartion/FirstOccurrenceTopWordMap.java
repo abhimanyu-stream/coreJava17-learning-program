@@ -21,10 +21,20 @@ public class FirstOccurrenceTopWordMap {
                 //.max(Comparator.comparing(Map.Entry<String, Long>::getValue))
                 .max(Map.Entry.comparingByValue())// ok use of Comparator
                 .map(Map.Entry::getKey)
+                //.get();// Optional.get()' without 'isPresent()' check
                 .orElse(null);
 
-        System.out.println("Top word (first occurrence wins on tie): " + topWord);
+        System.out.println("Top word (first occurrence wins on tie, with preserving insertion order): " + topWord);
 
+
+
+        //
+
+        String collect = freq.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                        .orElse(" no");
+        System.out.println("collect : "+collect);
 
 
 
@@ -38,7 +48,7 @@ public class FirstOccurrenceTopWordMap {
                 .map(Map.Entry::getKey)              // get the word
                 .orElse(null);
 
-        System.out.println("Highest frequency word: " + result);
+        System.out.println("Highest frequency word without preserving insertion order: " + result);
 
 
         /**

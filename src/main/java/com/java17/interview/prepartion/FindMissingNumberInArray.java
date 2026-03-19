@@ -12,7 +12,7 @@ public class FindMissingNumberInArray {
         int min = Collections.min(list);
         int max = Collections.max(list);
 
-        Integer maxxx = list.stream().max(Comparator.reverseOrder()).get();
+       // Integer maxxx = list.stream().max(Comparator.reverseOrder()).get();
         Integer minnn = list.stream().min(Comparator.naturalOrder()).get();
 
         Integer maxx = list.stream().max(Comparator.naturalOrder()).get();

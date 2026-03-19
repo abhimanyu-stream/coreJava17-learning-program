@@ -52,7 +52,7 @@ public class FindNthHighestSalary {
                // .sorted(Map.Entry.<Integer, List<String>>comparingByKey().reversed()) both line are equivalent
                 .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
 
-                .skip(3)
+                .skip(2)
                 .findFirst();
 
         thirdHighest.ifPresent(System.out::println);
@@ -137,6 +137,9 @@ public class FindNthHighestSalary {
                 .findFirst();
 
         first.ifPresent(System.out::println);
+        /**
+         *   SortByMultipleFields .forEach((k, v) -> System.out.println(k + " -> " + v));
+         */
 
 
 

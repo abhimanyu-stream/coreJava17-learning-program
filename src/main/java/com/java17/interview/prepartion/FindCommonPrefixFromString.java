@@ -10,6 +10,7 @@ public class FindCommonPrefixFromString {
 
         Arrays.stream(strArray).sorted(Comparator.comparingInt(String::length)).toList();
         Arrays.stream(strArray).max(Comparator.comparingInt(String::length)).get();
+       
 
         String output = findMostCommonPrefix(strArray);
         System.out.println(output);

@@ -6,7 +6,7 @@ package com.java17.interview.prepartion;
  * 2. Sealed classes/interfaces (finalized in Java 17)
  * 3. Pattern matching for instanceof (finalized in Java 16)
  */
-public class Java17FeaturesDemo {
+public class Java17Features {
 
     // ============================================
     // 1. RECORDS - Compact data carriers
@@ -265,9 +265,9 @@ public class Java17FeaturesDemo {
         
         // 2. Sealed Classes Demo
         System.out.println("2. SEALED CLASSES:");
-        Shape circle = new Java17FeaturesDemo().new Circle(5.0);
-        Shape rectangle = new Java17FeaturesDemo().new Rectangle(4.0, 6.0);
-        Shape triangle = new Java17FeaturesDemo().new EquilateralTriangle(5.0);
+        Shape circle = new Java17Features().new Circle(5.0);
+        Shape rectangle = new Java17Features().new Rectangle(4.0, 6.0);
+        Shape triangle = new Java17Features().new EquilateralTriangle(5.0);
         
         System.out.println("Circle area: " + circle.area());
         System.out.println("Rectangle area: " + rectangle.area());
@@ -284,7 +284,7 @@ public class Java17FeaturesDemo {
         System.out.println("Shape Analysis:");
         System.out.println(analyzeShape(circle));
         System.out.println(analyzeShape(rectangle));
-        System.out.println(analyzeShape(new Java17FeaturesDemo().new Rectangle(5.0, 5.0)));
+        System.out.println(analyzeShape(new Java17Features().new Rectangle(5.0, 5.0)));
         System.out.println();
         
         // Payment processing with sealed interfaces and pattern matching

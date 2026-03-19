@@ -25,6 +25,20 @@ public class Factorial {
 		//6*4= 24
 		//24*5= 120
 
+		//Enter a positive integer: 7982
+		int number = 7982;
+		int digit = number;
+
+
+		 sum = 0;
+
+		while (digit != 0) {
+			sum += digit % 10; // take last digit
+			digit = digit / 10; // remove last digit
+		}
+
+		System.out.println(sum); // 26
+
 
 	}
 

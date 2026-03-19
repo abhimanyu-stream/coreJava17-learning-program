@@ -21,5 +21,10 @@ public class AlphabeticalSort {
                 .chars()
                 .sorted()
                 .forEach(c -> System.out.print((char) c));
+
+
+
+        Arrays.stream(s.toLowerCase().split("")).sorted(Comparator.naturalOrder()).forEach(System.out::print);
+
     }
 }

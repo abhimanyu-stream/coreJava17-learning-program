@@ -31,7 +31,18 @@ public class Top5NamesByDepartment {
                 new Employees("Paul",    "Finance",   160_000),
                 new Employees("Quinn",   "Finance",   130_000)
         );
-
+/**
+ *  .sorted(
+ *                                 Map.Entry.comparingByValue(Comparator.reverseOrder())
+ *
+ *                         )
+ *
+ *
+ *                          .sorted(
+ *                                 Map.Entry.<String, Integer>comparingByValue(Comparator.reverseOrder())
+ *                                         .thenComparing(Map.Entry.comparingByKey())
+ *                         )
+ */
         Map<String, List<String>> top5NamesByDept =
                 employees.stream()
                         .collect(Collectors.groupingBy(

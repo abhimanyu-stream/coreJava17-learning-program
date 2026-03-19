@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BankExample {
+public class BankFindTotalSumByAccountTypeOrCustomerWise {
 
     public static void main(String[] args) {
 
@@ -28,7 +28,7 @@ public class BankExample {
         // Group by AccountType & sum of balances
         // -----------------------------------------
 
-        Map<AccountType, BigDecimal> result =
+        Map<AccountType, BigDecimal> totalAmountByAccountTypeInThisBank =
                 customers.stream()
                         .flatMap(c -> c.getAccounts().stream())   // flatten all accounts
                         .collect(Collectors.groupingBy(
@@ -40,13 +40,15 @@ public class BankExample {
                                 )
                         ));
 
+        System.out.println("Map<AccountType, BigDecimal> totalAmountByAccountTypeInThisBank:" +totalAmountByAccountTypeInThisBank);
+
         // Print Output
-        result.forEach((type, total) ->
+        totalAmountByAccountTypeInThisBank.forEach((type, total) ->
                 System.out.println(type + " : " + total));
 
 
 
-        Map<String, BigDecimal> customerTotalBalance =
+        Map<String, BigDecimal> customerNameWiseTotalBalanceInItsAccount =
                 customers.stream()
                         .collect(Collectors.toMap(
                                 Customer::getName,
@@ -55,7 +57,9 @@ public class BankExample {
                                         .reduce(BigDecimal.ZERO, BigDecimal::add)
                         ));
 
-        customerTotalBalance.forEach((name, total) ->
+        System.out.println(" Map<String, BigDecimal> customerNameWiseTotalBalanceInItsAccount :"+customerNameWiseTotalBalanceInItsAccount);
+
+        customerNameWiseTotalBalanceInItsAccount.forEach((name, total) ->
                 System.out.println(name + " : " + total));
 
 
@@ -67,6 +71,9 @@ public class BankExample {
                                         .map(Account::getBalance)
                                         .reduce(BigDecimal.ZERO, BigDecimal::add)
                         ));
+
+
+        System.out.println("Map<Customer, BigDecimal> totals :"+ totals);
         totals.forEach((customer, amount) ->
                 System.out.println(customer.getName() + " ::: " + amount)
         );
@@ -103,6 +110,14 @@ class Account {
     public BigDecimal getBalance() {
         return balance;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountType=" + accountType +
+                ", balance=" + balance +
+                '}';
+    }
 }
 
 class Customer {
@@ -120,5 +135,13 @@ class Customer {
 
     public List<Account> getAccounts() {
         return accounts;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", accounts=" + accounts +
+                '}';
     }
 }

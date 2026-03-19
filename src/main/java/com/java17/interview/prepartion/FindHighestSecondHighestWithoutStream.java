@@ -6,7 +6,8 @@ import java.util.Comparator;
 public class FindHighestSecondHighestWithoutStream {
     public static void main(String[] args) {
 
-        int arr[] = {120, 456, 789, 90};
+        int[] arr = {120, 456, 789, 90};
+
 
         if (arr.length < 2) {
             System.out.println("Array must contain at least two elements");
@@ -26,6 +27,9 @@ public class FindHighestSecondHighestWithoutStream {
                 secondLargest = num;
             }
         }
+
+
+
 
         System.out.println("Largest: " + largest);
         System.out.println("Second Largest: " + secondLargest);
@@ -55,6 +59,6 @@ public class FindHighestSecondHighestWithoutStream {
 
         Integer min = Arrays.stream(arr).boxed().min(Comparator.naturalOrder()).get();
         Integer max = Arrays.stream(arr).boxed().max(Comparator.naturalOrder()).get();
-        Integer secondLargest = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
+        Integer secondLargesttt = Arrays.stream(arr).boxed().sorted(Comparator.reverseOrder()).skip(1).findFirst().get();
     }
 }
