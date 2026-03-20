@@ -20,6 +20,37 @@ public class FirstHalfLowerSecondHalfUpperAndMaxByAndMaxAndReduce {
         System.out.println("Longest string: " + longest1);
         String longestString = Arrays.stream(strArray).max(Comparator.comparingInt(String::length)).get();
 
+        String collect = Arrays.stream(strArray).sorted(Comparator.comparingInt(String::length)).map(String::valueOf).collect(Collectors.joining(" "));
+        System.out.println("collect :"+ collect);
+
+
+//Sort by length and collect to List
+        List<String> sortedList = Arrays.stream(strArray)
+                .sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.toList());
+
+        System.out.println(sortedList);
+
+
+//Sort in reverse (largest first)
+        List<String> sortedDesc = Arrays.stream(strArray)
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .collect(Collectors.toList());
+
+
+        //Sort alphabetically
+        List<String> alphaSort = Arrays.stream(strArray)
+                .sorted()
+                .collect(Collectors.toList());
+
+
+
+        //Collect back to array
+        String[] sortedArray = Arrays.stream(strArray)
+                .sorted(Comparator.comparingInt(String::length))
+                .toArray(String[]::new);
+
+
         List<String> strings = Arrays.asList("cat", "rabbit", "horse", "goat", "rooster", "ooooooooooooooo");
 
         String longest2 = strings.stream()

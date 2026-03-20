@@ -2,6 +2,7 @@ package com.java17.interview.prepartion;
 
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 public class TreeMapSortingMechanismDeepUnderstanding {
@@ -25,8 +26,11 @@ public class TreeMapSortingMechanismDeepUnderstanding {
 
 
         Map<UserKanak, String> mapCustomSort = new TreeMap<>(
-                Comparator.comparing(u -> u.name)
+                //Comparator.comparing(u -> u.name) it can cause Comparator Risk: Duplicate Keys by Name
                 //(u1, u2) -> u1.name.compareTo(u2.name)
+
+                Comparator.comparing((UserKanak u) -> u.name)
+                        .thenComparing(u -> u.id)
         );
 
         mapCustomSort.put(new UserKanak(3, "Aman"), "User3");
@@ -55,11 +59,24 @@ class UserKanak implements Comparable<UserKanak> {
     // Natural ordering (by id)
     @Override
     public int compareTo(UserKanak o) {
-        return this.id - o.id;
+        //return this.id - o.id; it can cause Integer.MAX_VALUE - (-1)  // overflow
+        return Integer.compare(this.id, o.id);
     }
 
     @Override
     public String toString() {
         return id + " - " + name;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserKanak)) return false;
+        UserKanak u = (UserKanak) o;
+        return id == u.id && Objects.equals(name, u.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

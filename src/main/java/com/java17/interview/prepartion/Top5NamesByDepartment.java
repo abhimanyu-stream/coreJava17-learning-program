@@ -52,6 +52,7 @@ public class Top5NamesByDepartment {
                                         list -> list.stream()
                                                 //.sorted(Comparator.comparing(Employees::getSalary).reversed()) its also ok
                                                 .sorted(Comparator.comparingDouble(Employees::getSalary).reversed())
+                                                //  .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
 
                                                 .limit(5)
                                                 .map(Employees::getName)

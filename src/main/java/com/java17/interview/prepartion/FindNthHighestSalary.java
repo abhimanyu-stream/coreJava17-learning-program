@@ -115,6 +115,7 @@ public class FindNthHighestSalary {
                         .collect(Collectors.groupingBy(Map.Entry::getValue)) // Group by salary Map<Double, List<Map.Entry<String, Double>>>
                         .entrySet().stream()
                         .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder())) //Set<Map.Entry<Double, List<Map.Entry<String, Double>>>>
+                        //.sorted(Comparator.comparingDouble(Employees::getSalary).reversed())
                         .skip(1) // skip highest salary group
                         .findFirst() // get 2nd highest salary group
                         .map(Map.Entry::getValue) // list of entries having that salary  List<Map.Entry<String, Double>
