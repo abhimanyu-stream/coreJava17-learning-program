@@ -26,7 +26,7 @@ public class MoveZeros {
             System.out.print(num + " ");
         }
 
-
+        System.out.println();
 
         long zeroCount = Arrays.stream(arr).filter(x -> x == 0).count();
 
@@ -37,5 +37,6 @@ public class MoveZeros {
 
         // Print result
         Arrays.stream(result).forEach(x -> System.out.print(x + " "));
+
     }
 }

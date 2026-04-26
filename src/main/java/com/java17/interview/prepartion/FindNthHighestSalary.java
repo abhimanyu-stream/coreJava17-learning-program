@@ -127,6 +127,19 @@ public class FindNthHighestSalary {
         System.out.println("Employees with Second Highest Salary = " + secondhighestsalary);
 
 
+        List<String> list = employeeSalaryMap.entrySet().stream()
+                .collect(Collectors.groupingBy(Map.Entry::getValue))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+                .skip(1)
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse(Collections.emptyList())
+                .stream()
+                .map(Map.Entry::getKey)
+                .toList();
+
+
         Optional<Map.Entry<Double, List<String>>> first = employeeSalaryMap.entrySet().stream()
                 .collect(Collectors.groupingBy(Map.Entry::getValue,
                         Collectors.mapping(Map.Entry::getKey, Collectors.toList())))

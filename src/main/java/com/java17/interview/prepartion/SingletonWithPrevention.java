@@ -12,6 +12,7 @@ public final class SingletonWithPrevention implements Serializable, Cloneable {
      * Use:
      *
      * final class
+     * private constructor
      *
      * volatile instance
      *
