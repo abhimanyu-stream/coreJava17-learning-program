@@ -23,7 +23,7 @@ public class StringReverseInPlace {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        System.out.println(fullReverse);
+        System.out.println(fullReverse);//seireS gnidoC avaJ
 
 
         /**
@@ -51,7 +51,7 @@ public class StringReverseInPlace {
                 .map(word -> new StringBuilder(word).reverse().toString())
                 .collect(Collectors.joining(" "));
 
-        System.out.println(reverseEachWordKeepPositionsSame);
+        System.out.println(reverseEachWordKeepPositionsSame);//avaJ gnidoC seireS
 
         String result = Arrays.stream(str.split(" "))
                 .map(word -> IntStream.range(0, word.length())
@@ -69,7 +69,7 @@ public class StringReverseInPlace {
         String WordOrderReverse = words.stream()
                 .collect(Collectors.joining(" "));
 
-        System.out.println(WordOrderReverse);
+        System.out.println(WordOrderReverse);//Series Coding Java
 
 
 
