@@ -237,6 +237,15 @@ public class TwoSumFindIndexesIntArray {
                         )
                 );
         System.out.println(mirrorString);
+        //3WordOrderReverse
+        List<String> words = Arrays.asList(str23.split(" "));
+        Collections.reverse(words);
+
+        String WordOrderReverse = words.stream()
+                .collect(Collectors.joining(" "));
+
+        System.out.println(WordOrderReverse);//Series Coding Java
+
 
 
     }

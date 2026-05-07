@@ -41,7 +41,7 @@ public class ThirdHighestSalariedByAge {
 
             List<EmployeeHcl> result = emplist.stream()
                     .filter(e -> e.getSalary() == salary)
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList());// mutable list
 
            result.stream().forEach(System.out::println);
            result.stream().forEach(e->System.out.println(e.name));

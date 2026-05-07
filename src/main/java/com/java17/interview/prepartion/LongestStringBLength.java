@@ -44,6 +44,10 @@ public class LongestStringBLength {
         List<String> list = words.stream()
                 .sorted(Comparator.comparingInt(String::length)).toList();
 
+        List<String> reversed = words.stream()
+                .sorted(Comparator.comparingInt(String::length).reversed()).toList();
+
+
 
         /**
          *

@@ -64,6 +64,12 @@ public class Top5NamesByDepartment {
         top5NamesByDept.forEach((dept, names) ->
                 System.out.println(dept + " -> " + names)
         );
+
+        /**
+         * Finance -> [Paul, Leo, Nina, Mona, Oscar]
+         * HR -> [Jane, Hannah, Grace, Ian, Kevin]
+         * IT -> [David, Alice, Charlie, Eve, Bob]
+         */
     }
 }
 

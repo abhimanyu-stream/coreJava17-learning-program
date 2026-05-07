@@ -12,7 +12,7 @@ public class Factorial {
 		Scanner scanner = new Scanner(System.in);
 		int factorialOf = scanner.nextInt();
 		int sum = 1;//as Factorial of 0! is 1, 1! is 1 and no factorial for -ve number
-		for(int i = 1; i <= factorialOf; i++){
+		for(int i = 1; i <= factorialOf; i++){ //in FibonacciSeries for(int i =0; i < count; i++) {/
 			sum =sum * i;// 1 * 1 + 1 * 2 + 3 * 3 + 12 * 4 + () * 5 = 120                   //[ do not sum +=sum * i]
 		}
 		System.out.println("Factorial of "+factorialOf+ " is "+sum);

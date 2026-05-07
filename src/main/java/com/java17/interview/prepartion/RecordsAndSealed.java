@@ -24,7 +24,7 @@ public class RecordsAndSealed {
             case VoucherPayment c -> System.out.println("v");
 
 
-
+            default -> throw new IllegalStateException("Unexpected value: " + payment);
         }
     }
 }
@@ -34,7 +34,7 @@ public class RecordsAndSealed {
         return "UserRecord :"+ id + "-" + name;
     }
  }
-sealed abstract class Paymentz
+sealed  abstract class Paymentz
         permits CashPayments, CreditCardPaymens, UpiPayments, VoucherPayment {
 }
 
@@ -54,8 +54,7 @@ sealed abstract class Paymentz
 class NewPays extends  VoucherPayment{
     //ok
 }
- sealed interface Result
-        permits Success, Failure {
+ sealed interface Result permits Success, Failure {
 }
 
  record Success(String data) implements Result {}

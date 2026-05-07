@@ -7,7 +7,8 @@ import java.util.Objects;
 public class ConvertStatusEmployee {
 
     public static void main(String[] args) {
-        List<Employ> employees = Arrays.asList( new Employ(101, "Alice", "Active"),
+        List<Employ> employees = Arrays.asList(
+                new Employ(101, "Alice", "Active"),
 
                  new Employ(102, "Bob", "Inactive"),
 
@@ -22,8 +23,8 @@ System.out.println(list);
                         return new Employ(e.getId(), e.getName(), "Inactive");
                     }
                     return e;
-                })
-                .toList();
+                })//close map
+                .toList();//immutable
         System.out.println(list2);
 
 

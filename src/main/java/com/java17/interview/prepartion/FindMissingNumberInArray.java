@@ -36,6 +36,7 @@ public class FindMissingNumberInArray {
         // Find missing numbers using Set
         List<Integer> missingNumbersss = IntStream.rangeClosed(min, max)
                 .filter(num -> !numberSet.contains(num))
+                // .filter(num -> !list.contains(num))
                 .boxed()
                 .toList();
 

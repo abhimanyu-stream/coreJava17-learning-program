@@ -11,7 +11,7 @@ public class FindPrimeNumbersBetween1ToN {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        findAllPrime(n);
+        findAllPrime(n);// 2 to 100, j=2, i=1, <= both
 
         System.out.println("Prime numbers between 1 to " + n + " are:");
         for (int j = 2; j <= n; j++) {
