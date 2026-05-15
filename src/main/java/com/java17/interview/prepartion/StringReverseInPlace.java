@@ -68,8 +68,23 @@ public class StringReverseInPlace {
 
         String WordOrderReverse = words.stream()
                 .collect(Collectors.joining(" "));
-
+        //Input: "Hello, world!  How are you?"
+        //
+        //    Output: "you? are How  world! Hello,"
+        //
         System.out.println(WordOrderReverse);//Series Coding Java
+        String str23 = "Hello, world!  How are you?";
+
+        String mirrorString = Arrays.stream(str23.split(" "))
+                .collect(Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                listt -> {
+                                    Collections.reverse(listt);
+                                    return String.join(" ", listt);
+
+                                }
+                        )
+                );
 
 
 

@@ -28,6 +28,19 @@ public class BankFindTotalSumByAccountTypeOrCustomerWise {
         // Group by AccountType & sum of balances
         // -----------------------------------------
 
+
+
+
+        customers.stream()
+                .flatMap(customer -> customer.getAccounts().stream())
+                .collect(Collectors.groupingBy(
+                        Account::getAccountType,
+                        Collectors.reducing(
+                                BigDecimal.ZERO, Account::getBalance,BigDecimal::add
+                        )
+
+                ));
+
         Map<AccountType, BigDecimal> totalAmountByAccountTypeInThisBank =
                 customers.stream()
                         .flatMap(c -> c.getAccounts().stream())   // flatten all accounts
@@ -46,7 +59,14 @@ public class BankFindTotalSumByAccountTypeOrCustomerWise {
         totalAmountByAccountTypeInThisBank.forEach((type, total) ->
                 System.out.println(type + " : " + total));
 
+        customers.stream()
+                .collect(Collectors.toMap(
+                        Customer::getName,
+                        customer -> customer.getAccounts().stream()
+                                .map(Account::getBalance)
+                                .reduce(BigDecimal.ZERO,BigDecimal::add)
 
+                ));
 
         Map<String, BigDecimal> customerNameWiseTotalBalanceInItsAccount =
                 customers.stream()

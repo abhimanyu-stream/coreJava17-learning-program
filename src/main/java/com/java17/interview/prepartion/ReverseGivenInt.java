@@ -8,7 +8,25 @@ public class ReverseGivenInt {
         int reversedNumber2 = reverseDigits2(number);
         System.out.println("reversedNumber "+reversedNumber);
         System.out.println("reversedNumber2 "+reversedNumber2);
+        //Enter a positive integer: 7982
+        //int number = 7982;
+        int digit = number;
 
+
+        int sum = 0;
+
+        while (digit != 0) {
+            sum += digit % 10; // take last digit
+            digit = digit / 10; // remove last digit
+        }
+
+        System.out.println(sum); // 26
+
+         sum = 1;//as Factorial of 0! is 1, 1! is 1 and no factorial for -ve number
+        for(int i = 1; i <= 5; i++){ //in FibonacciSeries for(int i =0; i < count; i++) {/
+            sum =sum * i;// 1 * 1 + 1 * 2 + 3 * 3 + 12 * 4 + () * 5 = 120                   //[ do not sum +=sum * i]
+        }
+        System.out.println("Factorial of "+5+ " is "+sum);
     }
 
     private static int reverseDigits2(int number) {

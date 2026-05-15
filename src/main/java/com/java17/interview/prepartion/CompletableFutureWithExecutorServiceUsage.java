@@ -9,12 +9,21 @@ public class CompletableFutureWithExecutorServiceUsage {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
-        //Executors.newCachedThreadPool()
-        //Executors.newScheduledThreadPool()
-        //Executors.newSingleThreadExecutor()
-        //Executors.newSingleThreadScheduledExecutor()
-        //Executors.newWorkStealingPool()
+
+        CompletableFuture.supplyAsync(() -> {
+                    return "Hello";
+                })
+                .thenApply(result -> {
+                    return result + " World";
+                })
+                .thenAccept(System.out::println);
+
+        ExecutorService executorService = Executors.newFixedThreadPool(2);//1
+        //Executors.newCachedThreadPool()//2
+        //Executors.newScheduledThreadPool()//3
+        //Executors.newSingleThreadExecutor()//4
+        //Executors.newSingleThreadScheduledExecutor()//5
+        //Executors.newWorkStealingPool()//6
 
         try {
             CompletableFuture<String> productDetailsFuture = CompletableFuture.supplyAsync(() -> {
@@ -61,3 +70,31 @@ public class CompletableFutureWithExecutorServiceUsage {
         }
     }
 }
+/**
+ * Important Methods
+ * Method	                 Purpose
+ * thenApply()	          Transform result
+ * thenAccept()  	      Consume result
+ * thenRun()	          Run next task
+ * thenCompose()	      FlatMap async calls
+ * thenCombine()	     Combine two futures
+ * exceptionally()	     Handle exception
+ * Real-World Example
+ * CompletableFuture.supplyAsync(() -> getUser())
+ *     .thenCompose(user -> getOrders(user))
+ *     .thenApply(orders -> calculatePrice(orders))
+ *     .exceptionally(ex -> {
+ *         return 0;
+ *     });
+ * Benefits
+ * Non-blocking
+ * Parallel execution
+ * Better than nested callbacks
+ * Better resource utilization
+ * Interview Difference
+ * Feature	Future	CompletableFuture
+ * Blocking	Yes	No
+ * Chaining	No	Yes
+ * Callback support	No	Yes
+ * Combination support	No	Yes
+ */

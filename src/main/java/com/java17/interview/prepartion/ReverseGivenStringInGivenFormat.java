@@ -1,5 +1,9 @@
 package com.java17.interview.prepartion;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 public class ReverseGivenStringInGivenFormat {
 
     public static void main(String[] args) {
@@ -10,6 +14,21 @@ public class ReverseGivenStringInGivenFormat {
         String input ="I am a java developer";
         String output = reverseAsMirror(input);
         System.out.println(output);
+
+        //Input:you? are How  world! Hello,
+        String str23 = "Hello, world!  How are you?";
+
+        String mirrorString = Arrays.stream(str23.split(" "))
+                .collect(Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                listt -> {
+                                    Collections.reverse(listt);
+                                    return String.join(" ", listt);
+
+                                }
+                        )
+                );
+        System.out.println(mirrorString);
     }
 
     public static String reverseAsMirror(String input) {

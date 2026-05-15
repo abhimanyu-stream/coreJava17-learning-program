@@ -53,7 +53,7 @@ public class FindNthHighestSalary {
                 .collect(Collectors.groupingBy(Map.Entry::getValue,
                         Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
                 .entrySet().stream()
-                .sorted(Map.Entry.<Double, List<String>>comparingByKey().reversed())
+                .sorted(Map.Entry.<Double, List<String>>comparingByKey().reversed())//salary
                 .skip(n - 1)
                 .findFirst()
                 .map(Map.Entry::getValue)
