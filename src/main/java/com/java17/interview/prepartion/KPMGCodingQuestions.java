@@ -2,6 +2,8 @@ package com.java17.interview.prepartion;
 
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class KPMGCodingQuestions {
 
@@ -76,7 +78,62 @@ public class KPMGCodingQuestions {
         for (char c : str.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        System.out.println(map);
+        System.out.println("charFrequency" +map);
+
+        /**
+         * Example
+         *
+         * For string: "aab"
+         *
+         * Iteration 1: 'a'
+         * getOrDefault('a', 0) → 0
+         * 0 + 1 = 1
+         * map → {a=1}
+         * Iteration 2: 'a'
+         * getOrDefault('a', 0) → 1
+         * 1 + 1 = 2
+         * map → {a=2}
+         * Iteration 3: 'b'
+         * getOrDefault('b', 0) → 0
+         * 0 + 1 = 1
+         * map → {a=2, b=1}
+         */
+
+        LinkedHashMap<String, Long> collect = Arrays.stream(str.split("")).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()));
+        System.out.println("collect"+collect);
+
+        LinkedHashMap<Character, Long> collect2 =
+                str.chars()
+                        .mapToObj(c -> (char) c)
+                        .collect(Collectors.groupingBy(
+                                Function.identity(),
+                                LinkedHashMap::new,
+                                Collectors.counting()
+                        ));
+
+        System.out.println("collect2"+collect2);
+
+        /**
+         * Why this works
+         * str.chars() → gives IntStream
+         * .mapToObj(c -> (char) c) → converts each int to Character
+         * groupingBy(...) → now groups Character instead of String
+         * LinkedHashMap::new → preserves insertion order
+         *
+         *
+         */
+
+        LinkedHashMap<Character, Long> collect3 =
+                str.chars()
+                        .mapToObj(c -> (char) c)
+                        .collect(Collectors.groupingBy(
+                                c -> c,
+                                LinkedHashMap::new,
+                                Collectors.counting()
+                        ));
+
+        System.out.println("collect3"+collect3);
+
     }
 
     // 8. Anagram check
@@ -197,16 +254,16 @@ public class KPMGCodingQuestions {
         System.out.println(secondLargest(arr2));
 
         System.out.println(removeDuplicates("programming"));
-        charFrequency("hello");
+        charFrequency("hellooo");
 
         System.out.println(isAnagram("listen", "silent"));
 
         fibonacci(5);
 
         int[] miss = {1,2,4,5};
-        System.out.println(missingNumber(miss, 5));
+        System.out.println("missingNumber"+missingNumber(miss, 5));
 
-        System.out.println(longestSubstring("abcabcbb"));
+        System.out.println("longestSubstring"+longestSubstring("abcabcbb"));
 
         int[] dnf = {0,2,1,2,0};
         sort012(dnf);

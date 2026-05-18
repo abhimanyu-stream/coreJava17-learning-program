@@ -17,6 +17,9 @@ Java 17 includes several garbage collection improvements and options to optimize
 **Use Case Example:**
 ```bash
 java -XX:+UseSerialGC -Xms512m -Xmx512m -jar small-batch-app.jar
+
+java -XX:+UseSerialGC _Xms512m -Xmx1Gi -jar app.jar;
+
 ```
 Suitable for: Batch processing jobs, command-line tools, applications with heap < 100MB
 

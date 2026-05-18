@@ -50,5 +50,12 @@ public class PrintStringInReverseOrder {
 
         System.out.println(reversedWords);
 
+        String word = "SONGS";
+        String reversedO = IntStream.range(0, word.length())
+                .mapToObj(i -> String.valueOf(word.charAt(word.length() - 1 - i)))
+                .collect(Collectors.joining());
+        System.out.println("reversedO " +reversedO);
+
+
     }
 }
