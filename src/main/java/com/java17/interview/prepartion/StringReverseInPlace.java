@@ -17,6 +17,14 @@ public class StringReverseInPlace {
 
         String str = "Java Coding Series";
 
+        String[] words = str.split(" ");
+        for (String word : words) {
+            System.out.println(word);
+        }
+        String[] words2 = str.split(",\\s*");//
+        for (String word : words2) {
+            System.out.println(word);
+        }
 
         String fullReverse = IntStream.range(0, str.length())
                 .mapToObj(i -> str.charAt(str.length() - 1 - i))
@@ -63,16 +71,18 @@ public class StringReverseInPlace {
 
 
         //3WordOrderReverse
-        List<String> words = Arrays.asList(str.split(" "));
-        Collections.reverse(words);
+        List<String> words5 = Arrays.asList(str.split(" "));
+        Collections.reverse(words5);
 
-        String WordOrderReverse = words.stream()
+        String WordOrderReverse = words5.stream()
                 .collect(Collectors.joining(" "));
         //Input: "Hello, world!  How are you?"
         //
         //    Output: "you? are How  world! Hello,"
         //
         System.out.println(WordOrderReverse);//Series Coding Java
+
+        
         String str23 = "Hello, world!  How are you?";
 
         String mirrorString = Arrays.stream(str23.split(" "))

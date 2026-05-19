@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.java17.interview.prepartion</groupId>
-	<artifactId>corejava17programs</artifactId>
+	<artifactId>CoreJava17-Programs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>corejava17programs</name>
 	<description>Technical Programs</description>
