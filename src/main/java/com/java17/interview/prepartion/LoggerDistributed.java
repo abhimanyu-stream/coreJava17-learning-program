@@ -44,7 +44,7 @@ enum LoggerLevel { INFO, DEBUG, ERROR }
 class AsyncLogger {
     private static AsyncLogger instance;
     private BlockingQueue<String> queue = new LinkedBlockingQueue<>();
-    private final String fileName = "app.log";
+    private final String fileName = "E:/app.log";
     private final long MAX_SIZE = 1024 * 5; // 5 KB for demo
 
     private AsyncLogger() {
