@@ -36,25 +36,20 @@ public class MaxSumOfConsecutiveElements {
         int sumOfAllElements = Arrays.stream(arr2).reduce(Integer::sum).getAsInt();
         System.out.println("sumOfAllElements "+sumOfAllElements);
 
-        int maxSum = 0;
-        int currentSum = 0;
-        for(int i = 0; i < arr2.length; i++){
+        int[] arr = {-2, -3, -1, -5};
 
-            currentSum += arr2[i];
-            if(currentSum > maxSum){
-                maxSum = currentSum;
+int maxSum = arr[0];
+int currentSum = arr[0];
 
+for (int i = 1; i < arr.length; i++) {
+    currentSum = Math.max(arr[i], currentSum + arr[i]);
+    maxSum = Math.max(maxSum, currentSum);
+}
 
-            }
-            if(currentSum < 0 ){
-                //reset for any -ve input to zero
-                currentSum = 0;
-            }
-
+System.out.println("Maximum Subarray Sum = " + maxSum);
         }
 
-        // Print the maximum sum
-        System.out.println(maxSum);
-    }
+        
+    
 }
 
