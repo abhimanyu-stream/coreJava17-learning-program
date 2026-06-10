@@ -30,7 +30,7 @@ public class SortByDOJComparator {
 
         //listOfEmployee.stream().sorted(Comparator.comparingInt(Employee::getAge)).toList();
         System.out.println("sortedTankListByMonthOfDate  " + sortedTankListByMonthOfDate);
-        ///tankList.stream().sorted(Comparator.comparingInt(Tank::getDateofEnforcement).reversed()).toList();//reason: Incompatible types: LocalDate is not convertible to int
+        tankList.stream().sorted(Comparator.comparing(Tank::getDateofEnforcement).reversed()).toList();//reason: Incompatible types: LocalDate is not convertible to int
 
 
         // Approach - 2: Sort by tank name length in descending order

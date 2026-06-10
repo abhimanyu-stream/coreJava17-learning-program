@@ -16,9 +16,33 @@ public class FindCommonAmong3Array {
         // int[] A = {2, 5, 10, 30, 20};
         //int[] B = {5, 20, 34};
         //int[] C = {5, 13, 19, 20};
-        int[] A = {2, 5, 10, 30};
+        //int[] A = {2, 5, 10, 30};
+        //int[] B = {5, 20, 34};
+        //int[] C = {5, 13, 19};
+
+
+
+        int[] A = {2, 5, 10, 30, 20};
         int[] B = {5, 20, 34};
-        int[] C = {5, 13, 19};
+        int[] C = {5, 13, 19, 20};
+
+        Set<Integer> set1 = Arrays.stream(A)
+                                  .boxed()
+                                  .collect(Collectors.toSet());
+
+        Set<Integer> set2 = Arrays.stream(B)
+                                  .boxed()
+                                  .collect(Collectors.toSet());
+
+        Set<Integer> set3 = Arrays.stream(C)
+                                  .boxed()
+                                  .collect(Collectors.toSet());
+
+        set1.retainAll(set2);
+        set1.retainAll(set3);
+
+        System.out.println(set1);
+
 
         Map<Integer, Integer> map = new HashMap<>();
 

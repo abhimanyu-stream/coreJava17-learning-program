@@ -1,0 +1,25 @@
+# 1. Fetch all remote branches
+git fetch origin
+
+# 2. Create local main branch from remote main
+git checkout -b main origin/main
+
+# 3. You're now on 'main' branch. Merge master into it
+git merge master --allow-unrelated-histories
+
+# 4. If conflicts appear, resolve them:
+#    - Edit conflicting files
+#    - Then run:
+git add .
+git commit -m "Resolve merge conflicts"
+
+# 5. Push merged main to remote
+git push origin main
+
+# 6. (Optional) Set main as your default local branch
+git checkout main
+
+# 7. (Optional) Delete master if you don't need it anymore
+git branch -d master
+
+
