@@ -77,34 +77,17 @@ public class TwoSumFindIndexesIntArray {
         l1.add("crypt");
         System.out.println("Input Words: " + l1);
 
-<<<<<<< HEAD
         StringBuffer buffer = new StringBuffer();// Thread Safe
         l1.forEach(word -> {
             long vowelCount = word.chars()
-=======
-        // Count vowels in each string and append words based on vowel count
-        StringBuffer buffer = new StringBuffer();
-        l1.forEach(s -> {
-            long vowelCount = s.chars()
->>>>>>> 7fc6a0aa0e03ad8fecfb41dcbf723316ebc587d9
                     .mapToObj(c -> (char) c)
                     .filter(c -> "aeiouAEIOU".contains(String.valueOf(c)))
                     .count();
-<<<<<<< HEAD
             System.out.println("Vowels in '" + word + "': " + vowelCount);
-=======
-            System.out.println("Vowels in '" + s + "': " + vowelCount);
-            // Output: Vowels in 'apple': 2
-            //         Vowels in 'crypt': 0
->>>>>>> 7fc6a0aa0e03ad8fecfb41dcbf723316ebc587d9
 
             // Append word 'vowelCount' times
             for (int i = 0; i < vowelCount; i++) {
-<<<<<<< HEAD
                 buffer.append(word);//s ->
-=======
-                buffer.append(s);
->>>>>>> 7fc6a0aa0e03ad8fecfb41dcbf723316ebc587d9
             }
         });
         System.out.println("Buffer content: " + buffer);
@@ -112,15 +95,11 @@ public class TwoSumFindIndexesIntArray {
         System.out.println("String from buffer: " + new String(buffer));
         // Output: String from buffer: appleapple
 
-<<<<<<< HEAD
 
 
 
 
 
-=======
-        // Extract only vowels from all strings using flatMap
->>>>>>> 7fc6a0aa0e03ad8fecfb41dcbf723316ebc587d9
         String buffert = l1.stream()
                 .flatMap(s -> s.chars().mapToObj(c -> (char) c))
                 .filter(c -> "aeiouAEIOU".indexOf(c) != -1)
@@ -129,13 +108,9 @@ public class TwoSumFindIndexesIntArray {
         System.out.println("All vowels concatenated: " + buffert);
         // Output: All vowels concatenated: ae
 
-<<<<<<< HEAD
         System.out.println("buffert "+buffert);
 
 
-=======
-        // Extract vowels from each string separately
->>>>>>> 7fc6a0aa0e03ad8fecfb41dcbf723316ebc587d9
         StringBuilder buffers = new StringBuilder();
         l1.forEach(s -> {
             String vowels = s.chars()
@@ -262,26 +237,9 @@ public class TwoSumFindIndexesIntArray {
         System.out.println("Sorted string: " + new String(builder));
         // Output: Sorted string: aaaaaadddddkkkkmmx
 
-<<<<<<< HEAD
-                        characterLongEntry -> {
-                            Character character = characterLongEntry.getKey();
-                            Long value = characterLongEntry.getValue();
-                            for (int i = 0; i < value.intValue(); i++) {
-                                builder.append(character);
-                            }
-
-                        }
-                );
-        System.out.println("builder " +new String(builder));
-
 
         // Convert into Map after sorting
        /* charMap.entrySet().stream()
-=======
-        // Note: Converting to Map after sorting (commented for reference)
-        /* 
-        charMap.entrySet().stream()
->>>>>>> 7fc6a0aa0e03ad8fecfb41dcbf723316ebc587d9
                 .sorted(Map.Entry.comparingByKey())
                 .collect(Collectors.toMap(
                     Map.Entry::getKey(),
