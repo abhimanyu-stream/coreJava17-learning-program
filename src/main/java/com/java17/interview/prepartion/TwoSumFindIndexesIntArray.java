@@ -40,22 +40,27 @@ public class TwoSumFindIndexesIntArray {
         // count vowels in each object
 
 
-        StringBuffer buffer = new StringBuffer();
-        l1.forEach(s -> {
-            long vowelCount = s.chars()
+        StringBuffer buffer = new StringBuffer();// Thread Safe
+        l1.forEach(word -> {
+            long vowelCount = word.chars()
                     .mapToObj(c -> (char) c)
                     .filter(c -> "aeiouAEIOU".contains(String.valueOf(c)))//
 
                     .count();
-            System.out.println("Vowels in '" + s + "': " + vowelCount);
+            System.out.println("Vowels in '" + word + "': " + vowelCount);
 
 
             for (int i = 0; i < vowelCount; i++) {
-                buffer.append(s);//s ->
+                buffer.append(word);//s ->
             }
         });
         System.out.println("buffer " + buffer);
         System.out.println(new String(buffer));
+
+
+
+
+
 
         String buffert = l1.stream()
                 .flatMap(s -> s.chars()
@@ -64,7 +69,7 @@ public class TwoSumFindIndexesIntArray {
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
-        System.out.println(buffert);
+        System.out.println("buffert "+buffert);
 
 
         StringBuilder buffers = new StringBuilder();
@@ -168,7 +173,7 @@ public class TwoSumFindIndexesIntArray {
 
                         }
                 );
-        System.out.println(new String(builder));
+        System.out.println("builder " +new String(builder));
 
 
         // Convert into Map after sorting

@@ -15,6 +15,26 @@ public class FindSecondHighestSalaryStreamApi {
         employeeSalaryMap.put("Newton", 5000.00);
         employeeSalaryMap.put("Madonna", 10000.00);
 
+        List<String> empName = employeeSalaryMap.entrySet().stream()
+        .collect(Collectors.groupingBy(Map.Entry::getValue,
+                Collectors.mapping(Map.Entry::getKey, Collectors.toList())
+        ))
+        .entrySet().stream()
+        .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+        .skip(1)
+        .findFirst()
+        .map(Map.Entry::getValue)
+        .orElse(Collections.emptyList());
+        System.out.println("Name" +empName);
+
+
+
+
+     
+
+
+
+        
 
         /**
          * employeeSalaryMap
@@ -31,7 +51,7 @@ public class FindSecondHighestSalaryStreamApi {
 
         // Step 2: Collect all employees having that salary
         List<String> employeesWithSecondHighestSalary = employeeSalaryMap.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(secondHighestSalary))
+                .filter(entry -> entry.getValue() == secondHighestSalary)
                 .map(Map.Entry::getKey)
                 .toList();
 

@@ -1,6 +1,8 @@
 package com.java17.interview.prepartion;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -24,9 +26,29 @@ public class CountIntegerFrequencyHashMap {
 			System.out.println(m.getKey()+ "  "+ m.getValue());
 
 		}
+        int[] arrInteger2 = {1, 2, 1, 3, 2, 1};
+
+        Map<Integer, Integer> hashmap2 = new HashMap<>();
+
+        for (int j : arrInteger2) {
+
+            hashmap2.put(j, hashmap2.getOrDefault(j, 0) + 1);//map.getOrDefault(key, defaultValue)
+        }
+
+        System.out.println(hashmap);
 
 
-		String s= "TankTan";
+
+        Map<Integer, Long> collect = Arrays.stream(arrInteger).boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println("collect"+collect);
+
+
+
+        String s= "TankTan";
+
+
+		 Map<String, Long> collect2 = Arrays.stream(s.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		  System.out.println("collect2 "+collect2);
 
 		String[] strArray = s.split("");
 		Map<String, Integer> hashMapStr = new HashMap<>();

@@ -34,6 +34,62 @@ public class OptionalClassUnderstandingWorking {
 
         Optional.ofNullable(null);
 
+        //Optional.empty();
+
+        Optional<String> name = Optional.empty();
+       
+
+System.out.println(name.isPresent());   // false
+System.out.println(name.orElse("Default Name")); // Default Name
+
+/**
+ * 
+ * Why use it?
+
+Instead of this:
+
+String getName() {
+    return null;
+}
+
+Use:
+
+Optional<String> getName() {
+    return Optional.empty();
+}
+
+Then caller handles safely:
+
+Optional<String> name = getName();
+
+System.out.println(name.orElse("No Name"));
+
+Output:
+
+No Name
+ */
+
+
+
+
+
+        Optional<String> emp1 = findEmployee(1);
+        Optional<String> emp2 = findEmployee(2);
+
+        System.out.println(emp1.orElse("Not Found"));
+        System.out.println(emp2.orElse("Not Found"));
+    
+
+
     }
+    static Optional<String> findEmployee(int id) {
+        if (id == 1) {
+            return Optional.of("Abhimanyu");
+        }
+        return Optional.empty();   // no employee found
+    }
+
+    
+
     
 }

@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class FindMissingNumberInArray {
@@ -11,6 +12,12 @@ public class FindMissingNumberInArray {
         // Find the minimum and maximum values in the list
         int min = Collections.min(list);
         int max = Collections.max(list);
+
+       List<Integer> sortedArray = list.stream().sorted(Comparator.reverseOrder()).toList();
+       System.out.println(sortedArray);
+
+
+
 
        // Integer maxxx = list.stream().max(Comparator.reverseOrder()).get();
         Integer minnn = list.stream().min(Comparator.naturalOrder()).get();
@@ -41,6 +48,21 @@ public class FindMissingNumberInArray {
                 .toList();
 
         System.out.println("Missing numbers: " + missingNumbersss);
+
+
+
+             int[] ints = {1, 3, 4, 6, 7, 10};
+
+        Set<Integer> present = Arrays.stream(ints)
+                .boxed()
+                .collect(Collectors.toSet());
+
+        IntStream.rangeClosed(
+                        Arrays.stream(ints).min().getAsInt(),
+                        Arrays.stream(ints).max().getAsInt()
+                )
+                .filter(i -> !present.contains(i))
+                .forEach(System.out::println);// print missing elements only
 
 
     }

@@ -10,6 +10,21 @@ import java.util.function.Supplier;
 
 public class FunctionAndConsumerAndPredicate {
 
+    /**
+     * 
+     * 
+     * 
+     * Built-in Functional Interfaces (java.util.function)
+Interface	            Method	    Example
+Predicate<T>	        test()	condition
+Function<T,R>	        apply()	transform
+Consumer<T>	            accept()	consume
+Supplier<T>	            get()	supply
+UnaryOperator<T>	    apply()	same type
+BinaryOperator<T>	    apply()	combine
+
+     */
+
 
     public static void main(String[] args) {
         //Predicate has test method

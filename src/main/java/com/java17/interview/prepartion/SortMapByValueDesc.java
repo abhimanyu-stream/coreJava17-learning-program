@@ -17,7 +17,8 @@ public class SortMapByValueDesc {
                 employeeSalaryMap.entrySet()
                         .stream()
                         .sorted(
-                                Map.Entry.comparingByValue(Comparator.reverseOrder())
+                                Map.Entry.comparingByKey(Comparator.reverseOrder())
+                                //  Map.Entry.comparingByValue(Comparator.reverseOrder())
 
                         )
                         .collect(Collectors.toMap(

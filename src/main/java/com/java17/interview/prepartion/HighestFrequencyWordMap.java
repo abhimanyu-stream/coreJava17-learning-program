@@ -18,7 +18,26 @@ public class HighestFrequencyWordMap {
                 .map(Map.Entry::getKey)              // get the word
                 .orElse(null);
 
-        System.out.println("Highest frequency word: " + result);
+        System.out.println("Highest frequency word: withot LinkedHashMap" + result);
+
+        //----------------------------------------
+        // ✅ Step 1 — use LinkedHashMap to preserve insertion (first appearance) order
+        Map<String, Long> freq2 = Arrays.stream(str2.toLowerCase().split("\\s+"))
+                .collect(Collectors.groupingBy(
+                        w -> w,
+                        LinkedHashMap::new, // keeps first occurrence order ---> over
+                        // LinkedHashMap::new, // keeps first occurrence order  ---> the
+                        Collectors.counting()
+                ));
+
+        // ✅ Step 2 — find the entry with highest count; tie -> first in insertion order
+        String topWord = freq2.entrySet().stream()
+               // .max(Comparator.comparing(Map.Entry<String, Long>::getValue))
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+
+        System.out.println("Top word (first occurrence wins on tie): " + topWord);
 
         /**
          * Let’s analyze it step-by-step.
@@ -104,24 +123,7 @@ public class HighestFrequencyWordMap {
  
 
 
-        //----------------------------------------
-        // ✅ Step 1 — use LinkedHashMap to preserve insertion (first appearance) order
-        Map<String, Long> freq2 = Arrays.stream(str2.toLowerCase().split("\\s+"))
-                .collect(Collectors.groupingBy(
-                        w -> w,
-                        LinkedHashMap::new, // keeps first occurrence order ---> over
-                        // LinkedHashMap::new, // keeps first occurrence order  ---> the
-                        Collectors.counting()
-                ));
-
-        // ✅ Step 2 — find the entry with highest count; tie -> first in insertion order
-        String topWord = freq2.entrySet().stream()
-               // .max(Comparator.comparing(Map.Entry<String, Long>::getValue))
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse(null);
-
-        System.out.println("Top word (first occurrence wins on tie): " + topWord);
+        
 
     }
     /**

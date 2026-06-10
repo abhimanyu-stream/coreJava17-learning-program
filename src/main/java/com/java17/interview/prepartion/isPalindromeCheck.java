@@ -1,5 +1,8 @@
 package com.java17.interview.prepartion;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class isPalindromeCheck {
 
     public static boolean isPalindromeTwoPointerApproch(String str) {
@@ -32,6 +35,23 @@ public class isPalindromeCheck {
         boolean result2 = isPalindromeReversingByStringBuilderApproch(input2);
         System.out.println("Is '" + input2 + "' a palindrome? " + result2);
 
+
+   
+  //String input2 ="racecar";
+
+       String out = IntStream.range(0, input2.length())
+        .mapToObj(i->input2.charAt(input2.length() - 1 - i))
+        .map(String::valueOf)
+        .collect(Collectors.joining()); 
+
+        System.out.println("isPalindrome" + input2.equals(out));
+
+         String out1 = IntStream.range(0, input.length())
+        .mapToObj(i->input.charAt(input.length() - 1 - i))
+        .map(String::valueOf)
+        .collect(Collectors.joining()); 
+
+        System.out.println("isPalindrome" + input.equals(out1));
 
         System.out.println(4 % 2 == 0 ? Boolean.TRUE : Boolean.FALSE);
     }

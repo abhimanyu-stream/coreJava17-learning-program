@@ -21,7 +21,6 @@ public class FindNthHighestSalary {
 
 
 
-
         //Sorting Objects in Reverse Order (Custom Comparator)
         //List<User> sortedUsers = users.stream()
         //        .sorted(Comparator.comparing(User::getAge).reversed())
@@ -51,9 +50,17 @@ public class FindNthHighestSalary {
     public static List<String> getNthHighestSalaryEmployees(Map<String, Double> map, int n) {
         return map.entrySet().stream()
                 .collect(Collectors.groupingBy(Map.Entry::getValue,
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())))
+                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())))//<Double, List<String>>
                 .entrySet().stream()
-                .sorted(Map.Entry.<Double, List<String>>comparingByKey().reversed())//salary
+                //.sorted(Map.Entry.<Double, List<String>>comparingByKey().reversed())//salary
+                //2nd Highest: [Michael, Daniel]
+                //3rd Highest: [Robert, David]
+
+
+                // Map.Entry.comparingByValue(Comparator.reverseOrder())
+               .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+//2nd Highest: [Michael, Daniel]
+//3rd Highest: [Robert, David]
                 .skip(n - 1)
                 .findFirst()
                 .map(Map.Entry::getValue)

@@ -5,6 +5,8 @@ public class FactoryMethodPattern {
 
         NotificationsFactory factory = new EmailFactory();
         factory.notifyUser();
+        //Notifications notification = factory.createNotification();
+        //notification.send();
 
         /**
          * Interview-safe rule
@@ -44,6 +46,10 @@ abstract class NotificationsFactory {
 
     public void notifyUser() {
         Notifications n = createNotification();// return EmailNotification
+
+        if (n == null) {
+            throw new IllegalStateException("Notification cannot be null");
+        }
         n.send();
 
         /**
@@ -65,6 +71,7 @@ abstract class NotificationsFactory {
          */
     }
 }
+
 
 // Concrete Creators
 class EmailFactory extends NotificationsFactory {

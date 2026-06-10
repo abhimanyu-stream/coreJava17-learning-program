@@ -15,16 +15,16 @@ public class RecordsAndSealed {
 
     }
     static void process(Paymentz payment) {
-        switch (payment) {
-            case CreditCardPaymens c -> System.out.println("Card");
-            case UpiPayments u -> System.out.println("UPI");
-
-            case CashPayments c -> System.out.println("Cash");
-           // case VoucherPayment c -> System.out.println("v"); if missing then error
-            case VoucherPayment c -> System.out.println("v");
-
-
-            default -> throw new IllegalStateException("Unexpected value: " + payment);
+        if (payment instanceof CreditCardPaymens) {
+            System.out.println("Card");
+        } else if (payment instanceof UpiPayments) {
+            System.out.println("UPI");
+        } else if (payment instanceof CashPayments) {
+            System.out.println("Cash");
+        } else if (payment instanceof VoucherPayment) {
+            System.out.println("v");
+        } else {
+            throw new IllegalStateException("Unexpected value: " + payment);
         }
     }
 }
@@ -49,11 +49,16 @@ sealed  abstract class Paymentz
 // error compile time class BitcoinPayment extends Payment {}
 
 
+
+
  non-sealed class VoucherPayment extends Paymentz {
 }
 class NewPays extends  VoucherPayment{
     //ok
 }
+
+
+
  sealed interface Result permits Success, Failure {
 }
 

@@ -172,16 +172,16 @@ public class RecordAndSealed {
 class PaymentProcessor {
 
     public static String process(Payment payment) {
-        return switch (payment) {
-            case CashPayment c ->
-                    "Cash payment of " + c.amount();
-            case CardPayment c ->
-                    "Card payment of " + c.amount() +
-                            " using card " + c.cardNumber();
-            case UpiPayment u ->
-                    "UPI payment of " + u.amount() +
-                            " via " + u.upiId();
-        };
+        if (payment instanceof CashPayment c) {
+            return "Cash payment of " + c.amount();
+        }
+        if (payment instanceof CardPayment c) {
+            return "Card payment of " + c.amount() + " using card " + c.cardNumber();
+        }
+        if (payment instanceof UpiPayment u) {
+            return "UPI payment of " + u.amount() + " via " + u.upiId();
+        }
+        return "Unknown payment type";
     }
 }
 

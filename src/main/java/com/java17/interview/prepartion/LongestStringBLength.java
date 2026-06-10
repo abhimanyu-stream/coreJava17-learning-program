@@ -22,13 +22,13 @@ public class LongestStringBLength {
 
         Map<Integer, List<String>> result1 =
                 words.stream()
-                        .collect(Collectors.groupingBy(String::length));
+                        .collect(Collectors.groupingBy(String::length));//Collectors
 
         System.out.println(result1);
 
         Map<String, Integer> result2 =
                 words.stream()
-                        .collect(Collectors.toMap(
+                        .collect(Collectors.toMap(//Collectors
                                 Function.identity(),
                                 String::length
                         ));

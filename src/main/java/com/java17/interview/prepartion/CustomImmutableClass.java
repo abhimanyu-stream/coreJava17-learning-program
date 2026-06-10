@@ -59,7 +59,7 @@ public class CustomImmutableClass {
 		private final String name;
 		private final int age;
 		private final Address address;// mutable clone typecasted
-		private final LocalDate dateOfBirth;// mutable clone typecasted
+		private final LocalDate dateOfBirth;// LocalDate is immutable LocalDate do not implement Cloneable
 		private final List<String> phoneNumbers;// Collection type new class type ()
 		private final Map<String, String> metadata;// Collection type new class type ()
 

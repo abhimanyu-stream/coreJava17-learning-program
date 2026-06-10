@@ -229,18 +229,21 @@ public class Java17Features {
         return "Unknown payment type";
     }
     
-    // Complex pattern matching example
+    // Complex pattern matching example rewritten for Java 17
     public static String analyzeObject(Object obj) {
-        return switch (obj) {
-            case null -> "Object is null";
-            case String s && s.length() > 10 -> "Long string: " + s.substring(0, 10) + "...";
-            case String s -> "Short string: " + s;
-            case Integer i && i > 0 -> "Positive integer: " + i;
-            case Integer i -> "Non-positive integer: " + i;
-            case Person p && p.isAdult() -> "Adult: " + p.name();
-            case Person p -> "Minor: " + p.name();
-            default -> "Unknown type: " + obj.getClass().getSimpleName();
-        };
+        if (obj == null) {
+            return "Object is null";
+        }
+        if (obj instanceof String s) {
+            return s.length() > 10 ? "Long string: " + s.substring(0, 10) + "..." : "Short string: " + s;
+        }
+        if (obj instanceof Integer i) {
+            return i > 0 ? "Positive integer: " + i : "Non-positive integer: " + i;
+        }
+        if (obj instanceof Person p) {
+            return p.isAdult() ? "Adult: " + p.name() : "Minor: " + p.name();
+        }
+        return "Unknown type: " + obj.getClass().getSimpleName();
     }
 
     // ============================================

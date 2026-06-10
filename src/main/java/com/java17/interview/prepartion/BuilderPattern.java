@@ -5,23 +5,37 @@ public class BuilderPattern {
                 .setName("Rahul")
                 .setAge(20)
                 .build();
+        System.out.println(s);
+        System.out.println();
     }
+
 }
 
 class CollegeStudent {
     private String name;
     private int age;
 
+
+    //private constructor with static class arguments
     private CollegeStudent(CollegeStudentBuilder builder) {
         this.name = builder.name;
         this.age = builder.age;
     }
 
+
+    @Override
+    public String toString() {
+        return "CollegeStudent{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     // static factory method
+
     public static CollegeStudentBuilder builder() {
         return new CollegeStudentBuilder();
     }
-
     static class CollegeStudentBuilder {
         private String name;
         private int age;

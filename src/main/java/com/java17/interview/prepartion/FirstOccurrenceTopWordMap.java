@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 public class FirstOccurrenceTopWordMap {
     public static void main(String[] args) {
-        String str2 = "A fox jumped over the wall and over fence over the yard the";
+        String str2 = "A fox jumped over the wall and over fence over the yard the ";//the
 
         // ✅ Step 1 — use LinkedHashMap to preserve insertion (first appearance) order
-        Map<String, Long> freq = Arrays.stream(str2.toLowerCase().split("\\s+"))
+        Map<String, Long> freq = Arrays.stream(str2.toLowerCase().split("\\s+"))//\\s+ one or more spaces , \\s* zero or many spaces
                 .collect(Collectors.groupingBy(
                         w -> w,
                         LinkedHashMap::new, // keeps first occurrence order ---> over
