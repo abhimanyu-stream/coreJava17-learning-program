@@ -1,0 +1,1520 @@
+
+
+
+
+
+
+
+How to Crack Karat Coding Interviews in 2026
+Complete guide to Karat coding interviews — question patterns, difficulty breakdown, must-practice topics, and preparation strategy.
+
+Karat interviews are technical conversations designed to assess how you think, communicate, and code in a collaborative environment. Unlike traditional timed coding challenges, Karat sessions are conducted live with an interviewer who acts as a partner, evaluating your problem-solving process and communication skills as much as your final solution. Success here requires a blend of solid fundamentals and clear articulation.
+
+By the Numbers — Difficulty Breakdown and What It Means
+Analyzing a sample of recent Karat questions reveals a clear focus on practical, implementable problems over complex computer science puzzles.
+
+Easy: 4 (36%) – These questions test core data structure manipulation and basic logic. They are often the starting point for a deeper discussion or a multi-part problem.
+Medium: 6 (55%) – This is the sweet spot. Expect problems involving combinations of core topics, like processing a matrix (2D array) while using a hash table for state tracking. The complexity lies in cleanly managing the logic, not in obscure algorithms.
+Hard: 1 (9%) – The rare hard problem typically involves an optimization on top of a medium pattern, such as efficient counting or a more nuanced graph traversal.
+What this means for you: Your preparation should be heavily weighted toward mastering medium-difficulty problems on the core topics. You need to solve these reliably and fluently, leaving mental bandwidth to explain your reasoning. The low percentage of hard problems suggests that deeply studying advanced dynamic programming or graph theory is less critical than having impeccable skills on arrays, strings, and hash tables.
+
+Top Topics to Focus On
+The data shows a concentrated set of topics. Depth beats breadth here.
+
+Array & Matrix: The foundation. Karat frequently uses arrays to represent real-world data like user logs or server pings. Matrices often represent grids, boards, or relational data. The essential pattern is iterative traversal with neighbor analysis (e.g., for connected components, area calculation, or validation).
+Hash Table: The most crucial tool for achieving O(1) lookups and storing counts or mappings. The key pattern is using a hash table for counting or as an index to avoid O(n²) nested loops.
+String: Closely tied to array problems. Focus on character counting, splitting/joining, and substring validation. Many problems involve parsing log files or user input strings.
+Counting: This is less a data structure and more a fundamental technique that leverages hash tables. The core pattern is frequency analysis to find duplicates, majorities, or anomalies in a dataset.
+The most important combined pattern is iterating through an array or string while using a hash table to track seen elements or counts. This solves a massive portion of Karat's problems.
+
+Python
+JavaScript
+Java
+import java.util.HashSet;
+import java.util.Set;
+
+public class KaratPatterns {
+    public static Integer findFirstDuplicate(int[] logEntries) {
+        /**
+         * Given an array of log entry IDs, return the first ID that appears twice.
+         * This demonstrates the 'seen' hash table pattern.
+         */
+        Set<Integer> seen = new HashSet<>();
+        for (int entryId : logEntries) {
+            if (seen.contains(entryId)) {
+                return entryId;
+            }
+            seen.add(entryId);
+        }
+        return null; // No duplicate found
+    }
+    // Example: findFirstDuplicate(new int[]{101, 102, 101, 103}) -> 101
+}
+Preparation Strategy — A 4-6 Week Study Plan
+A focused, consistent plan is more effective than cramming.
+
+Weeks 1-2: Foundation & Core Topics
+
+Goal: Achieve fluency in Easy/Medium problems on the top four topics.
+Action: Dedicate 2-3 days to each topic (Array, Hash Table, String, Matrix). For each, solve 8-10 problems. Don't just solve—practice verbalizing your approach before coding. Write code in your primary interview language without autocomplete.
+Weeks 3-4: Pattern Integration & Mock Interviews
+
+Goal: Combine topics and simulate the interview environment.
+Action: Solve 15-20 mixed Medium problems that combine topics (e.g., "String processing with a counting hash table" or "Matrix traversal with a visited set"). In the final week, conduct at least 3-4 mock interviews with a friend or using a recording tool. Practice talking through your entire thought process, including clarifying questions, edge cases, and time/space complexity.
+Weeks 5-6 (Optional Refinement):
+
+Goal: Polish communication and tackle weak spots.
+Action: Revisit any problem patterns that caused hesitation. Focus on writing extremely clean, readable code with good variable names. Practice explaining the why behind your data structure choices.
+Key Tips
+Talk Constantly, From the Start. The moment you read the prompt, start thinking out loud. "I see we have a list of strings here. My first thought is we might need to parse them and count frequencies, probably using a hash map." Silence is your enemy in a Karat interview.
+Ask Clarifying Questions. Before diving into an algorithm, confirm edge cases. "Can the input array be empty? Are the user IDs guaranteed to be integers? Should we consider case sensitivity in these strings?" This demonstrates collaborative and thorough thinking.
+Prioritize a Working Solution Over a Perfect One. It's better to implement a clear, brute-force solution and then discuss optimizations than to get stuck trying to devise the most optimal algorithm immediately. You can often start with a nested loop, mention its O(n²) complexity, and then improve it with a hash table.
+Test Your Code with Examples. After writing your solution, walk through a small test case with your code. This catches logical errors and shows a methodical approach. "Let's test with ['a', 'b', 'a']. On the first iteration, we add 'a' to the set. On the third, we see 'a' is in the set, so we return it. That's correct."
+Mastering these core patterns and the art of collaborative problem-solving will make you exceptionally well-prepared for the Karat interview format.
+
+Browse all Karat questions on CodeJeet
+
+This is a good summary, but for a 2026 Karat interview targeting companies like Meta, Walmart, PayPal, Robinhood, Intuit, Atlassian, etc., I'd refine it further.
+
+Actual Karat Interview Pattern
+A typical Karat round is:
+
+Part 1 (5-10 mins)
+Introduction
+
+Resume discussion
+
+Current project discussion
+
+OOP/System Design discussion (sometimes)
+
+Part 2 (35-40 mins)
+Coding Questions
+
+Usually:
+
+Pattern	Frequency
+Arrays + HashMap	Very High
+Strings + HashMap	Very High
+Matrix/Grid	High
+BFS/DFS	Medium
+Intervals	Medium
+Sorting	Medium
+Graph	Low
+Dynamic Programming	Rare
+Trie	Rare
+Segment Tree	Almost Never
+Most Important Topics (Priority Order)
+Tier 1 (Must Master)
+Arrays
+Common questions:
+
+Two Sum
+
+Product Except Self
+
+Move Zeroes
+
+Merge Intervals
+
+Missing Number
+
+Rotate Array
+
+HashMap / HashSet
+Most common Karat pattern:
+
+Map<Integer,Integer> freq = new HashMap<>();
+Questions:
+
+First Duplicate
+
+Frequency Count
+
+Group Anagrams
+
+Majority Element
+
+Subarray Sum K
+
+Strings
+Questions:
+
+Valid Anagram
+
+Longest Common Prefix
+
+String Compression
+
+Character Frequency
+
+Parsing Logs
+
+Matrix
+Questions:
+
+Number of Islands
+
+Flood Fill
+
+Spiral Matrix
+
+Island Area
+
+Matrix Traversal
+
+Tier 2 (Frequently Appears)
+Sliding Window
+Questions:
+
+Longest Substring Without Repeating Characters
+
+Minimum Window Substring
+
+Max Consecutive Ones
+
+Template:
+
+int left = 0;
+
+for(int right=0; right<n; right++){
+    
+    while(condition){
+        left++;
+    }
+}
+Two Pointers
+Questions:
+
+Container With Most Water
+
+Remove Duplicates
+
+Sorted Two Sum
+
+Stack
+Questions:
+
+Valid Parentheses
+
+Next Greater Element
+
+Min Stack
+
+Binary Search
+Questions:
+
+Search Insert Position
+
+Search Rotated Array
+
+First Bad Version
+
+Tier 3 (Occasional)
+Trees
+Questions:
+
+Level Order Traversal
+
+Height of Tree
+
+Lowest Common Ancestor
+
+BFS
+Queue<TreeNode> q = new LinkedList<>();
+DFS
+void dfs(Node node){
+}
+Karat's Favorite Real-Life Style Questions
+Unlike LeetCode, Karat often wraps problems in business scenarios.
+
+Example:
+
+User Visit Logs
+User A visited:
+home
+cart
+checkout
+
+User B visited:
+home
+search
+cart
+checkout
+Find:
+
+Most common 3-page sequence
+Topics:
+
+HashMap
+
+String
+
+Array
+
+Badge Access System
+Paul enters
+Paul exits
+Paul exits
+Find anomalies.
+
+Topics:
+
+HashMap
+
+Set
+
+Counting
+
+Employee Hierarchy
+CEO
+ ├── Manager1
+ └── Manager2
+Find common manager.
+
+Topics:
+
+Tree
+
+Graph
+
+DFS
+
+Java Collections You Must Know
+Collection	Time Complexity
+ArrayList get()	O(1)
+ArrayList add()	O(1) amortized
+LinkedList addFirst()	O(1)
+HashMap put/get	O(1) average
+HashSet contains	O(1) average
+TreeMap get	O(log n)
+PriorityQueue poll	O(log n)
+Interviewers often ask:
+
+"Why HashMap instead of TreeMap?"
+
+Expected answer:
+
+HashMap gives O(1) average lookup.
+
+TreeMap gives O(log n) lookup
+but maintains sorted order.
+Communication Framework (Extremely Important)
+Karat scores communication heavily.
+
+For every question:
+
+Step 1
+Clarify
+
+Can input be null?
+
+Can duplicates exist?
+
+Can array be empty?
+Step 2
+Discuss brute force
+
+Brute force would be O(n²)
+using nested loops.
+Step 3
+Optimize
+
+We can use HashMap
+to reduce lookup to O(1).
+Step 4
+Code
+
+Write clean code.
+
+Step 5
+Dry Run
+
+Input:
+[1,2,3,2]
+
+seen={}
+1 -> add
+
+2 -> add
+
+3 -> add
+
+2 -> already present
+
+Answer=2
+2-Week Fast-Track Plan
+Day	Topic
+1	Arrays
+2	HashMap
+3	Strings
+4	Sliding Window
+5	Matrix
+6	Stack
+7	Queue/BFS
+8	Trees
+9	Binary Search
+10	Intervals
+11	Mixed Problems
+12	Mock Interview
+13	Mock Interview
+14	Revision
+If You're Preparing for Deloitte/Karat-Style Backend Interviews
+Focus heavily on:
+
+Arrays
+
+HashMap / HashSet
+
+Strings
+
+Matrix/Grid
+
+Sliding Window
+
+BFS/DFS
+
+Java Collections Internals
+
+Time Complexity Analysis
+
+OOP Design Basics
+
+Clear verbal explanation
+
+If you can consistently solve medium-level Array + HashMap + String questions in 15–20 minutes while explaining your thought process, you'll be prepared for the majority of Karat coding rounds.
+
+
+
+Pasted text(1).txt
+Document
+these question have been for practices 
+
+Yes. From the file you shared, I can clearly see 4 complete Karat-style practice questions and references to a few additional variants.
+
+Questions Present in the File
+#	Domain	Difficulty	Topics Tested
+1	Hotel Reservation System	Medium	OOP, HashMap, Aggregation
+2	Gym Membership System	Medium	OOP, HashMap, Average Calculation
+3	Stock/Tradebook System	Medium	OOP, Collections, Portfolio Calculation
+4	Payment Transaction Monitoring System	Medium	OOP, HashMap, Sorting, Aggregation
+Pattern of Every Karat Question
+Almost every Karat question follows:
+
+Task 1
+Bug Fix
+
+testXYZ() failing
+Find and fix bug.
+
+Skills:
+
+Read code quickly
+
+Understand OOP
+
+Debug
+
+Task 2
+Add new functionality
+
+Example:
+
+addWorkout()
+addReservation()
+getAverageTransaction()
+Skills:
+
+HashMap
+
+List
+
+Collections
+
+Task 3
+Analytics/Aggregation
+
+Example:
+
+getGuestNights()
+
+getAverageWorkoutDurations()
+
+getTransactionFees()
+Skills:
+
+Group By
+
+Counting
+
+Aggregation
+
+Business Logic
+
+What Karat is Actually Testing
+Not LeetCode Hard.
+
+They test whether you can:
+
+Read existing code
+
+Understand OOP
+
+Fix bug
+
+Extend system
+
+Use HashMap
+
+Use List
+
+Write clean Java
+Recurring Data Structures
+From all questions in your file:
+
+DS	Frequency
+HashMap	Very High
+ArrayList	Very High
+HashSet	Medium
+Queue	Rare
+Stack	Rare
+Tree	Rare
+Graph	Almost Never
+Patterns Repeated Across Questions
+Pattern 1
+Validate Parent Entity Exists
+
+Hotel:
+
+room exists?
+Gym:
+
+member exists?
+Payment:
+
+account exists?
+Typical solution:
+
+boolean exists = false;
+
+for(Entity e : entities){
+    if(e.id == id){
+        exists = true;
+        break;
+    }
+}
+Pattern 2
+Group By
+
+Hotel:
+
+guest -> total nights
+Gym:
+
+member -> average duration
+Payment:
+
+account -> average amount
+Template:
+
+Map<Integer,Integer> map = new HashMap<>();
+Pattern 3
+Count/Frequency
+
+guest visits
+
+transactions
+
+workouts
+Template:
+
+map.put(key,
+        map.getOrDefault(key,0)+value);
+Pattern 4
+Average Calculation
+
+Gym:
+
+total duration / workout count
+Payment:
+
+total amount / transaction count
+Template:
+
+sumMap
+countMap
+Questions You Should Practice Before Karat
+These are extremely close to the questions in your file:
+
+Easy
+Design Library System
+
+Student Course Management
+
+Employee Attendance Tracker
+
+Inventory Management
+
+Parking Lot
+
+Medium
+Hotel Reservation System ✅
+
+Gym Membership System ✅
+
+Banking Transaction System ✅
+
+Food Delivery System
+
+E-Commerce Order Tracking
+
+Warehouse Inventory System
+
+Flight Booking System
+
+Hospital Management System
+
+Interview Cheat Sheet
+When interviewer gives:
+
+Account
+Transaction
+Member
+Workout
+Hotel
+Room
+Order
+Product
+Immediately think:
+
+Map<ID,List<Record>>
+
+or
+
+Map<ID,Aggregate>
+Examples:
+
+Map<Integer,List<Workout>>
+
+Map<Integer,List<Transaction>>
+
+Map<Integer,List<Reservation>>
+This single pattern solves about 70-80% of Karat's OOP coding questions.
+
+My assessment of your file
+The questions are mostly Easy-to-Medium (LeetCode equivalent).
+
+The challenge is not algorithms; it is:
+
+Reading existing code
+
+Finding bugs quickly
+
+Extending classes
+
+HashMap/List manipulation
+
+Explaining your thought process
+
+If you can comfortably solve these 4 domains (Hotel, Gym, Tradebook, Payment System), you'll be practicing the exact style that Karat uses in many backend-oriented interviews.
+
+
+write complete program Task 2
+
+Add new functionality
+
+Example:
+
+addWorkout()
+addReservation()
+getAverageTransaction()
+
+Skills:
+
+HashMap
+List
+Collections
+Task 3
+
+Analytics/Aggregation
+
+Example:
+
+getGuestNights()
+
+getAverageWorkoutDurations()
+
+getTransactionFees()
+
+Skills:
+
+Group By
+Counting
+Aggregation
+Business Logic
+
+For Karat interviews, you should memorize these implementations because they repeat across domains.
+
+1. Hotel Reservation System
+Task 2: addReservation()
+void addReservation(int roomId, Reservation reservation) {
+
+    boolean roomExists = false;
+
+    for (Room room : rooms) {
+        if (room.roomId == roomId) {
+            roomExists = true;
+            break;
+        }
+    }
+
+    if (!roomExists) {
+        return;
+    }
+
+    reservationMap
+            .computeIfAbsent(roomId, k -> new ArrayList<>())
+            .add(reservation);
+}
+Task 3: getGuestNights()
+Map<String, Integer> getGuestNights() {
+
+    Map<String, Integer> guestNights = new HashMap<>();
+
+    for (List<Reservation> reservations : reservationMap.values()) {
+
+        for (Reservation reservation : reservations) {
+
+            guestNights.put(
+                    reservation.guestName,
+                    guestNights.getOrDefault(
+                            reservation.guestName, 0)
+                            + reservation.getNights());
+        }
+    }
+
+    return guestNights;
+}
+2. Gym Membership System
+First add:
+
+Map<Integer, List<Workout>> workoutMap = new HashMap<>();
+inside Membership class.
+
+Task 2: addWorkout()
+public boolean addWorkout(
+        int memberId,
+        Workout workout) {
+
+    boolean memberExists = false;
+
+    for (Member member : members) {
+
+        if (member.memberId == memberId) {
+            memberExists = true;
+            break;
+        }
+    }
+
+    if (!memberExists) {
+        return false;
+    }
+
+    workoutMap
+            .computeIfAbsent(
+                    memberId,
+                    k -> new ArrayList<>())
+            .add(workout);
+
+    return true;
+}
+Task 3: getAverageWorkoutDurations()
+public Map<Integer, Double>
+getAverageWorkoutDurations() {
+
+    Map<Integer, Double> result =
+            new HashMap<>();
+
+    for (Member member : members) {
+
+        List<Workout> workouts =
+                workoutMap.get(member.memberId);
+
+        if (workouts == null ||
+                workouts.isEmpty()) {
+
+            result.put(
+                    member.memberId,
+                    null);
+
+            continue;
+        }
+
+        int totalDuration = 0;
+
+        for (Workout workout : workouts) {
+            totalDuration +=
+                    workout.getDuration();
+        }
+
+        double average =
+                (double) totalDuration
+                        / workouts.size();
+
+        result.put(
+                member.memberId,
+                average);
+    }
+
+    return result;
+}
+3. Payment Transaction Monitoring
+Bug Fix
+Their bug is:
+
+if(member.membershipStatus == GOLD)
+Only GOLD counted.
+
+But test expects:
+
+SILVER + GOLD
+So:
+
+if(member.membershipStatus
+        != MembershipStatus.BRONZE) {
+
+    totalPaidMembers++;
+}
+Task 2: getAverageTransactionAmountByAccount()
+public Map<Integer, Double>
+getAverageTransactionAmountByAccount() {
+
+    Map<Integer, Double> totalMap =
+            new HashMap<>();
+
+    Map<Integer, Integer> countMap =
+            new HashMap<>();
+
+    for (Transaction tx : transactions) {
+
+        totalMap.put(
+                tx.accountId,
+                totalMap.getOrDefault(
+                        tx.accountId,
+                        0.0)
+                        + Math.abs(tx.amount));
+
+        countMap.put(
+                tx.accountId,
+                countMap.getOrDefault(
+                        tx.accountId,
+                        0)
+                        + 1);
+    }
+
+    Map<Integer, Double> result =
+            new HashMap<>();
+
+    for (Integer accountId :
+            totalMap.keySet()) {
+
+        result.put(
+                accountId,
+                totalMap.get(accountId)
+                        /
+                        countMap.get(accountId));
+    }
+
+    return result;
+}
+Task 3: getTransactionFees()
+public Map<Integer, Double>
+getTransactionFees() {
+
+    Map<Integer, Double> fees =
+            new HashMap<>();
+
+    List<Transaction> sorted =
+            new ArrayList<>(transactions);
+
+    sorted.sort(
+            Comparator.comparingLong(
+                    tx -> tx.timestampSec));
+
+    Map<Integer, Integer> txCount =
+            new HashMap<>();
+
+    for (Transaction tx : sorted) {
+
+        int count =
+                txCount.getOrDefault(
+                        tx.accountId,
+                        0);
+
+        count++;
+
+        txCount.put(
+                tx.accountId,
+                count);
+
+        if (count <= 3) {
+            continue;
+        }
+
+        double fee =
+                tx.type ==
+                        TransactionType.CREDIT
+                        ? 1.0
+                        : 2.0;
+
+        fees.put(
+                tx.accountId,
+                fees.getOrDefault(
+                        tx.accountId,
+                        0.0)
+                        + fee);
+    }
+
+    return fees;
+}
+Karat Master Template
+Nearly every Task-2 / Task-3 can be solved using:
+
+Map<ID, List<Record>>
+Example:
+
+Map<Integer,List<Workout>>
+Map<Integer,List<Reservation>>
+Map<Integer,List<Transaction>>
+Then:
+
+Add Record
+map.computeIfAbsent(
+        id,
+        k -> new ArrayList<>())
+   .add(record);
+Count
+map.put(
+        key,
+        map.getOrDefault(
+                key,
+                0)
+                + value);
+Average
+sumMap
+countMap
+average = sum / count
+If you master these three patterns (computeIfAbsent, getOrDefault, group-by aggregation), you'll solve most Karat Task-2 and Task-3 questions in 5–10 minutes.
+
+
+explain code specially map For Karat interviews, you should memorize these implementations because they repeat across domains.
+
+1. Hotel Reservation System
+Task 2: addReservation()
+void addReservation(int roomId, Reservation reservation) {
+
+    boolean roomExists = false;
+
+    for (Room room : rooms) {
+        if (room.roomId == roomId) {
+            roomExists = true;
+            break;
+        }
+    }
+
+    if (!roomExists) {
+        return;
+    }
+
+    reservationMap
+            .computeIfAbsent(roomId, k -> new ArrayList<>())
+            .add(reservation);
+}
+Task 3: getGuestNights()
+Map<String, Integer> getGuestNights() {
+
+    Map<String, Integer> guestNights = new HashMap<>();
+
+    for (List<Reservation> reservations : reservationMap.values()) {
+
+        for (Reservation reservation : reservations) {
+
+            guestNights.put(
+                    reservation.guestName,
+                    guestNights.getOrDefault(
+                            reservation.guestName, 0)
+                            + reservation.getNights());
+        }
+    }
+
+    return guestNights;
+}
+2. Gym Membership System
+
+First add:
+
+Map<Integer, List<Workout>> workoutMap = new HashMap<>();
+
+inside Membership class.
+
+Task 2: addWorkout()
+public boolean addWorkout(
+        int memberId,
+        Workout workout) {
+
+    boolean memberExists = false;
+
+    for (Member member : members) {
+
+        if (member.memberId == memberId) {
+            memberExists = true;
+            break;
+        }
+    }
+
+    if (!memberExists) {
+        return false;
+    }
+
+    workoutMap
+            .computeIfAbsent(
+                    memberId,
+                    k -> new ArrayList<>())
+            .add(workout);
+
+    return true;
+}
+Task 3: getAverageWorkoutDurations()
+public Map<Integer, Double>
+getAverageWorkoutDurations() {
+
+    Map<Integer, Double> result =
+            new HashMap<>();
+
+    for (Member member : members) {
+
+        List<Workout> workouts =
+                workoutMap.get(member.memberId);
+
+        if (workouts == null ||
+                workouts.isEmpty()) {
+
+            result.put(
+                    member.memberId,
+                    null);
+
+            continue;
+        }
+
+        int totalDuration = 0;
+
+        for (Workout workout : workouts) {
+            totalDuration +=
+                    workout.getDuration();
+        }
+
+        double average =
+                (double) totalDuration
+                        / workouts.size();
+
+        result.put(
+                member.memberId,
+                average);
+    }
+
+    return result;
+}
+3. Payment Transaction Monitoring
+Bug Fix
+
+Their bug is:
+
+if(member.membershipStatus == GOLD)
+
+Only GOLD counted.
+
+But test expects:
+
+SILVER + GOLD
+
+So:
+
+if(member.membershipStatus
+        != MembershipStatus.BRONZE) {
+
+    totalPaidMembers++;
+}
+Task 2: getAverageTransactionAmountByAccount()
+public Map<Integer, Double>
+getAverageTransactionAmountByAccount() {
+
+    Map<Integer, Double> totalMap =
+            new HashMap<>();
+
+    Map<Integer, Integer> countMap =
+            new HashMap<>();
+
+    for (Transaction tx : transactions) {
+
+        totalMap.put(
+                tx.accountId,
+                totalMap.getOrDefault(
+                        tx.accountId,
+                        0.0)
+                        + Math.abs(tx.amount));
+
+        countMap.put(
+                tx.accountId,
+                countMap.getOrDefault(
+                        tx.accountId,
+                        0)
+                        + 1);
+    }
+
+    Map<Integer, Double> result =
+            new HashMap<>();
+
+    for (Integer accountId :
+            totalMap.keySet()) {
+
+        result.put(
+                accountId,
+                totalMap.get(accountId)
+                        /
+                        countMap.get(accountId));
+    }
+
+    return result;
+}
+Task 3: getTransactionFees()
+public Map<Integer, Double>
+getTransactionFees() {
+
+    Map<Integer, Double> fees =
+            new HashMap<>();
+
+    List<Transaction> sorted =
+            new ArrayList<>(transactions);
+
+    sorted.sort(
+            Comparator.comparingLong(
+                    tx -> tx.timestampSec));
+
+    Map<Integer, Integer> txCount =
+            new HashMap<>();
+
+    for (Transaction tx : sorted) {
+
+        int count =
+                txCount.getOrDefault(
+                        tx.accountId,
+                        0);
+
+        count++;
+
+        txCount.put(
+                tx.accountId,
+                count);
+
+        if (count <= 3) {
+            continue;
+        }
+
+        double fee =
+                tx.type ==
+                        TransactionType.CREDIT
+                        ? 1.0
+                        : 2.0;
+
+        fees.put(
+                tx.accountId,
+                fees.getOrDefault(
+                        tx.accountId,
+                        0.0)
+                        + fee);
+    }
+
+    return fees;
+}
+Karat Master Template
+
+Nearly every Task-2 / Task-3 can be solved using:
+
+Map<ID, List<Record>>
+
+Example:
+
+Map<Integer,List<Workout>>
+Map<Integer,List<Reservation>>
+Map<Integer,List<Transaction>>
+
+Then:
+
+Add Record
+map.computeIfAbsent(
+        id,
+        k -> new ArrayList<>())
+   .add(record);
+Count
+map.put(
+        key,
+        map.getOrDefault(
+                key,
+                0)
+                + value);
+Average
+sumMap
+countMap
+average = sum / count
+
+If you master these three patterns (computeIfAbsent, getOrDefault, group-by aggregation), you'll solve most Karat Task-2 and Task-3 questions in 5–10 minutes.
+
+This is exactly the pattern Karat wants. Don't memorize the domain (Hotel, Gym, Bank). Memorize the Map patterns.
+
+Pattern 1: Map<ID, List<Record>>
+Hotel
+Map<Integer, List<Reservation>> reservationMap
+        = new HashMap<>();
+Meaning:
+
+Room ID -> All reservations of that room
+Example:
+
+{
+  101 -> [Reservation1, Reservation2],
+  102 -> [Reservation3]
+}
+Visual:
+
+reservationMap
+
+101 ──► [Alice, Bob]
+
+102 ──► [Charlie]
+Gym
+Map<Integer, List<Workout>> workoutMap
+        = new HashMap<>();
+Meaning:
+
+Member ID -> All workouts of that member
+Example:
+
+{
+   12 -> [Workout1, Workout2],
+   22 -> [Workout3]
+}
+Visual:
+
+12 ──► [10 mins, 55 mins]
+
+22 ──► [20 mins]
+Banking
+Map<Integer,List<Transaction>>
+Meaning:
+
+Account ID -> All transactions
+Example:
+
+{
+   1 -> [TX1, TX2, TX3],
+   2 -> [TX4]
+}
+Pattern 2: computeIfAbsent()
+This appears everywhere in Karat.
+
+Without computeIfAbsent
+
+if(!map.containsKey(roomId)) {
+
+    map.put(roomId,
+            new ArrayList<>());
+}
+
+map.get(roomId)
+   .add(reservation);
+Same code using computeIfAbsent
+
+map.computeIfAbsent(
+        roomId,
+        k -> new ArrayList<>())
+   .add(reservation);
+What happens?
+
+Suppose:
+
+reservationMap = {}
+Adding:
+
+roomId = 101
+reservation = Alice
+Step 1
+
+Key 101 doesn't exist.
+
+reservationMap.put(
+        101,
+        new ArrayList<>());
+Now:
+
+{
+ 101 -> []
+}
+Step 2
+
+Add Alice.
+
+{
+ 101 -> [Alice]
+}
+Next reservation:
+
+roomId = 101
+reservation = Bob
+Key already exists.
+
+No new list created.
+
+Just:
+
+{
+ 101 -> [Alice,Bob]
+}
+Interview Explanation
+
+computeIfAbsent()
+
+If key doesn't exist,
+create a new value.
+
+If key already exists,
+return existing value.
+Pattern 3: getOrDefault()
+Appears in every counting problem.
+
+Without getOrDefault
+
+if(map.containsKey(name)) {
+
+    map.put(name,
+            map.get(name)+nights);
+
+}
+else {
+
+    map.put(name,
+            nights);
+}
+With getOrDefault
+
+map.put(
+      name,
+      map.getOrDefault(name,0)
+      + nights);
+Much cleaner.
+
+Example
+
+Initially:
+
+{}
+Alice stayed 3 nights.
+
+guestNights.put(
+      "Alice",
+      guestNights.getOrDefault(
+              "Alice",0)
+              + 3);
+Result:
+
+{
+ Alice = 3
+}
+Alice again stays 2 nights.
+
+guestNights.put(
+      "Alice",
+      guestNights.getOrDefault(
+              "Alice",0)
+              + 2);
+Now:
+
+{
+ Alice = 5
+}
+Visual
+
+Alice
+
+Existing = 3
+
+New stay = 2
+
+3 + 2 = 5
+Hotel getGuestNights()
+Code:
+
+for(List<Reservation> reservations
+        : reservationMap.values()) {
+
+    for(Reservation reservation
+            : reservations) {
+
+        guestNights.put(
+                reservation.guestName,
+
+                guestNights.getOrDefault(
+                        reservation.guestName,
+                        0)
+
+                + reservation.getNights());
+    }
+}
+Suppose
+
+Room 101
+
+Alice = 3 nights
+Bob = 5 nights
+
+Room 102
+
+Alice = 2 nights
+Map:
+
+reservationMap
+
+101 -> [Alice3,Bob5]
+
+102 -> [Alice2]
+Loop Execution:
+
+Alice
+0 + 3 = 3
+Map:
+
+Alice=3
+Bob
+0 + 5 = 5
+Map:
+
+Alice=3
+Bob=5
+Alice Again
+3 + 2 = 5
+Final:
+
+{
+ Alice=5,
+ Bob=5
+}
+Pattern 4: Average Calculation
+Appears in Gym and Banking.
+
+Instead of:
+
+Map<Integer,Double>
+during counting, we use two maps.
+
+Sum Map
+Map<Integer,Double> totalMap
+Stores:
+
+account -> total amount
+Count Map
+Map<Integer,Integer> countMap
+Stores:
+
+account -> number of transactions
+Example
+
+Transactions:
+
+100
+30
+20
+10
+totalMap
+
+{
+ 1 = 160
+}
+countMap
+
+{
+ 1 = 4
+}
+Average:
+
+160 / 4
+=
+40
+Pattern 5: Frequency Counting
+Transaction Fees
+
+Map<Integer,Integer> txCount
+Meaning:
+
+Account -> Number of transactions
+Initially:
+
+{}
+First Transaction
+
+count = 0
+
+count++
+Map:
+
+{
+ 1 = 1
+}
+Second Transaction
+
+{
+ 1 = 2
+}
+Third Transaction
+
+{
+ 1 = 3
+}
+Fourth Transaction
+
+{
+ 1 = 4
+}
+Now:
+
+if(count <= 3)
+fails.
+
+Fee starts.
+
+The 3 Karat Map Templates
+1. Group Records
+Map<ID,List<Record>>
+Examples:
+
+Map<Integer,List<Workout>>
+Map<Integer,List<Reservation>>
+Map<Integer,List<Transaction>>
+2. Count Things
+Map<Key,Integer>
+Examples:
+
+Map<String,Integer> guestNights
+
+Map<Integer,Integer> txCount
+3. Sum/Average Things
+Map<Key,Double> totalMap
+
+Map<Key,Integer> countMap
+Then:
+
+average =
+totalMap.get(key)
+/
+countMap.get(key);
+If you recognize which of these three patterns a question needs, you can solve most Karat Task-2 and Task-3 questions very quickly. The domain changes (hotel, gym, bank, warehouse), but the underlying HashMap pattern is usually identical.
+
+
