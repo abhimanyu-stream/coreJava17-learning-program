@@ -8,7 +8,7 @@ public class LearnAllAboutSerializationWhenParentClassIsSerializableAndButChildC
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        Vehicle car = new Car("BMW-Classic", "Petrol","Petrol-hybrid-turbo", "BMW");
+        Vehicle car = new Carzx("BMW-Classic", "Petrol","Petrol-hybrid-turbo", "BMW");
 
         System.out.println(car);
 
@@ -93,7 +93,7 @@ class Vehiclez implements Serializable {
         this.localDateTime = localDateTime;
     }
 }
-class Carz extends  Vehicle{
+class Carzx extends  Vehicle{
 
     //Note:- static and transient variable do not participates in Serialization process.
 
@@ -105,7 +105,7 @@ class Carz extends  Vehicle{
     private transient String numberOfWokers = "10";
 
 
-    public Carz(String carName, String fuelType, String engineType,String companyName) {
+    public Carzx(String carName, String fuelType, String engineType,String companyName) {
         super(companyName);
         this.carName = carName;
         this.fuelType = fuelType;
@@ -118,7 +118,7 @@ class Carz extends  Vehicle{
         if (o == null || getClass() != o.getClass()) return false;
         if (! super.equals(o)) return false;
 
-        Carz carz = (Carz) o;
+        Carzx carz = (Carzx) o;
 
         if (! Objects.equals(carName, carz.carName)) return false;
         if (! Objects.equals(fuelType, carz.fuelType)) return false;

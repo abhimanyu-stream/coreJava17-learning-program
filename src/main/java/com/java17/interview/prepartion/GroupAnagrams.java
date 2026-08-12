@@ -55,5 +55,6 @@ map.get(key).add(word);
         }
 
         System.out.println(map.values());
+        System.out.println(map);
     }
 }

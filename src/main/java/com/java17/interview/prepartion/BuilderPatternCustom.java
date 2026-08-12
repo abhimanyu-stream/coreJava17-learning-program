@@ -28,25 +28,7 @@ class Computers {
         this.name = builder.name;
         this.price = builder.price;
     }
-
-    // Getters only (immutable object)
-    public String getName() {
-        return name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    @Override
-    public String toString() {
-        return "Computers{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
-
-    public static Builder builder() {
+     public static Builder builder() {
         return new Builder();
     }
 
@@ -70,6 +52,25 @@ class Computers {
             return new Computers(this);
         }
     }
+
+    // Getters only (immutable object)
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Computers{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
+   
 
     @Override
     public boolean equals(Object o) {

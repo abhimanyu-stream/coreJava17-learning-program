@@ -2,10 +2,10 @@ package com.java17.interview.prepartion;
 
 public class MethodOverriding {
     public static void main(String[] args) {
-        Animal myAnimal = new Animal();  // Animal reference, Animal object
+        Animalt myAnimal = new Animalt();  // Animal reference, Animal object
         myAnimal.sound();                // Calls Animal's sound() method
 
-        Animal myDog = new Dog();        // Animal reference, Dog object
+        Animalt myDog = new Dogt();        // Animal reference, Dog object
         myDog.sound();                   // Calls Dog's overridden sound() method
 
     }
@@ -16,7 +16,7 @@ public class MethodOverriding {
  *
  * */
 // Superclass
-class Animal {
+class Animalt {
     // Method to be overridden
     public void sound() {
         System.out.println("Animal makes a sound");
@@ -24,7 +24,7 @@ class Animal {
 }
 
 // Subclass
-class Dog extends Animal {
+class Dogt extends Animalt {
     // Overriding the sound() method
     @Override
     public void sound() {

@@ -3,7 +3,7 @@ package com.java17.interview.prepartion;
 public class Composition_Has_A {
 
     public static void main(String[] args) {
-        Car car = new Car();
+        Carz car = new Carz();
         car.startCar();
     }
     
@@ -49,7 +49,7 @@ class Engine {
     }
 }
 
-class Car {
+class Carz {
     private Engine engine = new Engine();
 
     void startCar() {
