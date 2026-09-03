@@ -32,6 +32,11 @@ class StudentSysmbosysDTO{
 
     private List<String> name;
 
+	public void setName(ArrayList<String> arrayList) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 class StudentSysmbosys{
     private String name;

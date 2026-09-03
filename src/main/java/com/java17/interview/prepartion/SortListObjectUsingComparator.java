@@ -11,13 +11,13 @@ public class SortListObjectUsingComparator {
 	public static void main(String[] args) {
 		
 		
-		List<Employee> listOfEmployee = new ArrayList<>();
-		Employee employee1 = new Employee("abhisri", 40);
-		Employee employee2 = new Employee("febecca", 10);
-		Employee employee3 = new Employee("eallista", 80);
-		Employee employee4 = new Employee("bam", 30);
-		Employee employee5 = new Employee("Cally", 10);
-		Employee employee6 = new Employee("diranda", 50);
+		List<EmployeeL> listOfEmployee = new ArrayList<>();
+		EmployeeL employee1 = new EmployeeL("abhisri", 40);
+		EmployeeL employee2 = new EmployeeL("febecca", 10);
+		EmployeeL employee3 = new EmployeeL("eallista", 80);
+		EmployeeL employee4 = new EmployeeL("bam", 30);
+		EmployeeL employee5 = new EmployeeL("Cally", 10);
+		EmployeeL employee6 = new EmployeeL("diranda", 50);
 		listOfEmployee.add(employee1);
 		listOfEmployee.add(employee2);
 		listOfEmployee.add(employee3);
@@ -28,9 +28,9 @@ public class SortListObjectUsingComparator {
 		Collections.sort(listOfEmployee, new AgeComparator());
 		System.out.println(listOfEmployee);
 		
-		System.out.println(listOfEmployee.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList()));
+		System.out.println(listOfEmployee.stream().sorted(Comparator.comparing(EmployeeL::getAge).reversed()).collect(Collectors.toList()));
 
-		listOfEmployee.stream().sorted(Comparator.comparingInt(Employee::getAge)).toList();
+		listOfEmployee.stream().sorted(Comparator.comparingInt(EmployeeL::getAge)).toList();
 
 		//using stream api
 		listOfEmployee.stream().sorted(new AgeComparator()).collect(Collectors.toList());
@@ -42,10 +42,10 @@ public class SortListObjectUsingComparator {
 	
 
 }
-class AgeComparator implements Comparator<Employee>{
+class AgeComparator implements Comparator<EmployeeL>{
 
 
-	public int compare(Employee o1, Employee o2) {
+	public int compare(EmployeeL o1, EmployeeL o2) {
 		
 		if(o1.getAge() > o2.getAge())
 			return -1;
@@ -59,12 +59,12 @@ class AgeComparator implements Comparator<Employee>{
 	
 }
 
-class Employee{
+class EmployeeL{
 	
 	
 	String name;
 	int age;
-	public Employee(String name, int age) {
+	public EmployeeL(String name, int age) {
 		super();
 		this.name = name;
 		this.age = age;

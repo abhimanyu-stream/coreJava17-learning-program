@@ -16,7 +16,7 @@ public class HighestFrequencyWordsMap {
         String str2 = "A fox jumped over the wall and over fence over the yard the fence";
 
         Map<String, Long> freq = Arrays.stream(str2.toLowerCase().split("\\s+"))
-                .collect(Collectors.groupingBy(w -> w, Collectors.counting()));
+                .collect(Collectors.groupingBy(w -> w, LinkedHashMap:: new, Collectors.counting()));
 
         // ✅ Sort: by frequency DESC, then word ASC
         //Sorted by frequency (desc), then lexicographically (asc):

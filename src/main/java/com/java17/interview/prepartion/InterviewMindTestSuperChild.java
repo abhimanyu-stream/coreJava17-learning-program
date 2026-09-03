@@ -1,3 +1,5 @@
+package com.java17.interview.prepartion;
+
 public class InterviewMindTestSuperChild {
 
     public static void main(String[] args) {
@@ -36,14 +38,14 @@ class Derived extends Base
  * Derived method called ...
  */
 
-class Person
+class PersonK
 {
-    public Person()
+    public PersonK()
     {
         System.out.println("Person class constructor called");
     }
 }
-class Employee extends Person
+class Employee extends PersonK
 {
     public Employee()
     {

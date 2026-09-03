@@ -41,7 +41,7 @@ System.out.println(Arrays.toString(sorted));
 
 Integer[] arr = {11, 2, 3, 0, 12};
 
-Integer[] sorted = Arrays.stream(arr)
+Integer[] sortedt = Arrays.stream(arr)
                          .sorted(Comparator.naturalOrder())
                          .toArray(Integer[]::new);
 
@@ -75,9 +75,9 @@ String[] arr = Arrays.stream(names)
  *  */						
 						
 						
-String[] names = {"Java", "Spring", "Kafka"};
+String[] namest = {"Java", "Spring", "Kafka"};
 
-String[] result = Arrays.stream(names)
+String[] resultt = Arrays.stream(names)
                         .map(String::toUpperCase)
                         .toArray(String[]::new);
 

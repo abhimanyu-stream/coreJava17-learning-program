@@ -9,17 +9,21 @@ public class MissingNumbers {
 
     public static void main(String[] args) {
 
-        int[] ints = {1, 3, 4, 6, 7, 10};
+        int[] input = {2, 6, 8, 15, 50, 15};
 
-        Set<Integer> present = Arrays.stream(ints)
+        Set<Integer> set = Arrays.stream(input)
                 .boxed()
                 .collect(Collectors.toSet());
 
-        IntStream.rangeClosed(
-                        Arrays.stream(ints).min().getAsInt(),
-                        Arrays.stream(ints).max().getAsInt()
-                )
-                .filter(i -> !present.contains(i))
-                .forEach(System.out::println);// print missing elements only
+        int min = Arrays.stream(input).min().orElseThrow();
+        int max = Arrays.stream(input).max().orElseThrow();
+
+        IntStream.rangeClosed(min, max)
+                .filter(i -> !set.contains(i))
+                .forEach(System.out::println);
+
+
+
+
     }
 }

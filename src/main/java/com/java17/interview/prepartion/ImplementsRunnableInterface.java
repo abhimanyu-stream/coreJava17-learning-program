@@ -10,7 +10,7 @@ public class ImplementsRunnableInterface {
 		//System.out.println("Main Thread Start "+ Thread.currentThread().getName());
 
 
-		log.info("Main Thread Start "+ Thread.currentThread().getName());
+		//log.info("Main Thread Start "+ Thread.currentThread().getName());
 		Runnable r = ()->{
 			//child Thread area starts
 			try {
@@ -46,7 +46,7 @@ public class ImplementsRunnableInterface {
 		t2.join();// Main thread waits for task t2 to complete[//Main Thead is doing this]
 
 		System.out.println("*********task has been completed by thread t2********"+ t2.getName());
-		log.info("some");//Main Thead is doing this
+		//log.info("some");//Main Thead is doing this
 		//t2.notifyAll();//Exception in thread "main" java.lang.IllegalMonitorStateException: current thread is not owner
 		//Main Thead is doing this
 

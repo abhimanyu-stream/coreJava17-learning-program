@@ -9,8 +9,8 @@ public class ProducerConsumerSharedResource {
     public static void main(String[] args) {
         SharedResource resource = new SharedResource();
 
-        Producer producer = new Producer(resource);
-        Consumer consumer = new Consumer(resource);
+        ProducerT producer = new ProducerT(resource);
+        ConsumerT consumer = new ConsumerT(resource);
 
         producer.start();
         consumer.start();
@@ -56,10 +56,10 @@ class SharedResource {
     }
 }
 
-class Producer extends Thread {
+class ProducerT extends Thread {
     private final SharedResource resource;
 
-    Producer(SharedResource resource) {
+    ProducerT(SharedResource resource) {
         this.resource = resource;
     }
 
@@ -80,10 +80,10 @@ class Producer extends Thread {
     }
 }
 
-class Consumer extends Thread {
+class ConsumerT extends Thread {
     private final SharedResource resource;
 
-    Consumer(SharedResource resource) {
+    ConsumerT(SharedResource resource) {
         this.resource = resource;
     }
 

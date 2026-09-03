@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -15,8 +16,8 @@ public class SortByDOJComparator {
     public static void main(String[] args) {
         List<Tank> tankList = Arrays.asList(
                 new Tank(LocalDate.of(2024, 2, 2), "ArjunTank"),
-                new Tank(LocalDate.of(2024, 5, 16), "a"),
-                new Tank(LocalDate.of(2024, 11, 20), "B2-stealth-USA")
+                new Tank(LocalDate.of(2024, 5, 16), "a")
+                
         );
 
         //*******************************************************
@@ -63,6 +64,17 @@ public class SortByDOJComparator {
 @AllArgsConstructor
 @NoArgsConstructor
 class Tank {
-    private LocalDate dateofEnforcement;
+    public Tank(LocalDate of, String string) {
+		// TODO Auto-generated constructor stub
+	}
+	public String getTankName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public LocalDate getDateofEnforcement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private LocalDate dateofEnforcement;
     private String tankName;
 }
