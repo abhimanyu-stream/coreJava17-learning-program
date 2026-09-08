@@ -4,7 +4,7 @@ public class ResponseEntity {
     
 }
 /**
- * 
+ * Pathvariable RequestParam example 
  * 
  * Yes, you can combine ApiResponse<PaymentDto> with ResponseEntity and HttpHeaders.
 

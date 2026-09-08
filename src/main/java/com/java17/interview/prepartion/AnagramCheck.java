@@ -1,4 +1,4 @@
-package com.java17.interview.prepartion;
+	package com.java17.interview.prepartion;
 
 import java.util.Arrays;
 
@@ -8,6 +8,9 @@ public class AnagramCheck {
 
         s1 = s1.replaceAll("\\s", "").toLowerCase();
         s2 = s2.replaceAll("\\s", "").toLowerCase();
+        
+        System.out.println(s1);
+        System.out.println(s2);
 
         if (s1.length() != s2.length()) {
             return false;
@@ -20,8 +23,9 @@ public class AnagramCheck {
         Arrays.sort(arr2);
 
         String s3 = new String(arr1);
-         String s4 = new String(arr2);
-         System.out.print(s3.equals(s4));
+        String s4 = new String(arr2);
+        
+         System.out.println(s3.equals(s4));// content comparison
 
 
         return Arrays.equals(arr1, arr2);
@@ -29,7 +33,7 @@ public class AnagramCheck {
 
     public static void main(String[] args) {
 
-        String s1 = "listen";
+        String s1 = "list en";// one space removed by s1.replaceAll("\\s", "")
         String s2 = "silent";
 
         System.out.println(isAnagram(s1, s2));

@@ -1,6 +1,12 @@
 package com.java17.interview.prepartion;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -390,5 +396,9 @@ public class TwoSumFindIndexesIntArray {
         // List<int[]> resultStream = twoSumUsingStream(nums, target);
         // resultStream.forEach(ints -> System.out.println(ints[0] + "-" + ints[1]));
     }
+
+
+
+    
 
 }

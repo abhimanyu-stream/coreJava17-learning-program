@@ -57,7 +57,7 @@ public class Top2HighestPaidEmployeesPerDepartmentTIgnoreLast6M {
                         ));
 
 
-        System.out.println(result);
+        System.out.println("result "+ result);
         Map<String, Optional<Empl>> secondHighestSalaryPerDept =
                 employees.stream()
                         .collect(Collectors.groupingBy(
@@ -72,7 +72,7 @@ public class Top2HighestPaidEmployeesPerDepartmentTIgnoreLast6M {
                         ));
 
 
-        System.out.println(secondHighestSalaryPerDept);
+        System.out.println("secondHighestSalaryPerDept "+ secondHighestSalaryPerDept);
         Map<String, Optional<Empl>> secondHighestSalaryPerDept2 =
                 employees.stream()
                         .collect(Collectors.groupingBy(

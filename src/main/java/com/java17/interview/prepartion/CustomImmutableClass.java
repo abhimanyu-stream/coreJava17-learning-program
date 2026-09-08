@@ -19,13 +19,16 @@ public class CustomImmutableClass {
 		List<String> phoneNumbers = new ArrayList<>();
 		phoneNumbers.add("123345");
 		phoneNumbers.add("456789");
+		
+		//List<String> phoneNumbers = Arrays.asList("123345","456789");
 		Map<String, String> metadata = new HashMap<>();
 		metadata.put("hobby", "Watching Movies");
 		LocalDate dateOfBirth = LocalDate.now();
-		// dateOfBith = LocalDate.of(2020,01,02);
+		//dateOfBith = LocalDate.of(2020,01,02);year month dayofmonth
 		Employee e = new Employee("Miranda", 23, address1, phoneNumbers, metadata, dateOfBirth);
 
-		// trying to Employee Object modifications, but not able to do so.Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.
+		// trying to Employee Object modifications, but not able to do so.
+		// Thus Immutable. achieved by Cloneble Interface, clone() method., final keywords, priavte access modifiers.
 
 		// class is final, fields are final, user-defined class is final but can have mutable fields,both constructor are public , in top level class not setter, only getter are allowed. But in
 		// refernced user defined class can have setter method as well.

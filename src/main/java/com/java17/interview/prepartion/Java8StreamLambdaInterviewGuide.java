@@ -384,6 +384,27 @@ public class Java8StreamLambdaInterviewGuide {
         // (f) Partition numbers into odd and even using partitioningBy
         System.out.println("\n(f) Partition Odd/Even Numbers:");
         List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+
+int sum = nums.stream().mapToInt(Integer::intValue).sum();
+
+List<Integer> even = nums.stream()
+        .filter(n -> n % 2 == 0)
+        .collect(Collectors.toList());
+
+List<Integer> odd = nums.stream()
+        .filter(n -> n % 2 != 0)
+        .collect(Collectors.toList());
+
+
+
+
+
+
+
+
+
+
         
         // Traditional approach - separate operations
         List<Integer> evens = nums.stream()

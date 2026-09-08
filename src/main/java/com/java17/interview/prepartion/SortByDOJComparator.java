@@ -1,10 +1,5 @@
 package com.java17.interview.prepartion;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -17,64 +12,65 @@ public class SortByDOJComparator {
         List<Tank> tankList = Arrays.asList(
                 new Tank(LocalDate.of(2024, 2, 2), "ArjunTank"),
                 new Tank(LocalDate.of(2024, 5, 16), "a")
-                
         );
 
-        //*******************************************************
-        // Approach - 1: Sort by date of enforcement day in descending order
-        List<Tank> sortedTankListByMonthOfDate = tankList.stream()
+        // Approach - 1: Sort by day-of-month of enforcement date in descending order
+        List<Tank> sortedTankListByDayOfMonth = tankList.stream()
                 .sorted((o1, o2) -> o2.getDateofEnforcement().getDayOfMonth() - o1.getDateofEnforcement().getDayOfMonth())
                 .toList();
+        System.out.println("sortedTankListByDayOfMonth   : " + sortedTankListByDayOfMonth);
 
-
-
-
-        //listOfEmployee.stream().sorted(Comparator.comparingInt(Employee::getAge)).toList();
-        System.out.println("sortedTankListByMonthOfDate  " + sortedTankListByMonthOfDate);
-        tankList.stream().sorted(Comparator.comparing(Tank::getDateofEnforcement).reversed()).toList();//reason: Incompatible types: LocalDate is not convertible to int
-
+        // Approach - 1b: Sort by full LocalDate in descending order using Comparator.comparing
+        // Note: LocalDate is not an int, so comparingInt() cannot be used here — use comparing() instead
+        List<Tank> sortedByDateDesc = tankList.stream()
+                .sorted(Comparator.comparing(Tank::getDateofEnforcement).reversed())
+                .toList();
+        System.out.println("sortedByDateDesc             : " + sortedByDateDesc);
 
         // Approach - 2: Sort by tank name length in descending order
-        List<Tank> sortedByNameLength2 = tankList.stream()
+        List<Tank> sortedByNameLength = tankList.stream()
                 .sorted((o1, o2) -> o2.getTankName().length() - o1.getTankName().length())
                 .toList();
-        System.out.println("sortedByNameLength2 " + sortedByNameLength2);
+        System.out.println("sortedByNameLength           : " + sortedByNameLength);
 
-        //*******************************************************
-        // Approach - 3: Using BiFunction for sorting by name length
+        // Approach - 3: Using BiFunction for sorting by name length in descending order
         BiFunction<Tank, Tank, Integer> compareByNameLength = (tank1, tank2) ->
                 Integer.compare(tank2.getTankName().length(), tank1.getTankName().length());
 
         List<Tank> sortedByBiFunction = tankList.stream()
-                .sorted(compareByNameLength::apply)//compareByNameLength.apply(o1,o2)
+                .sorted(compareByNameLength::apply) // equivalent to: .sorted((o1, o2) -> compareByNameLength.apply(o1, o2))
                 .toList();
-        System.out.println("sortedByBiFunction " + sortedByBiFunction);
+        System.out.println("sortedByBiFunction           : " + sortedByBiFunction);
 
         // Unicode value examples
-        System.out.println("Unicode value of 'A': " + (int) 'A');
-        System.out.println("Unicode value of 'B': " + (int) 'B');
-        System.out.println("Unicode value of 'a': " + (int) 'a');
-        System.out.println("Unicode value of 'b': " + (int) 'b');
+        System.out.println("Unicode value of 'A'         : " + (int) 'A');
+        System.out.println("Unicode value of 'B'         : " + (int) 'B');
+        System.out.println("Unicode value of 'a'         : " + (int) 'a');
+        System.out.println("Unicode value of 'b'         : " + (int) 'b');
     }
-
 }
 
-@Slf4j
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+// Tank class — defined in the same file since it is only used here
 class Tank {
-    public Tank(LocalDate of, String string) {
-		// TODO Auto-generated constructor stub
-	}
-	public String getTankName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public LocalDate getDateofEnforcement() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	private LocalDate dateofEnforcement;
+
+    private LocalDate dateofEnforcement;
     private String tankName;
+
+    public Tank(LocalDate dateofEnforcement, String tankName) {
+        this.dateofEnforcement = dateofEnforcement;
+        this.tankName = tankName;
+    }
+
+    public LocalDate getDateofEnforcement() {
+        return dateofEnforcement;
+    }
+
+    public String getTankName() {
+        return tankName;
+    }
+
+    @Override
+    public String toString() {
+        return "Tank{date=" + dateofEnforcement + ", name='" + tankName + "'}";
+    }
 }

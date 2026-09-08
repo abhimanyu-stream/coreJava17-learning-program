@@ -7,6 +7,10 @@ public final class SingletonWithPrevention implements Serializable, Cloneable {
 
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * If you must use class-based Singleton:
      *
      * Use:
@@ -39,7 +43,7 @@ public final class SingletonWithPrevention implements Serializable, Cloneable {
 
         if(singletonWithPrevention == null){
             synchronized (SingletonWithPrevention.class){
-                if(singletonWithPrevention == null){
+                if(singletonWithPrevention == null){// double check null
                     singletonWithPrevention = new SingletonWithPrevention();
                 }
             }

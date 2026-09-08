@@ -40,11 +40,14 @@ public class ReverseKeepingSpecialCharsAtItsOwnPlace {
         while (left < right) {
 
             if (!Character.isLetter(arr[left])) {
+            	//at current index special char
                 left++;
             } else if (!Character.isLetter(arr[right])) {
+            	//at current index special char
                 right--;
             } else {
                 // swap
+            	//at current index char
                 char temp = arr[left];
                 arr[left] = arr[right];
                 arr[right] = temp;

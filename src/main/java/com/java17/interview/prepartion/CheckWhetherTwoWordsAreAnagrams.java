@@ -42,6 +42,8 @@ public class CheckWhetherTwoWordsAreAnagrams {
     public static void main(String[] args) {
         String s = "carrace";//"eat";
         String t = "racecar";//"tea";
+        String s1 = "list en";// one space removed by s1.replaceAll("\\s", "")
+        String s2 = "silent";
 
         System.out.println(isAnagramSortingApproach(s, t)); // true
         System.out.println(isAnagramFrequencyCount(s, t)); // true

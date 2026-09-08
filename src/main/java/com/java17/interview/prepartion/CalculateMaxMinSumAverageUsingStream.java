@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 
@@ -10,33 +11,33 @@ public class CalculateMaxMinSumAverageUsingStream {
         List<Integer> numbers = Arrays.asList(3, 5, 7, 9, 11);
 
         // Calculate max, min, sum, and average using streams
+        
+        
+        Integer maxByNaturalOrdering = numbers.stream().max(Comparator.naturalOrder()).get();
+        Integer minByNaturalOrdering = numbers.stream().min(Comparator.naturalOrder()).get();
+        
+        
+     // Sum
+        int sum =
+                numbers.stream()
+                       .mapToInt(Integer::intValue)
+                       .sum();
 
-        // 1. Maximum value
-        int max = numbers.stream()
-                .mapToInt(Integer::intValue) // Convert to IntStream
-                .max()
-                .orElseThrow(() -> new IllegalArgumentException("List is empty"));
-        System.out.println("Max: " + max);
+        // Average
+        double average =
+                numbers.stream()
+                       .mapToInt(Integer::intValue)
+                       .average()
+                       .orElse(0.0);
 
-        // 2. Minimum value
-        int min = numbers.stream()
-                .mapToInt(Integer::intValue)
-                .min()
-                .orElseThrow(() -> new IllegalArgumentException("List is empty"));
-        System.out.println("Min: " + min);
+        System.out.println("Max     : " + maxByNaturalOrdering);
+        System.out.println("Min     : " + minByNaturalOrdering);
+        System.out.println("Sum     : " + sum);
+        System.out.println("Average : " + average);
 
-        // 3. Sum of elements
-        int sum = numbers.stream()
-                .mapToInt(Integer::intValue)
-                .sum();
-        System.out.println("Sum: " + sum);
+        
 
-        // 4. Average of elements
-        double average = numbers.stream()
-                .mapToInt(Integer::intValue)
-                .average()
-                .orElse(0.0);
-        System.out.println("Average: " + average);
+       
 
         // Alternatively, using IntSummaryStatistics for all in one go
         IntSummaryStatistics stats = numbers.stream()

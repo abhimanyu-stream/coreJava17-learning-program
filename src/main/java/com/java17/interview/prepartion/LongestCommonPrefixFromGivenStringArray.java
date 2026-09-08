@@ -37,15 +37,45 @@ public class LongestCommonPrefixFromGivenStringArray {
 
         return  prefix;
     }
+    
+    public static String longestCommonPrefixStream(String[] strArray) {
+
+        if (strArray.length == 0) {
+            return "";
+        }
+
+        String first = strArray[0];
+
+        return java.util.stream.IntStream
+                .range(0, first.length())
+                .takeWhile(i ->
+                        java.util.Arrays.stream(strArray)
+                                .allMatch(s -> i < s.length() && s.charAt(i) == first.charAt(i))
+                )
+                .mapToObj(first::charAt)
+                .map(String::valueOf)
+                .collect(java.util.stream.Collectors.joining());
+    }
+    
+    public static String longestCommonPrefixStream1(String[] strArray) {
+
+        return java.util.Arrays.stream(strArray)
+                .reduce((s1, s2) -> {
+                    int i = 0;
+
+                    while (i < s1.length()
+                            && i < s2.length()
+                            && s1.charAt(i) == s2.charAt(i)) {
+                        i++;
+                    }
+
+                    return s1.substring(0, i);
+                })
+                .orElse("");
+    }
+
+
 
 
 }
 
-/***
- *
- * [14:30] Rama Krishna M
- * Find Longest common Prefix in an array
- * [“amazon”, “amazed”, “amaze”, “amazing”, “amazes”]
- * [14:30] Rama Krishna M
- * Given a String, find the first non-repeated character in it using Stream functions?  String s1= "Welcome to java world ";  output-c
- */

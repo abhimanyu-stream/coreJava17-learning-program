@@ -11,7 +11,7 @@ public class InterviewMindTestSuperChild {
 
 
 
-        Employee e = new Employee();
+        EmployeeN e = new EmployeeN();
 
 
 
@@ -45,9 +45,9 @@ class PersonK
         System.out.println("Person class constructor called");
     }
 }
-class Employee extends PersonK
+class EmployeeN extends PersonK
 {
-    public Employee()
+    public EmployeeN()
     {
         System.out.println("Employee class constructor called");
     }

@@ -6,19 +6,19 @@ import java.util.stream.Collectors;
 public class HighestFrequencyWordMap {
 
     public static void main(String[] args) {
-        String str2 = "A fox jumped over the wall and over fence over the yard";
+        String str2 = "A fox jumped over the wall and over the fence over the yard";
 
         String result = Arrays.stream(str2.toLowerCase().split("\\s+"))
                 .collect(Collectors.groupingBy(w -> w, Collectors.counting())) // Map<String, Long>
                 .entrySet()
                 .stream()
-                .max(Map.Entry.comparingByValue())   // find entry with the highest frequency
-
+                //.max(Map.Entry.comparingByValue())   // find entry with the highest frequency
+.max(Comparator.comparing(Map.Entry<String, Long>::getValue))
 
                 .map(Map.Entry::getKey)              // get the word
                 .orElse(null);
 
-        System.out.println("Highest frequency word: withot LinkedHashMap" + result);
+        System.out.println("Highest frequency word: withot LinkedHashMap  " + result);
 
         //----------------------------------------
         // ✅ Step 1 — use LinkedHashMap to preserve insertion (first appearance) order

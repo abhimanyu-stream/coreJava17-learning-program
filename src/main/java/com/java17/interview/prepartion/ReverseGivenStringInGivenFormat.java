@@ -1,6 +1,7 @@
 package com.java17.interview.prepartion;
 
 import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.stream.Collectors;
 
@@ -15,7 +16,7 @@ public class ReverseGivenStringInGivenFormat {
         String output = reverseAsMirror(input);
         System.out.println(output);
 
-        //Input:you? are How  world! Hello,
+        //Output:you? are How  world! Hello,
         String str23 = "Hello, world!  How are you?";
 
         String mirrorString = Arrays.stream(str23.split(" "))
@@ -28,7 +29,7 @@ public class ReverseGivenStringInGivenFormat {
                                 }
                         )
                 );
-        System.out.println(mirrorString);
+        System.out.println("mirrorString :: "+mirrorString);
     }
 
     public static String reverseAsMirror(String input) {
