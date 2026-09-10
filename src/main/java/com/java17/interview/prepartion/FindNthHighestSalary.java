@@ -49,8 +49,7 @@ public class FindNthHighestSalary {
 
     public static List<String> getNthHighestSalaryEmployees(Map<String, Double> map, int n) {
         return map.entrySet().stream()
-                .collect(Collectors.groupingBy(Map.Entry::getValue,
-                        Collectors.mapping(Map.Entry::getKey, Collectors.toList())))//<Double, List<String>>
+                .collect(Collectors.groupingBy(Map.Entry::getValue,Collectors.mapping(Map.Entry::getKey, Collectors.toList())))//<Double, List<String>>
                 .entrySet().stream()
                 //.sorted(Map.Entry.<Double, List<String>>comparingByKey().reversed())//salary
                 //2nd Highest: [Michael, Daniel]
